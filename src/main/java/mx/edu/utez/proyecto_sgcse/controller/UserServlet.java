@@ -28,7 +28,7 @@ public class UserServlet extends HttpServlet {
         String ruta = "login.jsp";
         if(u.getEmail() != null){
             //Que el usuario si existe en la base de datos
-            ruta = "index.jsp";
+            ruta = "bienvenido.jsp";
 
         }else {
             //quiere decir que el usuario no existe
