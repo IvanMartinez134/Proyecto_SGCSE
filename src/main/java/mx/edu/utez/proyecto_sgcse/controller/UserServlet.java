@@ -25,7 +25,7 @@ public class UserServlet extends HttpServlet {
         UserDao dao = new UserDao();
         User u = dao.getOne(email,pwd);
 
-        String ruta = "login.jsp";
+        String ruta = "index.jsp";
         if(u.getEmail() != null){
             //Que el usuario si existe en la base de datos
             ruta = "bienvenido.jsp";

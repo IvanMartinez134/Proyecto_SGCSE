@@ -31,12 +31,12 @@ public class UserDao {
                 //que el usuario si existe en la base de datos
                 u.setEmail(rs.getString("email"));
                 u.setPwd(rs.getString("pwd"));
-                u.setStatus(rs.getBoolean("usr_status"));
+                u.setUsr_status(rs.getBoolean("usr_status"));
                 u.setRol(rs.getString("rol"));
                 u.setRec_code(rs.getString("rec_code"));
-                u.setName(rs.getString("name_s"));
-                u.setSurname_P(rs.getString("surname_p"));
-                u.setSurname_M(rs.getString("surname_m"));
+                u.setName_s(rs.getString("name_s"));
+                u.setSurname_p(rs.getString("surname_p"));
+                u.setSurname_m(rs.getString("surname_m"));
 
 
             }

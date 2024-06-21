@@ -24,7 +24,7 @@
         <img src="img/utezlogo.png" alt="login" style="height: 6rem;">
     </div>
     <div class="text-center fw-bold fs-3 ">Inicio de sesión</div>
-    <form id="loginForm" method="post" action="/login">
+    <form id="loginForm" method="post" action="login">
         <div class="mt-2">
             <input class="form-control" type="text" name="email" placeholder="Tu usuario" required>
         </div>
@@ -48,7 +48,7 @@
         %>
         <p style="color: darkred"><%=mensaje%> </p>
                 <% } %>
-        <input type="submit" value="Iniciar Session" class="iniciar_cta btn btn-success text-white w-100 mt-3 ">Iniciar
+        <input type="submit" value="Iniciar Session" class="iniciar_cta btn btn-success text-white w-100 mt-3 ">
     </form>
     <div class="d-flex gap-1 justify-content-center mt-2" style="font-size: .9rem;">
         <div>No tienes una cuenta?</div>
