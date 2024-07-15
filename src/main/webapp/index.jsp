@@ -52,12 +52,12 @@
     </form>
 
     <div class="d-flex gap-1 justify-content-center mt-2" style="font-size: .9rem;">
-        <a href="#" class="text-decoration-none fw-semibold">¿Has olvidado tu contraseña?</a>
+        <a href="ingresarEmail.jsp" class="text-decoration-none fw-semibold">¿Has olvidado tu contraseña?</a>
     </div>
 
     <div class="d-flex gap-1 justify-content-center mt-2" style="font-size: .9rem;">
         <div>No tienes una cuenta?</div>
-        <a href="#" class="text-decoration-none fw-semibold">Registrarse</a>
+        <a href="registroEst.jsp" class="text-decoration-none fw-semibold">Registrarse</a>
     </div>
 
 
