@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Función para crear una carta de usuario
     function createUserCard(user) {
         const card = document.createElement('div');
-        card.classList.add('col-md-4', 'mb-4');
+        card.classList.add('col-lg-4', 'mb-4' );
+        card.classList.add('col-md-6', 'mb-4');
+        card.classList.add('col-sm-10', 'mb-4', 'text-center', 'm-auto');
 
         card.innerHTML = `
             <div class="card h-80">

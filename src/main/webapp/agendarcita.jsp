@@ -14,61 +14,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agendar Cita</title>
-  <!-- Enlace a Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-
-    .container {
-      margin-top: 110px;
-    }
-
-    form {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 22px rgba(0, 0, 0, 0.26);
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    button[type="submit"] {
-      background-color: #0d6efd;
-      border: none;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #0b5ed7;
-    }
-  </style>
+  <link rel="stylesheet" href="css/agendarcita.css">
 </head>
 <body>
 
-<nav class="navbar fixed-top navbar-light bg-success">
-  <div class="container-fluid">
-    <!-- Agregamos el botón del menú hamburguesa -->
-    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-expand-xsm  bg-success col-xsm-12">
+  <div class="navbar-logo-container">
+    <a class="navbar-brand" href="#">
+      <img src="img/utezlogo.png" alt="Logo" class="navbar-logo">
+    </a>
+  </div>
+  <div class="navbar-title-container">
+    <h1 class="title">Agendar citas</h1>
+  </div>
+  <div class="nav_menu" id="open_close">
+    <button class="menu">
+      <div class="menu_item"></div>
+      <div class="menu_item"></div>
+      <div class="menu_item"></div>
     </button>
-    <!-- Aquí ponemos el título de la página centrado -->
-    <a class="navbar-brand text-center text-white mx-auto" href="#">Agendar cita</a>
-    <!-- Ahora vamos a agregar el menú -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-
-        <!-- Agregamos el elemento de lista para "Cerrar Sesión" -->
-        <li class="nav-item">
-          <a class="nav-link" href="#">Cerrar Sesión</a>
-        </li>
-
-      </ul>
-    </div>
   </div>
 </nav>
+
+
+<aside id="aside">
+  <div class="lateral"></div>
+  <div class="aside_con">
+    <div class="aside_i">
+      <a class="a_link" href="perfil.jsp">
+      <i class="bi bi-person "></i>
+      <span class="a_span">Mi perfil</span>
+      </a>
+    </div>
+  </div>
+  <div class="aside_c">
+    <div class="aside_i">
+      <i class="bi-box-arrow-right"></i>
+      <span class="a_span">Cerrar sesion</span>
+    </div>
+  </div>
+</aside>
 
 
 
@@ -113,4 +102,6 @@
 
 <!-- Script de Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/agendarcita.js"></script>
+
 </body>

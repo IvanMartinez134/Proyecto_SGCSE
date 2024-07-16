@@ -20,6 +20,16 @@
     color: #f7f0f0;
 }
 
+
+.barra{
+    width: 60%;
+}
+
+.regis{
+    margin-left: 10%;
+}
+
+
 .card{
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.387);
 
@@ -57,4 +67,25 @@
     background-color: transparent;
     padding: 0;
     margin: 0 0.5rem;
+}
+
+
+
+@media (max-width: 1000px){
+
+    .t_regis{
+        padding: 2px 8px;
+        font-size: small;
+    }
+
+}
+
+
+@media (max-width: 500px){
+
+    .t_regis{
+        padding: 2px 8px;
+        font-size: 0.6rem;
+    }
+
 }

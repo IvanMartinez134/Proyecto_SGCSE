@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -29,10 +28,18 @@
                 <path d="M21 21l-4.3-4.3"></path>
             </svg>
             <input type="text" id="searchInput" class="header-input" placeholder="Buscar usuarios...">
+
+            <div class="regis">
+                <a href="registroAdminitivo.jsp">
+                    <button type="submit" class="btn btn-success t_regis">
+                        Registrar administrativo
+                    </button>
+                </a>
+            </div>
         </div>
     </header>
     <div class="row bg-light rounded-bottom p-3" id="userList">
-        <!-- Aquí se generarán las cartas  -->
+        <!-- En esta parte hago que lascardsse creen( muestren) -->
     </div>
 </div>
 <script src="js/consU.js" defer></script>

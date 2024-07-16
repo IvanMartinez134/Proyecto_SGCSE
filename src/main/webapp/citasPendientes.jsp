@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-expand-xsm  bg-success col-xsm-12">
     <div class="navbar-logo-container">
         <a class="navbar-brand" href="#">
@@ -72,7 +73,7 @@
                     <p class="card-text">Horario: 7:00 - 7:30</p>
 
                     <div class="buscador">
-                        <input type="search" class="bus form-control mb-1" id="bus" name="bus" placeholder="Buscar..">
+                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
                         <div class="items">
                             <li class="names list-group-item">Bryan</li>
                             <li class="names list-group-item">Pulido</li>
@@ -101,7 +102,7 @@
                     <p class="card-text">Horario: 7:00 - 7:30</p>
 
                     <div class="buscador">
-                        <input type="search" class="bus form-control mb-1" id="bus" name="bus" placeholder="Buscar..">
+                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
                         <div class="items">
                             <li class="names list-group-item">Bryan</li>
                             <li class="names list-group-item">Pulido</li>
@@ -132,7 +133,7 @@
                     <p class="card-text">Horario: 7:00 - 7:30</p>
 
                     <div class="buscador">
-                        <input type="search" class="bus form-control mb-1" id="bus" name="bus" placeholder="Buscar..">
+                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
                         <div class="items">
                             <li class="names list-group-item">Bryan</li>
                             <li class="names list-group-item">Pulido</li>
@@ -165,7 +166,7 @@
 
 
                     <div class="buscador">
-                        <input type="search" class="bus form-control mb-1" id="bus" name="bus" placeholder="Buscar..">
+                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
                         <div class="items">
                             <li class="names list-group-item">Bryan</li>
                             <li class="names list-group-item">Pulido</li>
@@ -196,7 +197,7 @@
                     <p class="card-text">Horario: 7:00 - 7:30</p>
 
                     <div class="buscador">
-                        <input type="search" class="bus form-control mb-1" id="bus" name="bus" placeholder="Buscar..">
+                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
                         <div class="items">
                             <li class="names list-group-item">Bryan</li>
                             <li class="names list-group-item">Pulido</li>

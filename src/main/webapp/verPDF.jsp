@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="css/pdf.css">
 </head>
 <body>
+
+
 <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-expand-xsm  bg-success col-xsm-12">
     <div class="navbar-logo-container">
         <a class="navbar-brand" href="#">
@@ -60,7 +62,6 @@
 
 <div class="cont_pdf mt-4">
     <object class="pdf_v" type="application/pdf" data="Transacciones_BaseDeDatos.pdf"></object>
-
 </div>
 
 
