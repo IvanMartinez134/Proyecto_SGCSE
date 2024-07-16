@@ -1,0 +1,309 @@
+
+
+
+
+body {
+    margin: 0;
+}
+
+
+.navbar {
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.navbar-logo {
+    height: 70px;
+    width: 6em;
+    object-fit: contain; /* Ajuste de la imagen dentro del contenedor */
+}
+
+.navbar-title-container {
+    text-align: center;
+    flex: 1;
+    margin: 0 auto;
+    position: relative;
+}
+
+.navbar-brand {
+    background: #fff;
+    padding: 0 10px;
+}
+
+.title {
+    color: white; /* Color del texto */
+    font-size: 1.5rem; /* Tamaño del texto */
+    font-weight: bold; /* Peso de la fuente */
+}
+
+.nav_menu {
+    position: absolute;
+    right: 0;
+    margin-top: 0.7rem;
+}
+
+.menu {
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    background: transparent;
+    gap: 0.60rem;
+    cursor: pointer;
+}
+
+.menu_item {
+    background-color: white;
+    height: 3px;
+    width: 100%;
+    border-radius: 5px;
+    transition: all .3s;
+    transform-origin: left;
+}
+
+.menu:hover div:first-child {
+    transform: rotate(45deg);
+}
+
+.menu:hover div:nth-child(2) {
+    opacity: 0;
+}
+
+.menu:hover div:last-child {
+    transform: rotate(-45deg);
+}
+
+aside {
+    position: absolute;
+    width: 20%;
+    background-color: #198754;
+    top: 0;
+    right: 0;
+    overflow-y: hidden;
+    margin-top: 59px;
+    transition: 0.5s ease;
+    z-index: 1000;
+    box-shadow: 0px 12px 12px #9c9c9c;
+
+}
+
+aside:hover {
+    overflow-y: auto;
+}
+
+.abrir {
+    transform: translateY(-155%);
+}
+
+
+.aside_con {
+    color: #fff;
+    border-bottom: 1px solid #ffffffd5;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.aside_c{
+    color: #fff;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.a_span {
+    margin-left: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.aside_i {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 10px;
+}
+
+.aside_i:hover {
+    background-color: #21ad44;
+    border-radius: 8px;
+}
+
+.a_link{
+    text-decoration: none;
+    color: #fff;
+}
+
+.a_link:hover{
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+.container {
+    margin-top: 50px;
+}
+
+.documentacion {
+    background-color: #0d4ea2b9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    margin-top: 110px;
+    color: #fff;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.drag-drop {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    height: 160px;
+}
+
+.drag-drop:hover {
+    background-color: #f0f0f0b5;
+}
+
+#file-input {
+    display: none;
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+}
+
+.file-list li {
+    margin-bottom: 10px;
+}
+
+.documentacion{
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.387);
+
+}
+
+
+@media (max-width: 500px){
+
+    .documentacion{
+        font-size: smaller;
+    }
+
+    .documentacion h2{
+        text-align: center;
+    }
+
+
+    .documentacion p{
+        text-align: center;
+    }
+
+    .drag-drop{
+        margin-bottom: 3rem;
+    }
+
+    .navbar {
+        height: 70px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-logo-container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        position: absolute;
+        left: 0;
+    }
+
+    .navbar-logo {
+        height: 70px;
+        width: 90px; /* Ancho automático para mantener la proporción */
+        object-fit: contain; /* Ajuste de la imagen dentro del contenedor */
+    }
+
+    .container {
+        margin-top: 10px; /* Reducir el margen superior del contenido */
+    }
+
+
+    .title {
+        font-size: 1.2rem;
+        position: relative;
+        left: 50%;
+        transform: translateX(-40%);
+    }
+
+    .nav_menu {
+
+        position: absolute;
+        right: 0;
+        margin-top: 0.7rem;
+    }
+
+    .menu {
+        margin-right: 12px;
+        display: flex;
+        flex-direction: column;
+        width: 2rem;
+        height: 2rem;
+        border: 0;
+        background: transparent;
+        gap: 4px;
+        cursor: pointer;
+    }
+
+    .container{
+        margin-top: -4rem;
+        width: 80%;
+    }
+
+
+    aside {
+        position: absolute;
+        width: 40%;
+        background-color: #198754;
+        top: 0;
+        right: 0;
+        overflow-y: hidden;
+        margin-top: 59px;
+        transition: 0.5s ease;
+        z-index: 1000;
+
+
+    }
+
+    .aside_i{
+        font-size: smaller;
+    }
+
+    .a_span{
+        font-size: small;
+    }
+
+
+}
+
+

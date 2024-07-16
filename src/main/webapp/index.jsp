@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
-
-
     <link rel="stylesheet" href="css/Login.css">
 
 </head>
@@ -31,11 +29,11 @@
     <div class="text-center fw-bold fs-3">Inicio de sesión</div>
     <form id="loginForm">
         <div class="mt-2">
-            <input class="form-control" type="text" name="usuario" placeholder="Tu usuario" required>
+            <input class="form-control" id="correo" type="email" name="usuario"  placeholder="Tu usuario" required>
         </div>
 
         <div class="mt-3 form-group position-relative">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Tu contraseña" required>
+            <input type="password" class="form-control" id="contraseña" placeholder="Tu contraseña" required>
             <span class="toggle-password" onclick="togglePassword()">
                     <img class="eye" src="img/eye.svg" alt="ojo">
                 </span>
@@ -44,9 +42,14 @@
 
         <div class="d-flex justify-content-around mt-1">
             <div class="d-flex align-items-center gap-1">
-                <div class="pt-1" style="font-size: .9rem;">Contraseña de más de 8 caracteres</div>
+                <div class="pt-1 mb-1" style="font-size: .9rem;">Contraseña de más de 8 caracteres</div>
             </div>
         </div>
+
+        <div class="b_alert">
+            <p id="alerta" class="alerta"></p>
+        </div>
+
         <div class="text-danger mt-1" id="error-message"></div>
         <button type="submit" class="iniciar_cta btn btn-success text-white w-100 mt-3">Iniciar</button>
     </form>
@@ -72,7 +75,7 @@
 </footer>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/login.js"></script>
+<script src="js/login.js" ></script>
 </body>
 
 </html>

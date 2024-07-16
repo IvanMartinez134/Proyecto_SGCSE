@@ -44,7 +44,7 @@
     <div class="lateral"></div>
     <div class="aside_con">
         <div class="aside_i">
-            <a class="a_link" href="perfilu.html">
+            <a class="a_link" href="perfil.jsp">
                 <i class="bi bi-person "></i>
                 <span class="a_span">Mi perfil</span>
             </a>

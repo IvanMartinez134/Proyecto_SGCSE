@@ -16,8 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+
     <link rel="stylesheet" href="css/pageAdmin.css">
 </head>
 
@@ -44,6 +44,7 @@
     <div class="lateral"></div>
     <div class="aside_con">
         <div class="aside_i">
+            <a class="a_link" href="perfil.jsp">
             <i class="bi bi-person "></i>
             <span class="a_span">Mi perfil</span>
         </div>
@@ -70,7 +71,7 @@
             <p class="des">Citas pendientes</p>
         </div>
         <div class="col-md-3 text-center mt-5 option-card red">
-            <a href="#" class="open-password-modal">
+            <a href="citasPendientes.jsp" class="open-password-modal">
                 <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                      class="bi bi-calendar-range" viewBox="0 0 16 16">
                     <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1M1 9h4a1 1 0 0 1 0 2H1z" />
@@ -81,7 +82,7 @@
             <p class="des">Consultar citas</p>
         </div>
         <div class="col-md-3 text-center mt-5 option-card blue">
-            <a href="consultarUser.html">
+            <a href="usarios.jsp">
                 <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                      class="bi bi-people-fill" viewBox="0 0 16 16">
                     <path
@@ -91,7 +92,7 @@
             <p class="des">Consultar usuarios</p>
         </div>
         <div class="col-md-3 text-center mt-5 option-card green">
-            <a href="usuarios.html" class="open-password-modal">
+            <a href="usuarios.jsp" class="open-password-modal">
                 <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                      class="bi bi-graph-up" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"

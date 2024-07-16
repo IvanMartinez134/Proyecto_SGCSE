@@ -1,5 +1,4 @@
 
-
 document.addEventListener('DOMContentLoaded', function() {
     // Obtener todos los enlaces que deben abrir el modal
     const openModalLinks = document.querySelectorAll('.open-password-modal');
@@ -63,6 +62,7 @@ const $openClose = document.getElementById("open_close"),
 $openClose.addEventListener("click", () => {
     $aside.classList.toggle("abrir")
 });
+
 
 
 

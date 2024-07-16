@@ -131,9 +131,10 @@ aside:hover {
 }
 
 .aside_i:hover {
-    background-color: #21ad44;
+    background-color: #f2f5f34d;
     border-radius: 8px;
 }
+
 
 .a_link{
     text-decoration: none;

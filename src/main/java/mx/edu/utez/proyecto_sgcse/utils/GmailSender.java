@@ -78,7 +78,7 @@ public class GmailSender {
     }
     public static void main(String[] args) throws Exception {
         //dericklagunes@utez.edu.mx
-        new GmailSender().sendMail("20233tn134@utez.edu.mx","A new message",
+        new GmailSender().sendMail("20233tn116@utez.edu.mx","Prueba envio correo",
                 "<p>Los integrantes son:</p>\n" +
                         "    <ul>\n" +
                         "    <li>Martínez Espinosa de los Monteros Diego Iván </li>\n" +
