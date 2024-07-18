@@ -16,14 +16,14 @@ public class User implements Serializable {
     private int cuatri;
     private String grupo;
     private int status;
-    private String carrera;
+    private int carrera;
     private String division;
-    private String rol;
+    private int rol;
 
     public User() {
     }
 
-    public User(int id, String nombre, String apll_1, String apll_2, String email, String pwd, int tel, String cody, int cuatri, String grupo, int status, String carrera, String division, String rol) {
+    public User(int id, String nombre, String apll_1, String apll_2, String email, String pwd, int tel, String cody, int cuatri, String grupo, int status, int carrera, String division, int rol) {
         this.id = id;
         this.nombre = nombre;
         this.apll_1 = apll_1;
@@ -130,11 +130,11 @@ public class User implements Serializable {
         this.status = status;
     }
 
-    public String getCarrera() {
+    public int getCarrera() {
         return carrera;
     }
 
-    public void setCarrera(String carrera) {
+    public void setCarrera(int carrera) {
         this.carrera = carrera;
     }
 
@@ -146,11 +146,11 @@ public class User implements Serializable {
         this.division = division;
     }
 
-    public String getRol() {
+    public int getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(int rol) {
         this.rol = rol;
     }
 }

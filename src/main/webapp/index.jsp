@@ -55,7 +55,7 @@
         </div>
 
         <div class="text-danger mt-1" id="error-message"></div>
-        <input type="submit" name="accion" class="iniciar_cta btn btn-success text-white w-100 mt-3" value="Iniciar">
+        <input type="submit"  class="iniciar_cta btn btn-success text-white w-100 mt-3" value="Iniciar">
     </form>
 
     <div class="d-flex gap-1 justify-content-center mt-2" style="font-size: .9rem;">
@@ -79,6 +79,7 @@
 </footer>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/login.js"></script>
 
 
 

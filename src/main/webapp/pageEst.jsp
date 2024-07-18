@@ -54,6 +54,7 @@
     </div>
     <div class="aside_c">
         <div class="aside_i">
+            <a class="a_link" href="index.jsp">
             <i class="bi-box-arrow-right"></i>
             <span class="a_span">Cerrar sesion</span>
         </div>

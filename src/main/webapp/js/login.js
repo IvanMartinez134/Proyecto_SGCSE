@@ -1,5 +1,5 @@
 document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+    // event.preventDefault(); esto se quito para que funcionara el script
     const alerta = document.getElementById("alerta");
     alerta.textContent = "";
     alerta.style.color = "red";
