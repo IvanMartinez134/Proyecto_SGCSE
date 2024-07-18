@@ -1,0 +1,159 @@
+
+body {
+    margin: 0;
+}
+
+.navbar {
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    position: absolute;
+    left: 0;
+}
+
+.navbar-logo {
+    height: 70px;
+    width: 6em;
+    object-fit: contain; /* Ajuste de la imagen dentro del contenedor */
+}
+
+.navbar-title-container {
+    text-align: center;
+    flex: 1;
+    margin: 0 auto;
+    position: relative;
+}
+
+.navbar-brand {
+    background: #fff;
+    padding: 0 10px;
+}
+
+.title {
+    color: white; /* Color del texto */
+    font-size: 1.5rem; /* Tamaño del texto */
+    font-weight: bold; /* Peso de la fuente */
+}
+
+.nav_menu {
+    position: absolute;
+    right: 0;
+    margin-top: 0.7rem;
+}
+
+.menu {
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    background: transparent;
+    gap: 0.60rem;
+    cursor: pointer;
+}
+
+.menu_item {
+    background-color: white;
+    height: 3px;
+    width: 100%;
+    border-radius: 5px;
+    transition: all .3s;
+    transform-origin: left;
+}
+
+.menu:hover div:first-child {
+    transform: rotate(45deg);
+}
+
+.menu:hover div:nth-child(2) {
+    opacity: 0;
+}
+
+.menu:hover div:last-child {
+    transform: rotate(-45deg);
+}
+
+aside {
+    position: absolute;
+    width: 20%;
+    background-color: #198754;
+    top: 0;
+    right: 0;
+    overflow-y: hidden;
+    margin-top: 59px;
+    transition: 0.5s ease;
+    z-index: 1000;
+    box-shadow: 0px 12px 12px #9c9c9c;
+
+}
+
+aside:hover {
+    overflow-y: auto;
+}
+
+.abrir {
+    transform: translateY(-155%);
+}
+
+
+.aside_con {
+    color: #fff;
+    border-bottom: 1px solid #ffffffd5;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.aside_c{
+    color: #fff;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.a_span {
+    margin-left: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.aside_i {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 10px;
+}
+
+.aside_i:hover {
+    background-color: #21ad44;
+    border-radius: 8px;
+}
+
+div.dataTables_filter input {
+    width: 18rem !important;
+
+
+}
+
+div.dataTables_filter {
+
+    margin-bottom: 22px !important;
+}
+
+
+.centered{
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+
+
+
+
+

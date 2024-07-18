@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de usuarios | Administador</title>
     <link href="bootstrap-5.2.3-dist/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/consU.css">
+    <link rel="stylesheet" href="css/consVen.css">
 </head>
 
 <body >
