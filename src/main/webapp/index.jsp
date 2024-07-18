@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/Login.css">
 
+
 </head>
 
 <body class="d-flex justify-content-center align-items-center">
@@ -27,6 +28,9 @@
         <img src="img/utezlogo.png" alt="login" style="height: 6rem;">
     </div>
     <div class="text-center fw-bold fs-3">Inicio de sesión</div>
+
+
+
     <form id="loginForm" method="post" action="login" >
         <div class="mt-2">
             <input class="form-control" id="email" type="email" name="email"  placeholder="Tu usuario" required>
@@ -51,7 +55,7 @@
         </div>
 
         <div class="text-danger mt-1" id="error-message"></div>
-        <input type="submit" class="iniciar_cta btn btn-success text-white w-100 mt-3" value="Iniciar">
+        <input type="submit" name="accion" class="iniciar_cta btn btn-success text-white w-100 mt-3" value="Iniciar">
     </form>
 
     <div class="d-flex gap-1 justify-content-center mt-2" style="font-size: .9rem;">
@@ -75,6 +79,8 @@
 </footer>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+
+
 
 </body>
 

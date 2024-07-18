@@ -4,8 +4,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     alerta.textContent = "";
     alerta.style.color = "red";
 
-    const correo = document.getElementById("correo").value;
-    const contrasena = document.getElementById("contraseña").value;
+    const correo = document.getElementById("email").value;
+    const contrasena = document.getElementById("pwd").value;
 
     if (!correo.includes("@utez.edu.mx")) {
         alerta.textContent = "*Ingrese una dirección de correo electrónico válida";
@@ -20,8 +20,8 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
 
 
 // Validaciones en tiempo real
-const correoInput = document.getElementById("correo");
-const contrasenaInput = document.getElementById("contraseña");
+const correoInput = document.getElementById("email");
+const contrasenaInput = document.getElementById("pwd");
 
 
 correoInput.addEventListener("input", function() {
@@ -45,7 +45,7 @@ contrasenaInput.addEventListener("input", function() {
 
 
 function togglePassword() {
-    var passwordInput = document.getElementById('contraseña');
+    var passwordInput = document.getElementById('pwd');
     var passwordIcon = document.querySelector('.toggle-password img');
 
     if (passwordInput.type === 'password') {

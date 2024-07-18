@@ -1,8 +1,9 @@
 package mx.edu.utez.proyecto_sgcse.model;
 
+
 import java.io.Serializable;
 
-public class user implements Serializable {
+public class User implements Serializable {
 
     private int id;
     private String nombre;
@@ -19,10 +20,10 @@ public class user implements Serializable {
     private String division;
     private String rol;
 
-    public user() {
+    public User() {
     }
 
-    public user(int id, String nombre, String apll_1, String apll_2, String email, String pwd, int tel, String cody, int cuatri, String grupo, int status, String carrera, String division, String rol) {
+    public User(int id, String nombre, String apll_1, String apll_2, String email, String pwd, int tel, String cody, int cuatri, String grupo, int status, String carrera, String division, String rol) {
         this.id = id;
         this.nombre = nombre;
         this.apll_1 = apll_1;
@@ -38,6 +39,8 @@ public class user implements Serializable {
         this.division = division;
         this.rol = rol;
     }
+
+    // Getters and setters
 
     public int getId() {
         return id;
