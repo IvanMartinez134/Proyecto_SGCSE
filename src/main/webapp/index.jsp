@@ -27,13 +27,13 @@
         <img src="img/utezlogo.png" alt="login" style="height: 6rem;">
     </div>
     <div class="text-center fw-bold fs-3">Inicio de sesión</div>
-    <form id="loginForm">
+    <form id="loginForm" method="post" action="login" >
         <div class="mt-2">
-            <input class="form-control" id="correo" type="email" name="usuario"  placeholder="Tu usuario" required>
+            <input class="form-control" id="email" type="email" name="email"  placeholder="Tu usuario" required>
         </div>
 
         <div class="mt-3 form-group position-relative">
-            <input type="password" class="form-control" id="contraseña" placeholder="Tu contraseña" required>
+            <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Tu contraseña" required>
             <span class="toggle-password" onclick="togglePassword()">
                     <img class="eye" src="img/eye.svg" alt="ojo">
                 </span>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="text-danger mt-1" id="error-message"></div>
-        <button type="submit" class="iniciar_cta btn btn-success text-white w-100 mt-3">Iniciar</button>
+        <input type="submit" class="iniciar_cta btn btn-success text-white w-100 mt-3" value="Iniciar">
     </form>
 
     <div class="d-flex gap-1 justify-content-center mt-2" style="font-size: .9rem;">
@@ -75,7 +75,7 @@
 </footer>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/login.js" ></script>
+
 </body>
 
 </html>

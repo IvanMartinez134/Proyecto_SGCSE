@@ -75,8 +75,6 @@
                     <th class="centered">ID</th>
                     <th class="centered">Nombre</th>
                     <th class="centered">Correo</th>
-                    <th class="centered">Ciudad</th>
-                    <th class="centered">Empresa</th>
                     <th class="centered">Estado</th>
                     <th class="centered">Opciones</th>
                 </tr>

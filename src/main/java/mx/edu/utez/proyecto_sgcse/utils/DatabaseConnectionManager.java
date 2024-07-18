@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 
 public class DatabaseConnectionManager {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/Servicios_Escolares";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/sgcse";
 
     private static final String USERNAME = "root";
 
