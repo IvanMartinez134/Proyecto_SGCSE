@@ -151,7 +151,7 @@ public class UserDao {
 
 
     public boolean deleteUser(String email) {
-        String query = "DELETE * FROM usuarios WHERE email = ?";
+        String query = "UPDATE usuarios SET status = False WHERE email = ?";
         boolean rowDeleted = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();

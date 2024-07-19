@@ -98,7 +98,7 @@
             </td>
 
             <td>
-                <a href="eliminarUsuario?id=<%= user.getId() %>" onclick="return confirm('Estas seguro de que quieres eliminar este usuario?');"><button class="btn btn-sm btn-danger btn-delete "><i class="fas fa-trash"></i></button></a>
+                <a href="eliminarUsuario?email=<%= user.getEmail() %>" onclick="return confirm('Estas seguro de que quieres eliminar este usuario?');"><button class="btn btn-sm btn-danger btn-delete "><i class="fas fa-trash"></i></button></a>
             </td>
 
 

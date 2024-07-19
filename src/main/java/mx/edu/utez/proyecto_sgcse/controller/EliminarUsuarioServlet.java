@@ -18,7 +18,7 @@ public class EliminarUsuarioServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        if (email != null && !email.isEmpty()) {
+        if (email != null) {
             boolean deleted = userDao.deleteUser(email);
             if (deleted) {
                 resp.sendRedirect("consUsuarios.jsp");
