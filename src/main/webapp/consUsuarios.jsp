@@ -87,18 +87,18 @@
             for (User user : users) {
         %>
         <tr>
-            <td><%= index++ %></td>
+            <td><%= user.getId()%></td>
             <td><%= user.getNombre() %></td>
             <td><%= user.getApll_1() %> <%= user.getApll_2() %></td>
             <td><%= user.getEmail() %></td>
             <td><%= user.getStatus() %></td>
-            <td><a href="editarUsuario.jsp?email=<%= user.getEmail() %>"><button class="btn btn-sm btn-primary "><i class="fas fa-edit"></i></button></a>
+            <td><a href="editarUsuario.jsp?id=<%= user.getId() %>"><button class="btn btn-sm btn-primary "><i class="fas fa-edit"></i></button></a>
 
 
             </td>
 
             <td>
-                <a href="eliminarUsuario?email=<%= user.getEmail() %>" onclick="return confirm('Estas seguro de que quieres eliminar este usuario?');"><button class="btn btn-sm btn-danger btn-delete "><i class="fas fa-trash"></i></button></a>
+                <a href="eliminarUsuario?id=<%= user.getId() %>" onclick="return confirm('Estas seguro de que quieres eliminar este usuario?');"><button class="btn btn-sm btn-danger btn-delete "><i class="fas fa-trash"></i></button></a>
             </td>
 
 

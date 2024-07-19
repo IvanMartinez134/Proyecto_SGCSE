@@ -16,8 +16,8 @@ public class EditarUsuarioServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String email = req.getParameter("email");
-        User user = userDao.consUser(email);
+        int id = Integer.parseInt(req.getParameter("id"));
+        User user = userDao.consUser(id);
 
         if (user != null) {
             req.setAttribute("user", user);

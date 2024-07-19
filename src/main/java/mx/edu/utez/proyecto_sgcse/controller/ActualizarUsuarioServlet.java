@@ -20,14 +20,18 @@ public class ActualizarUsuarioServlet extends HttpServlet {
         String apll1 = req.getParameter("apll_1");
         String apll2 = req.getParameter("apll_2");
         String email = req.getParameter("email");
-        String pwd = req.getParameter("pwd"); // Puedes hacer hash de la contraseña si es necesario
+        int cuatri = Integer.parseInt(req.getParameter("cuatri"));
+        String grupo = req.getParameter("grupo");
+        int id = Integer.parseInt(req.getParameter("id"));
 
         User user = new User();
         user.setNombre(nombre);
         user.setApll_1(apll1);
         user.setApll_2(apll2);
         user.setEmail(email);
-        user.setPwd(pwd);
+        user.setCuatri(cuatri);
+        user.setGrupo(grupo);
+        user.setId(id);
 
         boolean updated = userDao.updateUser(user);
 

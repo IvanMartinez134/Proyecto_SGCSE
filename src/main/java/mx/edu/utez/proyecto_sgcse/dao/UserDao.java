@@ -47,13 +47,13 @@ public class UserDao {
     }
 
 
-    public User consUser(String email) {
+    public User consUser(int id) {
         User u = null;
-        String query = "SELECT id, nombre, apll_1, apll_2, email, status FROM usuarios WHERE email = ?";
+        String query = "SELECT id, nombre, apll_1, apll_2, email, num_cuatri, grupo FROM usuarios WHERE id = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setString(1, email);
+            ps.setInt(1, id);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -63,7 +63,8 @@ public class UserDao {
                     u.setApll_1(rs.getString("apll_1"));
                     u.setApll_2(rs.getString("apll_2"));
                     u.setEmail(rs.getString("email"));
-                    u.setStatus(rs.getInt("status"));
+                    u.setCuatri(rs.getInt("num_cuatri"));
+                    u.setGrupo(rs.getString("grupo"));
                 }
             }
         } catch (SQLException e) {
@@ -128,7 +129,7 @@ public class UserDao {
 
 
     public boolean updateUser(User u) {
-        String query = "UPDATE usuarios SET nombre = ?, apll_1 = ?, apll_2 = ?, pwd = SHA2(?, 256) WHERE email = ?";
+        String query = "UPDATE usuarios SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ?, num_cuatri = ?, grupo = ? WHERE id = ?";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -136,8 +137,10 @@ public class UserDao {
             ps.setString(1, u.getNombre());
             ps.setString(2, u.getApll_1());
             ps.setString(3, u.getApll_2());
-            ps.setString(4, u.getPwd());
-            ps.setString(5, u.getEmail());
+            ps.setString(4, u.getEmail());
+            ps.setInt(5,u.getCuatri());
+            ps.setString(6, u.getGrupo());
+            ps.setInt(7,u.getId());
             fila = ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -148,7 +151,7 @@ public class UserDao {
 
 
     public boolean deleteUser(String email) {
-        String query = "DELETE FROM usuarios WHERE email = ?";
+        String query = "DELETE * FROM usuarios WHERE email = ?";
         boolean rowDeleted = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();

@@ -22,16 +22,16 @@
 <div class="container mt-5">
     <h2>Editar Usuario</h2>
     <%
-        String email = request.getParameter("email");
+        int id = Integer.parseInt(request.getParameter("id"));
         UserDao userDao = new UserDao();
-        User user = userDao.consUser(email);
+        User user = userDao.consUser(id);
         if (user == null) {
             System.out.println("<p>Usuario no encontrado</p>");
             return;
         }
     %>
     <form action="actualizarUsuario" method="post">
-        <input type="hidden" name="email" value="<%= user.getEmail() %>">
+        <input type="hidden" name="id" value="<%= user.getId() %>">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" id="nombre" name="nombre" value="<%= user.getNombre() %>" required>
@@ -44,15 +44,23 @@
             <label for="apll_2" class="form-label">Apellido Materno</label>
             <input type="text" class="form-control" id="apll_2" name="apll_2" value="<%= user.getApll_2() %>" required>
         </div>
+
         <div class="mb-3">
-            <label for="pwd" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="pwd" name="pwd">
-            <small class="form-text text-muted">Deja este campo en blanco si no deseas cambiar la contraseña.</small>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="<%= user.getEmail() %>">
+
         </div>
+
         <div class="mb-3">
-            <label for="status" class="form-label">Estado</label>
-            <input type="number" class="form-control" id="status" name="status" value="<%= user.getStatus() %>" required>
+            <label for="cuatri" class="form-label">Cuatri</label>
+            <input type="number" class="form-control" id="cuatri" name="cuatri" value="<%= user.getCuatri() %>">
         </div>
+
+        <div class="mb-3">
+            <label for="grupo" class="form-label">Grupo</label>
+            <input type="text" class="form-control" id="grupo" name="grupo" value="<%= user.getGrupo() %>">
+        </div>
+
         <button type="submit" class="btn btn-primary">Actualizar</button>
         <a href="consUsuarios.jsp" class="btn btn-secondary">Cancelar</a>
     </form>
