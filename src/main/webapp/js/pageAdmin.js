@@ -53,16 +53,20 @@ document.addEventListener('click', function (event) {
             userProfileCard.classList.remove('show');
         }
     }
+
+
+
 });
 
+const $openClose = document.getElementById("open_close");
+const $aside = document.getElementById("aside");
 
-const $openClose = document.getElementById("open_close"),
-    $aside = document.getElementById("aside");
+
+$aside.classList.remove("abrir");
 
 $openClose.addEventListener("click", () => {
-    $aside.classList.toggle("abrir")
+    $aside.classList.toggle("abrir");
 });
-
 
 
 

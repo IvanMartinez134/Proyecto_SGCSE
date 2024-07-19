@@ -1,4 +1,5 @@
 package mx.edu.utez.proyecto_sgcse.dao;
+
 import mx.edu.utez.proyecto_sgcse.model.User;
 import mx.edu.utez.proyecto_sgcse.utils.DatabaseConnectionManager;
 
@@ -6,22 +7,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDao {
 
+
     public User getOne(String email, String pwd) {
         User user = new User();
-
         String query = "SELECT * FROM usuarios WHERE email = ? AND pwd = SHA2(?, 256)";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setString(1, email);
             ps.setString(2, pwd);
+
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {// Crear el objeto User solo si se encuentra un resultado
+                if (rs.next()) {
                     user.setId(rs.getInt("id"));
                     user.setNombre(rs.getString("nombre"));
                     user.setApll_1(rs.getString("apll_1"));
@@ -44,31 +46,122 @@ public class UserDao {
         return user;
     }
 
-    public User consUser(int id) {
-        User user = null;
-        String query = "SELECT id, nombre, apll_1, apll_2, email, status FROM usuarios WHERE id = ?";
+
+    public User consUser(String email) {
+        User u = null;
+        String query = "SELECT id, nombre, apll_1, apll_2, email, status FROM usuarios WHERE email = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setInt(1, id);
+            ps.setString(1, email);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    user = new User();
-                    user.setId(rs.getInt("id"));
-                    user.setNombre(rs.getString("nombre"));
-                    user.setApll_1(rs.getString("apll_1"));
-                    user.setApll_2(rs.getString("apll_2"));
-                    user.setEmail(rs.getString("email"));
-                    user.setStatus(rs.getInt("status"));
+                    u = new User();
+                    u.setId(rs.getInt("id"));
+                    u.setNombre(rs.getString("nombre"));
+                    u.setApll_1(rs.getString("apll_1"));
+                    u.setApll_2(rs.getString("apll_2"));
+                    u.setEmail(rs.getString("email"));
+                    u.setStatus(rs.getInt("status"));
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return user;
+        return u;
     }
+
+
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+        String query = "SELECT id, nombre, apll_1, apll_2, email, status FROM usuarios";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setNombre(rs.getString("nombre"));
+                user.setApll_1(rs.getString("apll_1"));
+                user.setApll_2(rs.getString("apll_2"));
+                user.setEmail(rs.getString("email"));
+                user.setStatus(rs.getInt("status"));
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+
+    public boolean agregarUser(User u) {
+        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, pwd, tel, cody, num_cuatri, grupo, status, cra_id, tdu_id) VALUES (?, ?, ?, ?, SHA2(?, 256), ?, ?, ?, ?, ?, ?, ?)";
+        boolean fila = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getApll_1());
+            ps.setString(3, u.getApll_2());
+            ps.setString(4, u.getEmail());
+            ps.setString(5, u.getPwd());
+            ps.setInt(6, u.getTel());
+            ps.setString(7, u.getCody());
+            ps.setInt(8, u.getCuatri());
+            ps.setString(9, u.getGrupo());
+            ps.setInt(10, u.getStatus());
+            ps.setInt(11, u.getCarrera());
+            ps.setInt(12, u.getRol());
+            fila = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return fila;
+    }
+
+
+
+    public boolean updateUser(User u) {
+        String query = "UPDATE usuarios SET nombre = ?, apll_1 = ?, apll_2 = ?, pwd = SHA2(?, 256) WHERE email = ?";
+        boolean fila = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getApll_1());
+            ps.setString(3, u.getApll_2());
+            ps.setString(4, u.getPwd());
+            ps.setString(5, u.getEmail());
+            fila = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return fila;
+    }
+
+
+    public boolean deleteUser(String email) {
+        String query = "DELETE FROM usuarios WHERE email = ?";
+        boolean rowDeleted = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, email);
+            rowDeleted = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rowDeleted;
+    }
+
+
+
 }
-
-
