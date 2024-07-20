@@ -64,7 +64,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3 text-center mt-5 option-card blue ">
-            <a href="agendar_citas.html" class="open-password-modal">
+            <a href="consUsuarios.jsp">
                 <svg class="svg bi bi-people-fill" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
                 </svg>

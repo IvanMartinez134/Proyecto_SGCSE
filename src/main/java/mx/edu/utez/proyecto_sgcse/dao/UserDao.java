@@ -47,6 +47,9 @@ public class UserDao {
     }
 
 
+
+
+
     public User consUser(int id) {
         User u = null;
         String query = "SELECT id, nombre, apll_1, apll_2, email, num_cuatri, grupo FROM usuarios WHERE id = ?";
@@ -101,7 +104,7 @@ public class UserDao {
 
 
     public boolean agregarUser(User u) {
-        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, pwd, tel, cody, num_cuatri, grupo, status, cra_id, tdu_id) VALUES (?, ?, ?, ?, SHA2(?, 256), ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, pwd, matri) VALUES (?, ?, ?, ?, SHA2(?, 256), ?)";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -111,21 +114,19 @@ public class UserDao {
             ps.setString(3, u.getApll_2());
             ps.setString(4, u.getEmail());
             ps.setString(5, u.getPwd());
-            ps.setInt(6, u.getTel());
-            ps.setString(7, u.getCody());
-            ps.setInt(8, u.getCuatri());
-            ps.setString(9, u.getGrupo());
-            ps.setInt(10, u.getStatus());
-            ps.setInt(11, u.getCarrera());
-            ps.setInt(12, u.getRol());
-            fila = ps.executeUpdate() > 0;
+            ps.setString(6, u.getMatri());
+
+            int filasAfectadas = ps.executeUpdate();
+            if (filasAfectadas > 0) {
+                fila = true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException("Error al ejecutar la consulta SQL: " + e.getMessage());
         }
 
         return fila;
     }
-
 
 
     public boolean updateUser(User u) {

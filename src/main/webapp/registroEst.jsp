@@ -19,11 +19,13 @@
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/registroEst.css">
     <link rel="icon" type="image/png" href="img/buscar.png">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 <body class="d-flex justify-content-center align-items-center vh-100">
 <div class="bg-white p-5 rounded-2 col-lg-8 col-md-8 col-sm-10 mb-4 con">
-    <form method="POST" id="registroForm">
+
+    <form id="registroForm" action="registrarUsuario" method="post">
         <legend class="bg-success rounded-2 p-2 text-white text-center mb-5">Registro de Usuario</legend>
         <fieldset>
             <div class="mb-3 row">
@@ -44,13 +46,10 @@
             </div>
             <div class="mb-3 row">
                 <label for="matricula" class="col-sm-3 col-form-label">Matrícula: </label>
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Tu matrícula" required>
                 </div>
-                <label for="tel" class="col-sm-3 col-form-label">Telefono: </label>
-                <div class="col-sm-3">
-                    <input type="text" id="tel" name="tel" class="form-control" placeholder="Tu telefono" required>
-                </div>
+
             </div>
             <div class="mb-3 row">
                 <label for="correo" class="col-sm-3 col-form-label">Correo electrónico: </label>
@@ -58,26 +57,7 @@
                     <input type="email" id="correo" name="correo" class="form-control" placeholder="Tu email" required>
                 </div>
             </div>
-            <div class="mb-3 row">
-                <label for="divisionAcademica" class="col-sm-3 col-form-label">División Académica:</label>
-                <div class="col-sm-3">
-                    <select id="divisionAcademica" name="divisionAcademica" class="form-select" required>
-                        <option value="" disabled selected>Selecciona una división</option>
-                        <option>DATID</option>
-                        <option>DATIF</option>
-                        <option>DACEA</option>
-                    </select>
-                </div>
-                <label for="carrera" class="col-sm-3 col-form-label">Carrera:</label>
-                <div class="col-sm-3">
-                    <select id="carrera" name="carrera" class="form-select" required>
-                        <option value="" disabled selected>Selecciona una carrera</option>
-                        <option>DSM</option>
-                        <option>Terapia</option>
-                        <option>Meca</option>
-                    </select>
-                </div>
-            </div>
+
             <div class="mb-3 row">
                 <label for="contrasena" class="col-sm-3 col-form-label">Contraseña: </label>
                 <div class="col-sm-9">
@@ -97,10 +77,12 @@
 
 
             <div class="text-end">
-                <button type="submit" class="btn btn-success">
-                    Registrar
-                </button>
+                <button class="btn-success btn" type="submit">Registrar</button>
             </div>
+
+            <button class="btn btn-success m-3">
+                <a href="consUsuarios.jsp" style="color: white; text-decoration: none;">Ver Alumnos</a>
+            </button>
         </fieldset>
     </form>
 </div>
@@ -113,7 +95,19 @@
     </div>
 </section>
 
-<script src="js/registroEst.js" defer></script>
+<script>
+
+    // Verificar si hay un mensaje de registro exitoso en la sesión
+    <% if (session.getAttribute("registroExitoso") != null && (boolean) session.getAttribute("registroExitoso")) { %>
+    swal({
+        title: "Registro exitoso!",
+        text: "Si deseas ver el registro, da click en Ver Alumnos!",
+        icon: "success",
+        button: "Listo",
+    });
+    <% session.removeAttribute("registroExitoso"); %>
+    <% } %>
+</script>
 
 
 </body>
