@@ -109,6 +109,8 @@
     <% } %>
 </script>
 
+<script src="js/registroEst.js"></script>
+
 
 </body>
 

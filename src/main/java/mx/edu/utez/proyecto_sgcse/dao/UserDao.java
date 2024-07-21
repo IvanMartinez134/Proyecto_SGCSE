@@ -80,7 +80,7 @@ public class UserDao {
 
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        String query = "SELECT id, nombre, apll_1, apll_2, email, status FROM usuarios";
+        String query = "SELECT id, nombre, apll_1, apll_2, email, status FROM usuarios where tdu_id = 3";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
@@ -104,7 +104,7 @@ public class UserDao {
 
 
     public boolean agregarUser(User u) {
-        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, pwd, matri) VALUES (?, ?, ?, ?, SHA2(?, 256), ?)";
+        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, pwd, matri,tdu_id) VALUES (?, ?, ?, ?, SHA2(?, 256), ?,3)";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();

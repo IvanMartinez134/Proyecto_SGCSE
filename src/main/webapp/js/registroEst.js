@@ -1,5 +1,5 @@
 document.getElementById("registroForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+    //event.preventDefault();
     const alerta = document.getElementById("alerta");
     alerta.textContent = "";
     alerta.style.color = "red";
