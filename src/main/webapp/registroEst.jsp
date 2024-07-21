@@ -59,6 +59,24 @@
             </div>
 
             <div class="mb-3 row">
+                <label for="divisionAcademica" class="col-sm-3 col-form-label">División Académica:</label>
+                <div class="col-sm-3">
+                    <select id="divisionAcademica" name="divisionAcademica" class="form-select" required>
+                        <option value="" disabled selected>Selecciona una división</option>
+                        <option>DATID</option>
+                        <option>DATIF</option>
+                        <option>DACEA</option>
+                    </select>
+                </div>
+                <label for="carrera" class="col-sm-3 col-form-label">Carrera:</label>
+                <div class="col-sm-3">
+                    <select id="carrera" name="carrera" class="form-select" required>
+                        <option value="" disabled selected>Selecciona una carrera</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3 row">
                 <label for="contrasena" class="col-sm-3 col-form-label">Contraseña: </label>
                 <div class="col-sm-9">
                     <input type="password" id="contrasena" name="contrasena" class="form-control" placeholder="Tu contraseña" required>
