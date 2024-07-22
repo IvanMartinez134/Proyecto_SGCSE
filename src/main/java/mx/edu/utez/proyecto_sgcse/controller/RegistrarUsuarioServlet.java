@@ -2,14 +2,14 @@
 
 package mx.edu.utez.proyecto_sgcse.controller;
 
-        import jakarta.servlet.ServletException;
-        import jakarta.servlet.annotation.WebServlet;
-        import jakarta.servlet.http.HttpServlet;
-        import jakarta.servlet.http.HttpServletRequest;
-        import jakarta.servlet.http.HttpServletResponse;
-        import jakarta.servlet.http.HttpSession;
-        import mx.edu.utez.proyecto_sgcse.dao.UserDao;
-        import mx.edu.utez.proyecto_sgcse.model.User;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import mx.edu.utez.proyecto_sgcse.dao.UserDao;
+import mx.edu.utez.proyecto_sgcse.model.User;
 
         import java.awt.datatransfer.DataFlavor;
         import java.io.IOException;
@@ -25,6 +25,8 @@ public class RegistrarUsuarioServlet  extends HttpServlet {
         String apll_2 = req.getParameter("apellidoMaterno");
         String matri = req.getParameter("matricula");
         String email = req.getParameter("correo");
+        String division = req.getParameter("division");
+        int idCarrera = Integer.parseInt(req.getParameter("carrera"));
         String pwd = req.getParameter("contrasena");
         String rPwd = req.getParameter("repetirContrasena");
 
@@ -43,6 +45,8 @@ public class RegistrarUsuarioServlet  extends HttpServlet {
         nUser.setApll_2(apll_2);
         nUser.setMatri(matri);
         nUser.setEmail(email);
+        nUser.setDivision(division);
+        nUser.setCarrera(idCarrera);
         nUser.setPwd(pwd);
 
 

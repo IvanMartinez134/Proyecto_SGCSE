@@ -1,5 +1,6 @@
 package mx.edu.utez.proyecto_sgcse.dao;
 
+import com.mysql.cj.jdbc.DatabaseMetaData;
 import mx.edu.utez.proyecto_sgcse.model.Carrera;
 import mx.edu.utez.proyecto_sgcse.model.User;
 import mx.edu.utez.proyecto_sgcse.utils.DatabaseConnectionManager;
@@ -32,6 +33,30 @@ public class CarreraDao {
                 }
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return carreras;
+    }
+
+
+    public List<Carrera> obtenerCarrerasPorDivision(String division) {
+        List<Carrera> carreras = new ArrayList<>();
+        String query = "SELECT id, nombre FROM carreras WHERE division = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, division);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Carrera carrera = new Carrera();
+                    carrera.setId(rs.getInt("id"));
+                    carrera.setNombre(rs.getString("nombre"));
+
+                    carreras.add(carrera);
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

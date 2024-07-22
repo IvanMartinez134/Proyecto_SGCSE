@@ -25,22 +25,29 @@ public class LoginServlet extends HttpServlet {
 //        System.out.println(u.getId());
 //        System.out.println(u.getCarrera());
 
-        String ruta = "index.jsp"; // Ruta por defecto
+        //String ruta = "index.jsp";
 
         if (u.getEmail() != null) {
-            // Si el usuario existe en la base de datos
+
+            req.setAttribute("user", u);
+
+
             switch (rol) {
                 case 1:
-                    ruta = "pageAdmin.jsp";
+                    req.getRequestDispatcher("pageAdmin.jsp").forward(req, resp);
+                    //ruta = "pageAdministrativo.jsp";
                     break;
                 case 2:
-                    ruta = "pageAdministrativo.jsp";
+                    req.getRequestDispatcher("pageAdministrativo.jsp").forward(req, resp);
+                    //ruta = "pageAdministrativo.jsp";
                     break;
                 case 3:
-                    ruta = "pageEst.jsp";
+                    req.getRequestDispatcher("pageEst.jsp").forward(req, resp);
+                    //ruta = "pageEst.jsp";
                     break;
                 default:
-                    ruta = "error.jsp"; // O a una página de error específica
+
+                    //ruta = "error.jsp";
                     break;
             }
         } else {
@@ -50,6 +57,6 @@ public class LoginServlet extends HttpServlet {
         }
 
         // Redirigir al usuario a la ruta correspondiente
-        resp.sendRedirect(ruta);
+        req.getRequestDispatcher("error.jsp").forward(req, resp);
     }
 }

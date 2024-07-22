@@ -2,6 +2,7 @@ package mx.edu.utez.proyecto_sgcse.dao;
 
 import mx.edu.utez.proyecto_sgcse.model.User;
 import mx.edu.utez.proyecto_sgcse.utils.DatabaseConnectionManager;
+import org.jfree.util.PublicCloneable;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -164,6 +165,13 @@ public class UserDao {
         }
 
         return rowDeleted;
+    }
+
+
+
+
+            public void rellenarSelect(){
+
     }
 
 

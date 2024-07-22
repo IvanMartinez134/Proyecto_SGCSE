@@ -1,3 +1,6 @@
+
+
+
 <%--
   Created by IntelliJ IDEA.
   User: death
@@ -6,6 +9,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<jsp:useBean id="user" scope="request" class="mx.edu.utez.proyecto_sgcse.model.User" />
 
 
 <!DOCTYPE html>
@@ -18,7 +23,7 @@
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="css/pageAdmintivo.css">
+    <link rel="stylesheet" href="css/pageAdmin.css">
 </head>
 
 <body>
@@ -38,7 +43,7 @@
 
 
         <h5 class="text-white navbar-title  d-lg me-auto">
-            Hola, Jonathan
+            Hola, ${user.nombre}
         </h5>
 
 

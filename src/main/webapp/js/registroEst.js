@@ -1,71 +1,112 @@
-document.getElementById("registroForm").addEventListener("submit", function(event) {
-    //event.preventDefault();
-    const alerta = document.getElementById("alerta");
-    alerta.textContent = "";
-    alerta.style.color = "red";
+document.addEventListener('DOMContentLoaded', function() {
+    // Función para llenar el selector de carreras según la división académica seleccionada
 
-    const correo = document.getElementById("correo").value;
-    const contrasena = document.getElementById("contrasena").value;
-    const repetirContrasena = document.getElementById("repetirContrasena").value;
 
-    if (!correo.includes("@")) {
-        alerta.textContent = "*Ingrese una dirección de correo electrónico válida";
-        return;
+    function llenarCarreras(divisionId) {
+        var carreraSelect = document.getElementById('carrera');
+
+
+
+        carreraSelect.innerHTML = '<option value="" disabled selected>Selecciona una carrera</option>';
+
+        // Realizar solicitud AJAX al servlet para obtener las carreras
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'ObtenerCarrerasServlet?divisionId=' + encodeURIComponent(divisionId), true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var carreras = JSON.parse(xhr.responseText);
+
+
+
+                    // Llenar el selector de carreras con las opciones recibidas
+
+
+                    carreras.forEach(function(carrera) {
+                        var option = document.createElement('option');
+                        option.value = carrera.id;
+                        option.textContent = carrera.nombre;
+                        carreraSelect.appendChild(option);
+                    });
+                } else {
+                    console.error('Error al obtener las carreras:', xhr.status, xhr.statusText);
+                }
+            }
+        };
+        xhr.send();
     }
-    if (contrasena.length < 8 || !/[A-Z]/.test(contrasena) || !/[a-z]/.test(contrasena) || !/[0-9]/.test(contrasena) || !/[!@#$%^&*(),.?":{}|<>]/.test(contrasena)) {
-        alerta.textContent = "Tu contraseña es insegura. Te recordamos que tiene que tener mínimo 8 caracteres, debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.";
-        return;
-    }
-    if (contrasena !== repetirContrasena) {
-        alerta.textContent = "*Las contraseñas no coinciden";
-        return;
-    }
+
+    // Evento para manejar el cambio en el selector de división académica
 
 
-    const modal = document.querySelector('.modal');
-    modal.classList.add('modal--show');
+    var divisionAcademicaSelect = document.getElementById('divisionAcademica');
+    divisionAcademicaSelect.addEventListener('change', function() {
+        var divisionSeleccionada = this.value;
+        llenarCarreras(divisionSeleccionada);
+    });
 
-    // Cierra el modal automáticamente después de 2 segundos
-    setTimeout(() => {
-        modal.classList.remove('modal--show');
-    }, 2000);
-});
+    // Validaciones en tiempo real
 
-const closeModal = document.querySelector('.modal_close');
-closeModal.addEventListener('click', (e) => {
-    e.preventDefault();
-    const modal = document.querySelector('.modal');
-    modal.classList.remove('modal--show');
-});
 
-// Validaciones en tiempo real
-const correoInput = document.getElementById("correo");
-const contrasenaInput = document.getElementById("contrasena");
-const repetirContrasenaInput = document.getElementById("repetirContrasena");
 
-correoInput.addEventListener("input", function() {
-    const alerta = document.getElementById("alerta");
-    if (!correoInput.value.includes("@")) {
-        alerta.textContent = "*Ingrese una dirección de correo electrónico válida";
-    } else {
+    var correoInput = document.getElementById("correo");
+    var contrasenaInput = document.getElementById("contrasena");
+    var repetirContrasenaInput = document.getElementById("repetirContrasena");
+    var alerta = document.getElementById("alerta");
+
+    correoInput.addEventListener("input", function() {
+        if (!correoInput.value.includes("@")) {
+            alerta.textContent = "*Ingrese una dirección de correo electrónico válida";
+        } else {
+            alerta.textContent = "";
+        }
+    });
+
+    contrasenaInput.addEventListener("input", function() {
+        if (contrasenaInput.value.length < 8 || !/[A-Z]/.test(contrasenaInput.value) || !/[a-z]/.test(contrasenaInput.value) || !/[0-9]/.test(contrasenaInput.value) || !/[!@#$%^&*(),.?":{}|<>]/.test(contrasenaInput.value)) {
+            alerta.textContent = "Tu contraseña es insegura. Te recordamos que tiene que tener mínimo 8 caracteres, debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.";
+        } else {
+            alerta.textContent = "";
+        }
+    });
+
+    repetirContrasenaInput.addEventListener("input", function() {
+        if (contrasenaInput.value !== repetirContrasenaInput.value) {
+            alerta.textContent = "*Las contraseñas no coinciden";
+        } else {
+            alerta.textContent = "";
+        }
+    });
+
+
+
+
+    var registroForm = document.getElementById("registroForm");
+    registroForm.addEventListener("submit", function(event) {
+        event.preventDefault();
         alerta.textContent = "";
-    }
+        alerta.style.color = "red";
+
+        var correo = correoInput.value;
+        var contrasena = contrasenaInput.value;
+        var repetirContrasena = repetirContrasenaInput.value;
+
+        if (!correo.includes("@")) {
+            alerta.textContent = "*Ingrese una dirección de correo electrónico válida";
+            return;
+        }
+        if (contrasena.length < 8 || !/[A-Z]/.test(contrasena) || !/[a-z]/.test(contrasena) || !/[0-9]/.test(contrasena) || !/[!@#$%^&*(),.?":{}|<>]/.test(contrasena)) {
+            alerta.textContent = "Tu contraseña es insegura. Te recordamos que tiene que tener mínimo 8 caracteres, debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.";
+            return;
+        }
+        if (contrasena !== repetirContrasena) {
+            alerta.textContent = "*Las contraseñas no coinciden";
+            return;
+        }
+
+        this.submit();
+    });
 });
 
-contrasenaInput.addEventListener("input", function() {
-    const alerta = document.getElementById("alerta");
-    if (contrasenaInput.value.length < 8 || !/[A-Z]/.test(contrasenaInput.value) || !/[a-z]/.test(contrasenaInput.value) || !/[0-9]/.test(contrasenaInput.value) || !/[!@#$%^&*(),.?":{}|<>]/.test(contrasenaInput.value)) {
-        alerta.textContent = "Tu contraseña es insegura. Te recordamos que tiene que tener mínimo 8 caracteres, debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial.";
-    } else {
-        alerta.textContent = "";
-    }
-});
 
-repetirContrasenaInput.addEventListener("input", function() {
-    const alerta = document.getElementById("alerta");
-    if (contrasenaInput.value !== repetirContrasenaInput.value) {
-        alerta.textContent = "*Las contraseñas no coinciden";
-    } else {
-        alerta.textContent = "";
-    }
-});
+
