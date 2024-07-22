@@ -24,6 +24,8 @@ public class RegistrarUsuarioServlet  extends HttpServlet {
         String apll_1 = req.getParameter("apellidoPaterno");
         String apll_2 = req.getParameter("apellidoMaterno");
         String matri = req.getParameter("matricula");
+        int cuatri = Integer.parseInt(req.getParameter("cuatri"));
+        String grupo = req.getParameter("grupo");
         String email = req.getParameter("correo");
         String division = req.getParameter("division");
         int idCarrera = Integer.parseInt(req.getParameter("carrera"));
@@ -44,6 +46,8 @@ public class RegistrarUsuarioServlet  extends HttpServlet {
         nUser.setApll_1(apll_1);
         nUser.setApll_2(apll_2);
         nUser.setMatri(matri);
+        nUser.setCuatri(cuatri);
+        nUser.setGrupo(grupo);
         nUser.setEmail(email);
         nUser.setDivision(division);
         nUser.setCarrera(idCarrera);

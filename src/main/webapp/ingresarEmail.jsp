@@ -24,7 +24,7 @@
 
 <body class="d-flex justify-content-center align-items-center m-4">
 <div class="bg-white p-5 rounded-4 col-lg-8 col-md-8 col-sm-8 col-xs-7 mt-5 mb-4 shaw">
-    <form id="registroForm" method="post">
+    <form id="registroForm" method="post" action="generarCody">
         <legend class="bg-success rounded-2 p-2 text-white text-center mb-5">Recibe codigo</legend>
         <fieldset>
             <div class="mb-3 row">
@@ -48,16 +48,17 @@
     </form>
 </div>
 
-<section class="modal">
+<%--<section class="modal">
     <div class="modal_contain">
         <h1 class="modal_title">Enviado</h1>
         <img src="img/message-received-2-76.svg" alt="check" class="modal_img">
         <h3>Revisa tu bandeja de entrada</h3>
         <a href="#" class="modal_close"></a>
     </div>
-</section>
+</section>--%>
 
-<script src="js/email.js" defer></script>
+<%--<script src="js/email.js" defer></script>--%>
+
 </body>
 
 </html>

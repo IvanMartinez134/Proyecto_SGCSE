@@ -22,8 +22,9 @@
     <link rel="stylesheet" href="css/registroEst.css">
     <link rel="icon" type="image/png" href="img/buscar.png">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript"  defer>
         $(document).ready(function() {
             $('#division').change(function() {
                 var division = $(this).val();
@@ -59,6 +60,7 @@
                     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre" >
                 </div>
             </div>
+
             <div class="mb-3 row">
                 <label for="apellidoPaterno" class="col-sm-3 col-form-label">Apellido paterno: </label>
                 <div class="col-sm-3">
@@ -69,26 +71,45 @@
                     <input type="text" id="apellidoMaterno" name="apellidoMaterno" class="form-control" placeholder="Tu apellido materno" >
                 </div>
             </div>
+
             <div class="mb-3 row">
                 <label for="matricula" class="col-sm-3 col-form-label">Matrícula: </label>
                 <div class="col-sm-9">
                     <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Tu matrícula" required>
                 </div>
             </div>
+
+
             <div class="mb-3 row">
                 <label for="correo" class="col-sm-3 col-form-label">Correo electrónico: </label>
                 <div class="col-sm-9">
                     <input type="email" id="correo" name="correo" class="form-control" placeholder="Tu email" required>
                 </div>
             </div>
+
+            <div class="mb-3 row">
+                <label for="cuatri" class="col-sm-3 col-form-label">Cuatrimestre: </label>
+                <div class="col-sm-3">
+                    <input type="number" id="cuatri" name="cuatri" class="form-control" placeholder=" " >
+                </div>
+                <label for="grupo" class="col-sm-3 col-form-label">Grupo : </label>
+                <div class="col-sm-3">
+                    <input type="text" id="grupo" name="grupo" class="form-control" placeholder="A" >
+                </div>
+            </div>
+
+
+
+
             <div class="mb-3 row">
                 <label for="division" class="col-sm-3 col-form-label">División Académica:</label>
                 <div class="col-sm-3">
                     <select id="division" name="division" class="form-select">
                         <option value="" disabled selected>Selecciona una división</option>
-                        <option value="DATI">DATID</option>
-                        <option value="DATE">DATEFI</option>
-                        <option value="DACE">DACEA</option>
+                        <option value="DATID">DATID</option>
+                        <option value="DATEFI">DATEFI</option>
+                        <option value="DACEA">DACEA</option>
+                        <option value="DAMI">DAMI</option>
                     </select>
                 </div>
 

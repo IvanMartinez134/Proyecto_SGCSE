@@ -1,5 +1,5 @@
 document.getElementById("registroForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+    //event.preventDefault();
     const alerta = document.getElementById("alerta");
     alerta.textContent = "";
     alerta.style.color = "red";
@@ -24,7 +24,7 @@ document.getElementById("registroForm").addEventListener("submit", function(even
 
 const closeModal = document.querySelector('.modal_close');
 closeModal.addEventListener('click', (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     const modal = document.querySelector('.modal');
     modal.classList.remove('modal--show');
 });

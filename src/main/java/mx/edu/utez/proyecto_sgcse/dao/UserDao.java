@@ -47,6 +47,69 @@ public class UserDao {
         return user;
     }
 
+    public User getOne(String email) {
+        User user = new User();
+        String query = "SELECT * FROM usuarios WHERE email = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, email);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    user.setId(rs.getInt("id"));
+                    user.setNombre(rs.getString("nombre"));
+                    user.setApll_1(rs.getString("apll_1"));
+                    user.setApll_2(rs.getString("apll_2"));
+                    user.setEmail(rs.getString("email"));
+                    user.setPwd(rs.getString("pwd"));
+                    user.setTel(rs.getInt("tel"));
+                    user.setCody(rs.getString("cody"));
+                    user.setCuatri(rs.getInt("num_cuatri"));
+                    user.setGrupo(rs.getString("grupo"));
+                    user.setStatus(rs.getInt("status"));
+                    user.setCarrera(rs.getInt("cra_id"));
+                    user.setRol(rs.getInt("tdu_id"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
+    public User getOne(int id) {
+        User user = new User();
+        String query = "SELECT * FROM usuarios WHERE id = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    user.setId(rs.getInt("id"));
+                    user.setNombre(rs.getString("nombre"));
+                    user.setApll_1(rs.getString("apll_1"));
+                    user.setApll_2(rs.getString("apll_2"));
+                    user.setEmail(rs.getString("email"));
+                    user.setPwd(rs.getString("pwd"));
+                    user.setTel(rs.getInt("tel"));
+                    user.setCody(rs.getString("cody"));
+                    user.setCuatri(rs.getInt("num_cuatri"));
+                    user.setGrupo(rs.getString("grupo"));
+                    user.setStatus(rs.getInt("status"));
+                    user.setCarrera(rs.getInt("cra_id"));
+                    user.setRol(rs.getInt("tdu_id"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
 
 
 
@@ -105,7 +168,7 @@ public class UserDao {
 
 
     public boolean agregarUser(User u) {
-        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, pwd, matri,tdu_id) VALUES (?, ?, ?, ?, SHA2(?, 256), ?,3)";
+        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, cra_id, pwd, matri,num_cuatri,grupo,tdu_id) VALUES (?, ?, ?, ?, ?, SHA2(?, 256), ?, ?, ?, 3)";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -114,8 +177,11 @@ public class UserDao {
             ps.setString(2, u.getApll_1());
             ps.setString(3, u.getApll_2());
             ps.setString(4, u.getEmail());
-            ps.setString(5, u.getPwd());
-            ps.setString(6, u.getMatri());
+            ps.setInt(5, u.getCarrera());
+            ps.setString(6, u.getPwd());
+            ps.setString(7, u.getMatri());
+            ps.setInt(8,u.getCuatri());
+            ps.setString(9,u.getGrupo());
 
             int filasAfectadas = ps.executeUpdate();
             if (filasAfectadas > 0) {
@@ -151,6 +217,22 @@ public class UserDao {
         return fila;
     }
 
+    public boolean updateContra(User u) {
+        String query = "UPDATE usuarios SET pwd = sha2(?,256) WHERE id = ?";
+        boolean fila = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, u.getPwd());
+            ps.setInt(2,u.getId());
+            fila = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return fila;
+    }
+
 
     public boolean deleteUser(String email) {
         String query = "UPDATE usuarios SET status = False WHERE email = ?";
@@ -167,11 +249,21 @@ public class UserDao {
         return rowDeleted;
     }
 
-
-
-
-            public void rellenarSelect(){
-
+    public boolean updateCody(String email,User u) {
+        boolean flag = false;
+        String query = "update usuarios set cody = ? where email = ?";
+        try {
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, u.getCody());
+            ps.setString(2, email);
+            if (ps.executeUpdate() > 0) {
+                flag = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
     }
 
 

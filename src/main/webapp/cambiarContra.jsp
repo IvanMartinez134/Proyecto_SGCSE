@@ -1,4 +1,5 @@
-<%--
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.UserDao" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %><%--
   Created by IntelliJ IDEA.
   User: death
   Date: 15/07/2024
@@ -23,8 +24,14 @@
 </head>
 
 <body class="d-flex justify-content-center align-items-center m-4">
+<%
+    HttpSession sesion = request.getSession();
+    int id = Integer.parseInt(request.getParameter("id"));
+    UserDao dao = new UserDao();
+    User u = dao.getOne(id);
+%>
 <div class="bg-white p-5 rounded-4 col-lg-8 col-md-8 col-sm-8 col-xs-7 mt-5 mb-4 shaw">
-    <form id="registroForm" method="post">
+    <form id="registroForm" method="post" action="nuevaContra">
         <legend class="bg-success rounded-2 p-2 text-white text-center mb-5">Cambia tu contraseña</legend>
         <fieldset>
 
@@ -36,6 +43,7 @@
                     <input type="password" id="contrasena" name="contrasena" class="form-control" placeholder="Tu contraseña:" required>
                 </div>
             </div>
+            <input type="hidden" value="<%=u.getId()%>" name="operacion" />
             <div class="mb-3 row">
                 <label for="repetirContrasena" class="col-sm-3 col-form-label">Repite contraseña: </label>
                 <div class="col-sm-9">
@@ -60,16 +68,17 @@
     </form>
 </div>
 
-<section class="modal">
+<%--<section class="modal">
     <div class="modal_contain">
         <h1 class="modal_title">Cambio exitoso</h1>
         <img src="img/authentication-2-81.svg" alt="check" class="modal_img">
         <h3>Recuerda tu contraseña</h3>
         <a href="#" class="modal_close"></a>
     </div>
-</section>
+</section>--%>
 
-<script src="js/pass.js" defer></script>
+<%--<script src="js/pass.js" defer></script>--%>
+
 </body>
 
 </html>
