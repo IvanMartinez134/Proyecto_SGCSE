@@ -15,7 +15,7 @@ public class UserDao {
 
 
     public User getOne(String email, String pwd) {
-        User user = new User();
+        User user = null;
         String query = "SELECT * FROM usuarios WHERE email = ? AND pwd = SHA2(?, 256)";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -25,6 +25,7 @@ public class UserDao {
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
+                    user = new User();
                     user.setId(rs.getInt("id"));
                     user.setNombre(rs.getString("nombre"));
                     user.setApll_1(rs.getString("apll_1"));
@@ -38,6 +39,7 @@ public class UserDao {
                     user.setStatus(rs.getInt("status"));
                     user.setCarrera(rs.getInt("cra_id"));
                     user.setRol(rs.getInt("tdu_id"));
+                    user.setMatri(rs.getString("matri"));
                 }
             }
         } catch (SQLException e) {

@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<jsp:useBean id="user" scope="request" class="mx.edu.utez.proyecto_sgcse.model.User" />
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,9 +56,9 @@
         <div class="col-lg-4 col-md-4">
             <div class="bg-custom rounded-4 shadow p-4 text-center perfil">
                 <img src="img/profile-round-1342-svgrepo-com.svg" alt="Profile Picture" class="profile-img mb-3">
-                <h2 class="h5">Jonathan Ocampo Flores</h2>
+                <h2 class="h5">${sessionScope.user.nombre}</h2>
                 <hr>
-                <p class="text-muted-custom mb-1">20233tn116@utez.edu.mx</p>
+                <p class="text-muted-custom mb-1">${sessionScope.user.email}</p>
             </div>
         </div>
         <div class="col-md-8">
@@ -68,23 +70,23 @@
                 <div class="row p-4">
                     <div class="col-md-6 mb-3">
                         <h3 class="h6 text-muted-custom">Email</h3>
-                        <p>20233tn116@utez.edu.mx</p>
+                        <p>${sessionScope.user.email}</p>
                     </div>
                     <div class="col-md-6 mb-3">
                         <h3 class="h6 text-muted-custom">Matrícula</h3>
-                        <p>20233tn16</p>
+                        <p>${sessionScope.user.matri}</p>
                     </div>
                     <div class="col-md-6 mb-3">
                         <h3 class="h6 text-muted-custom">Carrera</h3>
-                        <p>Tecnologías de la información</p>
+                        <p>${sessionScope.user.carrera}</p>
                     </div>
                     <div class="col-md-6 mb-3">
                         <h3 class="h6 text-muted-custom">Cuatrimestre</h3>
-                        <p>3</p>
+                        <p>${sessionScope.user.cuatri}</p>
                     </div>
                     <div class="col-md-6 mb-3">
                         <h3 class="h6 text-muted-custom">Grupo</h3>
-                        <p>B</p>
+                        <p>${sessionScope.user.grupo}</p>
                     </div>
                     <a href="registroEst.jsp">
                         <div class="cont_b mb-3">

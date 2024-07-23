@@ -40,6 +40,7 @@
     </header>
     <div class="row bg-light rounded-bottom p-3" id="userList">
         <!-- En esta parte hago que lascardsse creen( muestren) -->
+        
     </div>
 </div>
 <script src="js/consU.js" defer></script>

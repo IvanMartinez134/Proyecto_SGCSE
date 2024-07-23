@@ -68,16 +68,16 @@
     </form>
 </div>
 
-<%--<section class="modal">
+<section class="modal">
     <div class="modal_contain">
         <h1 class="modal_title">Cambio exitoso</h1>
         <img src="img/authentication-2-81.svg" alt="check" class="modal_img">
         <h3>Recuerda tu contraseña</h3>
         <a href="#" class="modal_close"></a>
     </div>
-</section>--%>
+</section>
 
-<%--<script src="js/pass.js" defer></script>--%>
+<script src="js/pass.js" defer></script>
 
 </body>
 

@@ -48,16 +48,16 @@
     </form>
 </div>
 
-<%--<section class="modal">
+<section class="modal">
     <div class="modal_contain">
         <h1 class="modal_title">Enviado</h1>
         <img src="img/message-received-2-76.svg" alt="check" class="modal_img">
         <h3>Revisa tu bandeja de entrada</h3>
         <a href="#" class="modal_close"></a>
     </div>
-</section>--%>
+</section>
 
-<%--<script src="js/email.js" defer></script>--%>
+<script src="js/email.js" defer></script>-
 
 </body>
 
