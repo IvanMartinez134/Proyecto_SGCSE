@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import mx.edu.utez.proyecto_sgcse.dao.UserDao;
+import mx.edu.utez.proyecto_sgcse.dao.VentanillaDao;
 import mx.edu.utez.proyecto_sgcse.model.User;
 
 import java.awt.datatransfer.DataFlavor;
@@ -23,9 +24,12 @@ public class RegistroAdministrativoServlet  extends HttpServlet {
         String apll_1 = req.getParameter("apellidoPaterno");
         String apll_2 = req.getParameter("apellidoMaterno");
         String email = req.getParameter("correo");
+        int turno = Integer.parseInt(req.getParameter("turno"));
         int tel = Integer.parseInt(req.getParameter("tel"));
         String pwd = req.getParameter("contrasena");
         String rPwd = req.getParameter("repetirContrasena");
+
+
 
 
         // Validar que las contraseñas coincidan
@@ -44,9 +48,15 @@ public class RegistroAdministrativoServlet  extends HttpServlet {
         nUser.setTel(tel);
         nUser.setPwd(pwd);
 
+
+
+
         // Instanciar UserDao para manejar la lógica de base de datos
         UserDao dao = new UserDao();
         boolean registroExitoso = dao.agregarVen(nUser);
+        User u = dao.getOne(nUser.getEmail());
+        VentanillaDao vdao = new VentanillaDao();
+        vdao.agregarVen(u,turno);
 
         // Redireccionar o enviar de vuelta al formulario según el resultado del registro
         if (registroExitoso) {

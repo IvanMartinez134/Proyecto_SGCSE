@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %>
+<%@ page import="java.util.List" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.UserDao" %>
 
 
 <!DOCTYPE html>
@@ -63,6 +66,9 @@
 
 <div class="container">
     <div class="row mt-5">
+        <% UserDao userDao = new UserDao();
+            List<User> vents = userDao.getAllVen();
+            for (User user : vents) { %>
         <div class="col-md-4 card_margin">
             <div class="card mb-3">
                 <div class="card-header-custom">Estado: Pendiente</div>
@@ -72,44 +78,16 @@
                     <p class="card-text">Fecha: 23/06/2024</p>
                     <p class="card-text">Horario: 7:00 - 7:30</p>
 
-                    <div class="buscador">
-                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
-                        <div class="items">
-                            <li class="names list-group-item">Bryan</li>
-                            <li class="names list-group-item">Pulido</li>
-                            <li class="names list-group-item">Emiliano</li>
-                            <li class="names list-group-item">Ivan</li>
-                        </div>
-                        <div class="icon"><i class="bi bi-search"></i></div>
-                    </div>
+
+                    <div class="form-group">
 
 
-                    <div class="text-end mt-2">
-                        <button class="btn btn-success">Asignar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Repeat this card block for each pending appointment -->
-
-        <div class="col-md-4 card_margin">
-            <div class="card mb-3">
-                <div class="card-header-custom">Estado: Pendiente</div>
-                <div class="card-body-custom">
-                    <p class="card-title">Nombre: Jonathan Ocampo</p>
-                    <p class="card-text">Tipo de Documentación: Credencial</p>
-                    <p class="card-text">Fecha: 23/06/2024</p>
-                    <p class="card-text">Horario: 7:00 - 7:30</p>
-
-                    <div class="buscador">
-                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
-                        <div class="items">
-                            <li class="names list-group-item">Bryan</li>
-                            <li class="names list-group-item">Pulido</li>
-                            <li class="names list-group-item">Emiliano</li>
-                            <li class="names list-group-item">Ivan</li>
-                        </div>
-                        <div class="icon"><i class="bi bi-search"></i></div>
+                        <label for="usuariosSelect">Selecciona un usuario:</label>
+                        <select class="form-select" id="usuariosSelect" name="usuariosSelect">
+                            <option selected>Selecciona un usuario...</option>
+                            <option value="<%= user.getId() %>"><%= user.getNombre() %></option>
+                            <% } %>
+                        </select>
                     </div>
 
 
@@ -120,137 +98,7 @@
                 </div>
             </div>
         </div>
-
-
-
-        <div class="col-md-4 card_margin">
-            <div class="card mb-3">
-                <div class="card-header-custom">Estado: Pendiente</div>
-                <div class="card-body-custom">
-                    <p class="card-title">Nombre: Jonathan Ocampo</p>
-                    <p class="card-text">Tipo de Documentación: Credencial</p>
-                    <p class="card-text">Fecha: 23/06/2024</p>
-                    <p class="card-text">Horario: 7:00 - 7:30</p>
-
-                    <div class="buscador">
-                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
-                        <div class="items">
-                            <li class="names list-group-item">Bryan</li>
-                            <li class="names list-group-item">Pulido</li>
-                            <li class="names list-group-item">Emiliano</li>
-                            <li class="names list-group-item">Ivan</li>
-                        </div>
-                        <div class="icon"><i class="bi bi-search"></i></div>
-                    </div>
-
-
-
-
-                    <div class="text-end mt-2">
-                        <button class="btn btn-success">Asignar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="col-md-4 card_margin">
-            <div class="card mb-3">
-                <div class="card-header-custom">Estado: Pendiente</div>
-                <div class="card-body-custom">
-                    <p class="card-title">Nombre: Jonathan Ocampo</p>
-                    <p class="card-text">Tipo de Documentación: Credencial</p>
-                    <p class="card-text">Fecha: 23/06/2024</p>
-                    <p class="card-text">Horario: 7:00 - 7:30</p>
-
-
-                    <div class="buscador">
-                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
-                        <div class="items">
-                            <li class="names list-group-item">Bryan</li>
-                            <li class="names list-group-item">Pulido</li>
-                            <li class="names list-group-item">Emiliano</li>
-                            <li class="names list-group-item">Ivan</li>
-                        </div>
-                        <div class="icon"><i class="bi bi-search"></i></div>
-                    </div>
-
-
-                    <div class="text-end mt-2">
-                        <button class="btn btn-success">Asignar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <div class="col-md-4 card_margin">
-            <div class="card mb-3">
-                <div class="card-header-custom">Estado: Pendiente</div>
-                <div class="card-body-custom">
-                    <p class="card-title">Nombre: Jonathan Ocampo</p>
-                    <p class="card-text">Tipo de Documentación: Credencial</p>
-                    <p class="card-text">Fecha: 23/06/2024</p>
-                    <p class="card-text">Horario: 7:00 - 7:30</p>
-
-                    <div class="buscador">
-                        <input type="search" class="bus form-control mb-1"  name="bus" placeholder="Buscar..">
-                        <div class="items">
-                            <li class="names list-group-item">Bryan</li>
-                            <li class="names list-group-item">Pulido</li>
-                            <li class="names list-group-item">Emiliano</li>
-                            <li class="names list-group-item">Ivan</li>
-                        </div>
-                        <div class="icon"><i class="bi bi-search"></i></div>
-                    </div>
-
-
-
-                    <div class="text-end mt-2">
-                        <button class="btn btn-success">Asignar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <div class="col-md-4 card_margin">
-            <div class="card mb-3">
-                <div class="card-header-custom">Estado: Pendiente</div>
-                <div class="card-body-custom">
-                    <p class="card-title">Nombre: Jonathan Ocampo</p>
-                    <p class="card-text">Tipo de Documentación: Credencial</p>
-                    <p class="card-text">Fecha: 23/06/2024</p>
-                    <p class="card-text">Horario: 7:00 - 7:30</p>
-
-                    <div class="buscador">
-                        <input type="search" class="bus form-control mb-1"  placeholder="Buscar..">
-                        <div class="items">
-                            <li class="names list-group-item">Bryan</li>
-                            <li class="names list-group-item">Pulido</li>
-                            <li class="names list-group-item">Emiliano</li>
-                            <li class="names list-group-item">Ivan</li>
-                        </div>
-                        <div class="icon"><i class="bi bi-search"></i></div>
-                    </div>
-
-                </div>
-
-                <div class="text-end mt-2">
-                    <button class="btn btn-success">Asignar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
+        <!-- Repeat this card block for each pending appointment -->
 
 
 </div>

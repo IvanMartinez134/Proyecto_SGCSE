@@ -57,6 +57,8 @@
                         <div>
                             <p class="text-gray-600 dark:text-gray-400">Correo: <%= user.getEmail() %></p>
                             <p class="text-gray-600 dark:text-gray-400">Teléfono: <%= user.getTel() %></p>
+
+                            <button class="btn-success btn">Turno: <%= user.getTurno()%> </button>
                         </div>
                     </div>
 

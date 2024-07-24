@@ -147,7 +147,7 @@ public class UserDao {
 
     public User consVen(int id) {
         User u = null;
-        String query = "SELECT id, nombre, apll_1, apll_2, email, tel FROM usuarios WHERE id = ?";
+        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas inner join usuarios on u.id = v.usr_id inner join turnos on t.id = v.tro_id WHERE u.id = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -161,6 +161,7 @@ public class UserDao {
                     u.setApll_1(rs.getString("apll_1"));
                     u.setApll_2(rs.getString("apll_2"));
                     u.setEmail(rs.getString("email"));
+                    u.setTurno(rs.getString("tipo"));
                     u.setTel(rs.getInt("tel"));
 
                 }
@@ -202,7 +203,11 @@ public class UserDao {
 
     public List<User> getAllVen() {
         List<User> vents = new ArrayList<>();
-        String query = "SELECT id, nombre, apll_1, apll_2, email, tel FROM usuarios where tdu_id = 2";
+        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v\n" +
+                "inner join usuarios u\n" +
+                "on u.id = v.usr_id\n" +
+                "inner join turnos t\n" +
+                "on t.id = v.tro_id where u.tdu_id = 2";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
@@ -214,6 +219,7 @@ public class UserDao {
                 user.setApll_1(rs.getString("apll_1"));
                 user.setApll_2(rs.getString("apll_2"));
                 user.setEmail(rs.getString("email"));
+                user.setTurno(rs.getString("tipo"));
                 user.setTel(rs.getInt("tel"));
                 vents.add(user);
             }
@@ -378,7 +384,11 @@ public class UserDao {
 
     public List<User> BuscarVen(String texto) {
         List<User> lista = new ArrayList<>();
-        String query = "SELECT id, nombre, apll_1, apll_2, email, tel FROM usuarios where id like '%"+texto+"%' or nombre like '%"+texto+"%' or email like '%"+texto+"%' or tel like '%"+texto+"%'" ;
+        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v\n" +
+                "inner join usuarios u\n" +
+                "on u.id = v.usr_id\n" +
+                "inner join turnos t\n" +
+                "on t.id = v.tro_id where u.id like '%"+texto+"%' or u.nombre like '%"+texto+"%' or u.email like '%"+texto+"%' or u.tel like '%"+texto+"%'" ;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
@@ -390,6 +400,7 @@ public class UserDao {
                 user.setApll_1(rs.getString("apll_1"));
                 user.setApll_2(rs.getString("apll_2"));
                 user.setEmail(rs.getString("email"));
+                user.setTurno(rs.getString("tipo"));
                 user.setTel(rs.getInt("tel"));
                 lista.add(user);
             }

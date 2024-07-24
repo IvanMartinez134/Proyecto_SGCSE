@@ -23,27 +23,11 @@ public class User implements Serializable {
 
     private String matri;
 
+    private String turno;
+
     public User() {
     }
 
-    public User(int id, String nombre, String apll_1, String apll_2, String email, String pwd, int tel, String cody, int cuatri, String grupo, int status, int carrera, String division, int rol, String matri) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apll_1 = apll_1;
-        this.apll_2 = apll_2;
-        this.email = email;
-        this.pwd = pwd;
-        this.tel = tel;
-        this.cody = cody;
-        this.cuatri = cuatri;
-        this.grupo = grupo;
-        this.status = status;
-        this.carrera = carrera;
-        this.division = division;
-        this.rol = rol;
-        this.matri = matri;
-
-    }
 
     // Getters and setters
 
@@ -169,5 +153,11 @@ public class User implements Serializable {
         this.matri = matri;
     }
 
+    public String getTurno() {
+        return turno;
+    }
 
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
 }
