@@ -51,6 +51,7 @@
 
 <body class="d-flex justify-content-center align-items-center vh-100">
 <div class="bg-white p-5 rounded-2 col-lg-8 col-md-8 col-sm-10 mb-4 con">
+
     <form method="POST" action="registrarUsuario" id="registroForm">
         <legend class="bg-success rounded-2 p-2 text-white text-center mb-5">Registro de Usuario</legend>
         <fieldset>

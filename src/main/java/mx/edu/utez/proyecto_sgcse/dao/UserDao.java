@@ -144,6 +144,37 @@ public class UserDao {
     }
 
 
+
+    public User consVen(int id) {
+        User u = null;
+        String query = "SELECT id, nombre, apll_1, apll_2, email, tel FROM usuarios WHERE id = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    u = new User();
+                    u.setId(rs.getInt("id"));
+                    u.setNombre(rs.getString("nombre"));
+                    u.setApll_1(rs.getString("apll_1"));
+                    u.setApll_2(rs.getString("apll_2"));
+                    u.setEmail(rs.getString("email"));
+                    u.setTel(rs.getInt("tel"));
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return u;
+    }
+
+
+
+
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
         String query = "SELECT id, nombre, apll_1, apll_2, email, status FROM usuarios where tdu_id = 3";
@@ -169,6 +200,31 @@ public class UserDao {
     }
 
 
+    public List<User> getAllVen() {
+        List<User> vents = new ArrayList<>();
+        String query = "SELECT id, nombre, apll_1, apll_2, email, tel FROM usuarios where tdu_id = 2";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setNombre(rs.getString("nombre"));
+                user.setApll_1(rs.getString("apll_1"));
+                user.setApll_2(rs.getString("apll_2"));
+                user.setEmail(rs.getString("email"));
+                user.setTel(rs.getInt("tel"));
+                vents.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return vents;
+    }
+
+
     public boolean agregarUser(User u) {
         String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, cra_id, pwd, matri,num_cuatri,grupo,tdu_id) VALUES (?, ?, ?, ?, ?, SHA2(?, 256), ?, ?, ?, 3)";
         boolean fila = false;
@@ -184,6 +240,33 @@ public class UserDao {
             ps.setString(7, u.getMatri());
             ps.setInt(8,u.getCuatri());
             ps.setString(9,u.getGrupo());
+
+            int filasAfectadas = ps.executeUpdate();
+            if (filasAfectadas > 0) {
+                fila = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error al ejecutar la consulta SQL: " + e.getMessage());
+        }
+
+        return fila;
+    }
+
+
+    public boolean agregarVen(User u) {
+        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, tel, pwd,tdu_id) VALUES (?, ?, ?, ?,?, SHA2(?, 256), 2)";
+        boolean fila = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getApll_1());
+            ps.setString(3, u.getApll_2());
+            ps.setString(4, u.getEmail());
+            ps.setInt(5, u.getTel());
+            ps.setString(6, u.getPwd());
+
 
             int filasAfectadas = ps.executeUpdate();
             if (filasAfectadas > 0) {
@@ -219,6 +302,28 @@ public class UserDao {
         return fila;
     }
 
+    public boolean updateVen(User u) {
+        String query = "UPDATE usuarios SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ?, tel = ? WHERE id = ?";
+        boolean fila = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getApll_1());
+            ps.setString(3, u.getApll_2());
+            ps.setString(4, u.getEmail());
+            ps.setInt(5,u.getTel());
+            ps.setInt(6,u.getId());
+            fila = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return fila;
+    }
+
+
+
     public boolean updateContra(User u) {
         String query = "UPDATE usuarios SET pwd = sha2(?,256) WHERE id = ?";
         boolean fila = false;
@@ -251,6 +356,7 @@ public class UserDao {
         return rowDeleted;
     }
 
+
     public boolean updateCody(String email,User u) {
         boolean flag = false;
         String query = "update usuarios set cody = ? where email = ?";
@@ -266,6 +372,32 @@ public class UserDao {
             e.printStackTrace();
         }
         return flag;
+    }
+
+
+
+    public List<User> BuscarVen(String texto) {
+        List<User> lista = new ArrayList<>();
+        String query = "SELECT id, nombre, apll_1, apll_2, email, tel FROM usuarios where id like '%"+texto+"%' or nombre like '%"+texto+"%' or email like '%"+texto+"%' or tel like '%"+texto+"%'" ;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setNombre(rs.getString("nombre"));
+                user.setApll_1(rs.getString("apll_1"));
+                user.setApll_2(rs.getString("apll_2"));
+                user.setEmail(rs.getString("email"));
+                user.setTel(rs.getInt("tel"));
+                lista.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
     }
 
 

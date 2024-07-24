@@ -22,7 +22,9 @@
 
 <body class="d-flex justify-content-center align-items-center m-4">
 <div class="bg-white p-5 rounded-4 col-lg-8 col-md-8 col-sm-8 col-xs-7 mb-4 shaw">
-    <form id="registroForm" method="post">
+
+
+    <form id="registroForm" method="post" action="registroVetanilla">
         <legend class="bg-success rounded-2 p-2 text-white text-center mb-5">Registro Administrativo</legend>
         <fieldset>
             <div class="mb-3 row">
@@ -49,22 +51,16 @@
                     <input type="email" id="correo" name="correo" class="form-control" placeholder="Tu email:" required>
                 </div>
             </div>
+
+
             <div class="mb-3 row">
-                <label for="telefono" class="col-sm-3 col-form-label">Teléfono: </label>
+                <label for="tel" class="col-sm-3 col-form-label">Teléfono: </label>
                 <div class="col-sm-9">
-                    <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Tu número:" required>
+                    <input type="text" id="tel" name="tel" class="form-control" placeholder="Tu número:" required>
                 </div>
             </div>
-            <div class="mb-3 row">
-                <label for="turno" class="col-sm-3 col-form-label">Turno:</label>
-                <div class="col-sm-9">
-                    <select id="turno" name="turno" class="form-select" required>
-                        <option value="" disabled selected>Selecciona un turno</option>
-                        <option>Matutino</option>
-                        <option>Vespertino</option>
-                    </select>
-                </div>
-            </div>
+
+
             <div class="mb-3 row">
                 <label for="contrasena" class="col-sm-3 col-form-label">Contraseña: </label>
                 <div class="col-sm-9">
@@ -100,7 +96,7 @@
     </div>
 </section>
 
-<script src="js/registroAdmintivo.js" defer></script>
+<%--  <script src="js/registroAdmintivo.js" defer></script> --%>
 </body>
 
 </html>

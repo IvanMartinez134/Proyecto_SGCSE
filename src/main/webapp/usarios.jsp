@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="user" scope="request" class="mx.edu.utez.proyecto_sgcse.model.User" />
 
 <!DOCTYPE html>
 <html lang="es">
@@ -33,7 +34,7 @@
 
 
         <h5 class="text-white navbar-title  d-lg me-auto">
-            Hola, Jonathan
+            Hola, ${sessionScope.user.nombre}
         </h5>
 
 
