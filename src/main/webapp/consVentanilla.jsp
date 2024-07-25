@@ -40,10 +40,11 @@
         </div>
     </header>
     <div class="row  rounded-bottom p-3" id="userList">
-
         <% UserDao userDao = new UserDao();
             List<User> vents = userDao.getAllVen();
             for (User user : vents) { %>
+
+
         <div class="col-lg-4 mb-4 col-md-6 mb-4 col-sm-10 mb-4 text-center m-auto">
 
             <div class="card h-80">

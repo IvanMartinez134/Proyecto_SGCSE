@@ -53,9 +53,9 @@
             </div>
 
             <div class="mb-3 row">
-                <label for="correo" class="col-sm-3 col-form-label">Correo electrónico: </label>
+                <label for="turno" class="col-sm-3 col-form-label">Turno: </label>
                 <div class="form-group col-sm-9">
-                    <select class="form-select" aria-label="Selecciona un trabajador" name="turno">
+                    <select class="form-select" aria-label="Selecciona un trabajador" id="turno" name="turno">
                         <option selected>Selecciona un turno...</option>
                         <option value="1">Matutino</option>
                         <option value="2">Vespertino</option>
@@ -67,7 +67,7 @@
             <div class="mb-3 row">
                 <label for="tel" class="col-sm-3 col-form-label">Teléfono: </label>
                 <div class="col-sm-9">
-                    <input type="tel" id="tel" name="tel" class="form-control" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Tu número:" required>
+                    <input type="tel" id="tel" name="tel" class="form-control"  placeholder="Tu número:" required>
                 </div>
             </div>
 

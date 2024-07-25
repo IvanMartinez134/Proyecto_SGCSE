@@ -23,45 +23,63 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-expand-xsm  bg-success col-xsm-12">
-    <div class="navbar-logo-container">
-        <a class="navbar-brand" href="#">
-            <img src="img/utezlogo.png" alt="Logo" class="navbar-logo">
-        </a>
-    </div>
-    <div class="navbar-title-container">
-        <h1 class="title">Subir documentos</h1>
-    </div>
-    <div class="nav_menu" id="open_close">
-        <button class="menu">
-            <div class="menu_item"></div>
-            <div class="menu_item"></div>
-            <div class="menu_item"></div>
+<nav class="navbar navbar-expand-lg  navbar-dark bg-success mb-4">
+
+    <div class="container-fluid m-0 p-0">
+        <div class="navbar-logo-container">
+
+            <img src="img/utezlogo.png" alt="Logo" class="navbar-logo m-0 p-0">
+
+        </div>
+
+
+
+
+        <h3 class="text-white navbar-title  d-lg me-auto">
+            Subir documentos
+        </h3>
+
+
+
+        <button class=" mr-4 navbar-toggler" type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#menu">
+            <div></div>
+            <div></div>
+            <div></div>
         </button>
+
+        <!-- Paraa usar el oof canvas ( lateral )  -->
+        <section class="offcanvas offcanvas-end bg-success" style="width: 18rem;"
+                 id="menu" tabindex="-1">
+            <div class="offcanvas-header" data-bs-theme="success">
+                <h5 class="offcanvas-title text-white px-4">Menu</h5>
+
+                <button class="btn-close m-1"
+                        type="button"
+                        aria-label="Close"
+                        data-bs-dismiss="offcanvas">
+                </button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column
+                justify-content-between px-0 " data-bs-theme="success">
+                <ul class="navbar-nav fs-5 justify-content-end">
+                    <li class="nav-item p-lg-2 p-2 px-4 py-md-3">
+                        <a href="" class="nav-link  fs-6 d-lg "><i class="bi bi-person i"></i>Mi Perfil</a>
+                    </li >
+                    <li class="nav-item p-lg-2 p-2 px-4  py-md-3 c">
+                        <a href="" class="nav-link  fs-6 d-lg  "><i class="bi bi-box-arrow-right i"></i>Cerrar sesion</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </section>
+
+
+
     </div>
 </nav>
-
-
-<aside id="aside">
-    <div class="lateral"></div>
-    <div class="aside_con">
-        <div class="aside_i">
-            <a class="a_link" href="perfilu.html">
-                <i class="bi bi-person "></i>
-                <span class="a_span">Mi perfil</span>
-            </a>
-        </div>
-    </div>
-    <div class="aside_c">
-        <div class="aside_i">
-            <i class="bi-box-arrow-right"></i>
-            <span class="a_span">Cerrar sesion</span>
-        </div>
-    </div>
-</aside>
-
-
-
 
 
 
@@ -78,13 +96,23 @@
         </ul>
     </div>
 
-    <div class="drag-drop" id="drag-drop-area">
-        <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
-        <input type="file" id="file-input" multiple>
-        <ul class="file-list" id="file-list">
-            <!-- Aquí se mostrarán los archivos seleccionados -->
-        </ul>
-    </div>
+    <!-- subirDoc.jsp -->
+    <form action="doc" method="post" enctype="multipart/form-data">
+        <div class="drag-drop" id="drag-drop-area">
+            <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
+            <input type="file" id="file-input" name="file" multiple>
+            <ul class="file-list" id="file-list">
+                <!-- Aquí se mostrarán los archivos seleccionados -->
+            </ul>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">Subir Archivos</button>
+        </div>
+
+    </form>
+
+
+
 </div>
 
 <!-- Script de Bootstrap -->

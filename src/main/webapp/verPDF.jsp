@@ -61,7 +61,9 @@
 </aside>
 
 <div class="cont_pdf mt-4">
-    <object class="pdf_v" type="application/pdf" data="Transacciones_BaseDeDatos.pdf"></object>
+
+    <% String archivo = request.getParameter("archivo"); %>
+    <object class="pdf_viewer" type="application/pdf" data="<%= request.getContextPath() %>/verPDF?archivo=<%= archivo %>"></object>
 </div>
 
 
