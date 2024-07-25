@@ -97,14 +97,17 @@
     </div>
 
     <!-- subirDoc.jsp -->
-    <form action="doc" method="post" enctype="multipart/form-data">
-        <div class="drag-drop" id="drag-drop-area">
+    <form action="subirDoc" method="post" enctype="multipart/form-data">
+       <%-- <div class="drag-drop" id="drag-drop-area">
             <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
             <input type="file" id="file-input" name="file" multiple>
             <ul class="file-list" id="file-list">
                 <!-- Aquí se mostrarán los archivos seleccionados -->
             </ul>
-        </div>
+        </div>  --%>
+
+        <label for="pdfFile">Selecciona un PDF:</label>
+        <input type="file" name="pdfFile" id="pdfFile" accept="aplication/pdf">
         <div class="text-center">
             <button type="submit" class="btn btn-success">Subir Archivos</button>
         </div>

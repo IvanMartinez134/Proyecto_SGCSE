@@ -32,7 +32,7 @@ public class UserDao {
                     user.setApll_2(rs.getString("apll_2"));
                     user.setEmail(rs.getString("email"));
                     user.setPwd(rs.getString("pwd"));
-                    user.setTel(rs.getInt("tel"));
+                    user.setTel(rs.getString("tel"));
                     user.setCody(rs.getString("cody"));
                     user.setCuatri(rs.getInt("num_cuatri"));
                     user.setGrupo(rs.getString("grupo"));
@@ -65,7 +65,7 @@ public class UserDao {
                     user.setApll_2(rs.getString("apll_2"));
                     user.setEmail(rs.getString("email"));
                     user.setPwd(rs.getString("pwd"));
-                    user.setTel(rs.getInt("tel"));
+                    user.setTel(rs.getString("tel"));
                     user.setCody(rs.getString("cody"));
                     user.setCuatri(rs.getInt("num_cuatri"));
                     user.setGrupo(rs.getString("grupo"));
@@ -97,7 +97,7 @@ public class UserDao {
                     user.setApll_2(rs.getString("apll_2"));
                     user.setEmail(rs.getString("email"));
                     user.setPwd(rs.getString("pwd"));
-                    user.setTel(rs.getInt("tel"));
+                    user.setTel(rs.getString("tel"));
                     user.setCody(rs.getString("cody"));
                     user.setCuatri(rs.getInt("num_cuatri"));
                     user.setGrupo(rs.getString("grupo"));
@@ -162,7 +162,7 @@ public class UserDao {
                     u.setApll_2(rs.getString("apll_2"));
                     u.setEmail(rs.getString("email"));
                     u.setTurno(rs.getString("tipo"));
-                    u.setTel(rs.getInt("tel"));
+                    u.setTel(rs.getString("tel"));
 
                 }
             }
@@ -220,7 +220,7 @@ public class UserDao {
                 user.setApll_2(rs.getString("apll_2"));
                 user.setEmail(rs.getString("email"));
                 user.setTurno(rs.getString("tipo"));
-                user.setTel(rs.getInt("tel"));
+                user.setTel(rs.getString("tel"));
                 vents.add(user);
             }
         } catch (SQLException e) {
@@ -270,7 +270,7 @@ public class UserDao {
             ps.setString(2, u.getApll_1());
             ps.setString(3, u.getApll_2());
             ps.setString(4, u.getEmail());
-            ps.setInt(5, u.getTel());
+            ps.setString(5, u.getTel());
             ps.setString(6, u.getPwd());
 
 
@@ -318,7 +318,7 @@ public class UserDao {
             ps.setString(2, u.getApll_1());
             ps.setString(3, u.getApll_2());
             ps.setString(4, u.getEmail());
-            ps.setInt(5,u.getTel());
+            ps.setString(5,u.getTel());
             ps.setInt(6,u.getId());
             fila = ps.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -401,7 +401,7 @@ public class UserDao {
                 user.setApll_2(rs.getString("apll_2"));
                 user.setEmail(rs.getString("email"));
                 user.setTurno(rs.getString("tipo"));
-                user.setTel(rs.getInt("tel"));
+                user.setTel(rs.getString("tel"));
                 lista.add(user);
             }
         } catch (SQLException e) {

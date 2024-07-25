@@ -10,57 +10,58 @@ import jakarta.servlet.http.Part;
 import mx.edu.utez.proyecto_sgcse.dao.DocumentoDao;
 import mx.edu.utez.proyecto_sgcse.model.Documento;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
 
-@WebServlet(name= "DocumentoServlet", value = "/doc")
+import java.io.File;
+import java.io.InputStream;
+import java.io.IOException;
+
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
+@WebServlet(name= "DocumentoServlet", value = "/subirDoc")
 @MultipartConfig
 public class DocumentoServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            // Cositas apra poder poner una carpeta
-            String uploadPath = getServletContext().getRealPath("") + File.separator + "/descargas";
 
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
-
-            // Se procesa el archivo
-            Part filePart = request.getPart("file");
-            if (filePart == null) {
-                throw new ServletException("El archivo subido es nulo.");
-
-            }
-
-            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            String filePath = uploadPath + File.separator + fileName;
-            filePart.write(filePath);
+        Part docpart = request.getPart("documento");
 
 
-            Documento documento = new Documento();
-            documento.setDireccion(fileName);
-            // Guardamos el nombre del archivo en el campo direccion
+        String nameDoc = docpart.getSubmittedFileName();
 
+        String direccion = docpart.getSubmittedFileName();
 
+        String guardadoRuta = request.getSession().getServletContext().getRealPath("/") + "descargas" + File.separator + nameDoc;
 
-            // Se llama al método para agregar el documento en la base de datos
-            DocumentoDao documentoDao = new DocumentoDao();
-            boolean insertado = documentoDao.agregarDoc(documento);
+        File guardado = new File(guardadoRuta);
 
-            if (insertado) {
-
-                response.sendRedirect(request.getContextPath() + "/verPDF?archivo=" + fileName);
-            } else {
-
-                response.getWriter().println("Error al insertar el documento.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new ServletException("Error en la subida del archivo: " + e.getMessage());
+        if(!guardado.exists()){
+            guardado.mkdirs();
         }
+
+        try(InputStream fileContent = docpart.getInputStream()) {
+            Files.copy(fileContent, Paths.get(direccion), StandardCopyOption.REPLACE_EXISTING);
+        }
+
+
+        Documento doc = new Documento();
+        doc.setNombre(nameDoc);
+        doc.setCta_id(doc.getCta_id());
+        doc.setDireccion("descargas" + nameDoc);
+
+
+        DocumentoDao dao = new DocumentoDao();
+        boolean ingreso = dao.agregarDoc(doc);
+
+        if(ingreso){
+            request.getRequestDispatcher("subirDoc.jsp").forward(request, response);
+        }else{
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+
+
+
     }
 
 }

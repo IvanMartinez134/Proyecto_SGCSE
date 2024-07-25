@@ -5,7 +5,9 @@ import mx.edu.utez.proyecto_sgcse.utils.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 public class DocumentoDao {
 
@@ -31,4 +33,29 @@ public class DocumentoDao {
 
         return fila;
     }
+
+
+
+    public Documento obtenerDoc(int cta_id)  {
+        String query = "SELECT * FROM documentos WHERE id = ?";
+       Documento doc = null;
+        try (Connection con = DatabaseConnectionManager.getConnection();
+        PreparedStatement ps = con.prepareStatement(query)){
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery( )) {
+                doc = new Documento();
+                doc.setId(rs.getInt("id"));
+                doc.setDireccion(rs.getString("direccion"));
+                doc.setCta_id(rs.getInt("cta_id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return doc;
+    }
+
+
+
 }

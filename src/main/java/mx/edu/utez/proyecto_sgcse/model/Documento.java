@@ -6,6 +6,8 @@ public class Documento implements Serializable {
 
     private int id;
 
+    private String nombre;
+
     private String direccion;
 
     private int cta_id;
@@ -35,6 +37,14 @@ public class Documento implements Serializable {
 
     public void setCta_id(int cta_id) {
         this.cta_id = cta_id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
 

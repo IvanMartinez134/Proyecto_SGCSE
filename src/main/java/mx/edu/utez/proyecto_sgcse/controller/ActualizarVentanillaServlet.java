@@ -21,7 +21,7 @@ public class ActualizarVentanillaServlet extends HttpServlet {
         String apll1 = req.getParameter("apll_1");
         String apll2 = req.getParameter("apll_2");
         String email = req.getParameter("email");
-        int tel = Integer.parseInt(req.getParameter("tel"));
+        String tel = req.getParameter("tel");
         int id = Integer.parseInt(req.getParameter("id"));
 
         User user = new User();

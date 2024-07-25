@@ -25,7 +25,7 @@ public class RegistroAdministrativoServlet  extends HttpServlet {
         String apll_2 = req.getParameter("apellidoMaterno");
         String email = req.getParameter("correo");
         int turno = Integer.parseInt(req.getParameter("turno"));
-        int tel = Integer.parseInt(req.getParameter("tel"));
+        String tel = req.getParameter("tel");
         String pwd = req.getParameter("contrasena");
         String rPwd = req.getParameter("repetirContrasena");
 

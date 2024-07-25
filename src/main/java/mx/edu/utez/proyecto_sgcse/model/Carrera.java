@@ -1,6 +1,8 @@
 package mx.edu.utez.proyecto_sgcse.model;
 
-public class Carrera {
+import java.io.Serializable;
+
+public class Carrera implements Serializable {
     int id;
     String nombre;
     String division;

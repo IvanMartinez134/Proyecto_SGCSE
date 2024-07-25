@@ -11,7 +11,7 @@ public class User implements Serializable {
     private String apll_2;
     private String email;
     private String pwd;
-    private int tel;
+    private String tel;
 
     private String cody;
     private int cuatri;
@@ -81,11 +81,11 @@ public class User implements Serializable {
         this.pwd = pwd;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 
