@@ -41,7 +41,7 @@ public class DocumentoDao {
        Documento doc = null;
         try (Connection con = DatabaseConnectionManager.getConnection();
         PreparedStatement ps = con.prepareStatement(query)){
-            ps.setInt(1, id);
+            ps.setInt(1, cta_id);
 
             try (ResultSet rs = ps.executeQuery( )) {
                 doc = new Documento();
