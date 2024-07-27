@@ -1,4 +1,5 @@
-<%--
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.UserDao" %><%--
   Created by IntelliJ IDEA.
   User: death
   Date: 15/07/2024
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="css/pageEst.css">
 </head>
 <body>
+
 
 
 <nav class=" navbar navbar-expand-lg  navbar-dark bg-success">
@@ -68,7 +70,7 @@
                         <a href="perfil.jsp" class="nav-link  fs-6 d-lg "><i class="bi bi-person i"></i>Mi Perfil</a>
                     </li >
                     <li class="nav-item p-lg-2 p-2 px-4  py-md-3 c">
-                        <a href="" class="nav-link  fs-6 d-lg  "><i class="bi bi-box-arrow-right i"></i>Cerrar sesion</a>
+                        <a href="index.jsp" class="nav-link  fs-6 d-lg  "><i class="bi bi-box-arrow-right i"></i>Cerrar sesion</a>
                     </li>
                 </ul>
 
@@ -129,7 +131,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3 text-center mt-5 option-card blue">
-            <a href="#" class="open-password-modal ">
+            <a href="agendarcita.jsp?id=${sessionScope.user.id}" class="nav-link">
                 <?xml version="1.0" encoding="UTF-8"?>
                 <svg class="svg" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="80" height="80" fill="currentColor"><path d="m0,19c0,2.757,2.243,5,5,5h14c2.757,0,5-2.243,5-5v-9H0v9Zm3-4c0-1.103.897-2,2-2h2c1.103,0,2,.897,2,2v2c0,1.103-.897,2-2,2h-2c-1.103,0-2-.897-2-2v-2Zm4.001,2h-2.001v-2h2v2ZM24,7v1H0v-1C0,4.243,2.243,2,5,2h1v-1c0-.552.448-1,1-1s1,.448,1,1v1h8v-1c0-.552.448-1,1-1s1,.448,1,1v1h1c2.757,0,5,2.243,5,5Z"/></svg>
 
@@ -162,6 +164,7 @@
 </div>
 
 <!-- Modal de contraseña -->
+<!--
 <div class="modal col-md-6" id="modalPassword">
     <div class="modal-dialog">
         <div class="modal-content col-lg-12 col-md-8 col-sm-6">
@@ -182,6 +185,7 @@
         </div>
     </div>
 </div>
+-->
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/pageEst.js"></script>

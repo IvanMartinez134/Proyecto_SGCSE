@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Agregar un evento de clic a cada enlace para mostrar el modal
     openModalLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+           //  e.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
 
             // Mostrar el modal
             const modal = document.querySelector('.modal');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Agregar un evento de clic para cerrar el modal
     closeModal.addEventListener('click', function(e) {
-        e.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
+        // e.preventDefault(); // Prevenir el comportamiento predeterminado del enlace
 
         // Ocultar el modal
         const modal = document.querySelector('.modal');

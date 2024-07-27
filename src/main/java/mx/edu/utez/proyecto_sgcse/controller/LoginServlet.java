@@ -20,11 +20,11 @@ public class LoginServlet extends HttpServlet {
         UserDao dao = new UserDao();
         User u = dao.getOne(email, pwd);
         int rol = u.getRol();
-        String apll_1 = u.getApll_1();
-//        System.out.println(rol);
-//        System.out.println(u.getEmail());
-//        System.out.println(u.getId());
-//        System.out.println(u.getCarrera());
+//        String apll_1 = u.getApll_1();
+////        System.out.println(rol);
+////        System.out.println(u.getEmail());
+////        System.out.println(u.getId());
+////        System.out.println(u.getCarrera());
 
         //String ruta = "index.jsp";
 

@@ -78,19 +78,18 @@
                     <p class="card-text">Fecha: 23/06/2024</p>
                     <p class="card-text">Horario: 7:00 - 7:30</p>
 
-
                     <div class="form-group">
-
-
-                        <label for="usuariosSelect">Selecciona un usuario:</label>
-                        <select class="form-select" id="usuariosSelect" name="usuariosSelect">
+                        <label for="usuariosSelect<%= user.getId() %>">Selecciona un usuario:</label>
+                        <select class="form-select" id="usuariosSelect<%= user.getId() %>" name="usuariosSelect<%= user.getId() %>">
                             <option selected>Selecciona un usuario...</option>
-                            <option value="<%= user.getId() %>"><%= user.getNombre() %></option>
+                            <%
+                                List<User> users = userDao.getAllVen();
+                                for (User u : users) {
+                            %>
+                            <option value="<%= u.getId() %>"><%= u.getNombre() %></option>
                             <% } %>
                         </select>
                     </div>
-
-
 
                     <div class="text-end mt-2">
                         <button class="btn btn-success">Asignar</button>
@@ -98,9 +97,11 @@
                 </div>
             </div>
         </div>
-        <!-- Repeat this card block for each pending appointment -->
+        <% } %>
 
 
+        <!-- Lo repito para generar la card -->
+    </div>
 </div>
 
 

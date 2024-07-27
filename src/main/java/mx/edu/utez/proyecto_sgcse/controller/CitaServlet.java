@@ -10,6 +10,7 @@ import mx.edu.utez.proyecto_sgcse.dao.TramiteDao;
 import mx.edu.utez.proyecto_sgcse.model.Cita;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 @WebServlet(name = "CitaServlet", value = "/procesarCita")
 public class CitaServlet extends HttpServlet {
@@ -21,19 +22,24 @@ public class CitaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
 
-            String fechaHora = req.getParameter("fecha_hora");
+            int tdtId = Integer.parseInt(req.getParameter("tramite"));
+            String fecha_hora = req.getParameter("fecha_hora");
             int usrId = Integer.parseInt(req.getParameter("usr_id"));
-            int vtaId = Integer.parseInt(req.getParameter("vta_id"));
-            int tdtId = Integer.parseInt(req.getParameter("tdt_id"));
+
+
+
+            System.out.println(usrId);
+            System.out.println(fecha_hora);
+
 
             Cita cita = new Cita();
-            cita.setFecha_hora(fechaHora);
-            cita.setUsr_id(usrId);
-            cita.setVta_id(vtaId);
+            cita.setFecha_hora(fecha_hora);
             cita.setTdt_id(tdtId);
+            cita.setUsr_id(usrId);
 
 
-            boolean citaProcesada = procesarCita(cita);
+
+            boolean citaProcesada = citaDao.generarCita(cita);
 
 
             if (citaProcesada) {

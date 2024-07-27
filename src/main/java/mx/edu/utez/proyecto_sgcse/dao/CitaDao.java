@@ -11,15 +11,14 @@ import java.sql.SQLException;
 
 public class CitaDao {
     public boolean generarCita(Cita c) {
-        String query = "INSERT INTO CITAS ( fecha_y_hora, usr_id, vta_id, tdt_id) VALUES ( ?, ?, ?, ?)";
+        String query = "INSERT INTO CITAS ( fecha_y_hora, usr_id, tdt_id) VALUES ( ?, ?, ?)";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
                 ps.setString(1, c.getFecha_hora());
-                ps.setInt(2, c.getVta_id());
-                ps.setInt(3, c.getVta_id());
-                ps.setInt(4, c.getTdt_id());
+                ps.setInt(2, c.getUsr_id());
+                ps.setInt(3, c.getTdt_id());
 
 
             int filasAfectadas = ps.executeUpdate();

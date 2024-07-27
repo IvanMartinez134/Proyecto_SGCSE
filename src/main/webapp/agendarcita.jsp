@@ -1,4 +1,5 @@
-<%--
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.UserDao" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %><%--
   Created by IntelliJ IDEA.
   User: jonyo
   Date: 16/07/2024
@@ -45,6 +46,9 @@
   </style>
 </head>
 <body>
+<%
+  int id = Integer.parseInt(request.getParameter("id"));
+%>
 
 <nav class="navbar navbar-expand-lg  navbar-dark bg-success mb-4">
 
@@ -107,7 +111,7 @@
 
 
 <div class="container col-lg-6 col-sm-8 col-xsm-8 mt-5">
-  <form id="agendarCitaForm" action="agendarCita" method="POST">
+  <form id="agendarCitaForm" action="procesarCita" method="POST">
     <div class="mb-3">
       <label for="tramite" class="form-label">Trámite:</label>
       <select name="tramite" id="tramite" class="form-select" onchange="actualizarDescripcion()">
@@ -138,6 +142,7 @@
       <label for="fecha_hora" class="form-label">La fecha y hora es:</label>
       <input type="text" id="fecha_hora" name="fecha_hora" class="form-control" readonly>
     </div>
+    <input type="hidden" id="usr_id" name="usr_id" value="<%=id%>">
     <button type="submit" class="btn btn-primary">Agendar Cita</button>
   </form>
 </div>
