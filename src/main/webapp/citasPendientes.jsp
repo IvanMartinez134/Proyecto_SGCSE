@@ -9,6 +9,8 @@
 <%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %>
 <%@ page import="java.util.List" %>
 <%@ page import="mx.edu.utez.proyecto_sgcse.dao.UserDao" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.CitaDao" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.Cita" %>
 
 
 <!DOCTYPE html>
@@ -67,24 +69,26 @@
 <div class="container">
     <div class="row mt-5">
         <% UserDao userDao = new UserDao();
-            List<User> vents = userDao.getAllVen();
-            for (User user : vents) { %>
+            CitaDao citaDao = new CitaDao();
+
+            List<Cita> citas = citaDao.getAllCitas();
+            for (Cita c : citas) { %>
         <div class="col-md-4 card_margin">
             <div class="card mb-3">
                 <div class="card-header-custom">Estado: Pendiente</div>
                 <div class="card-body-custom">
-                    <p class="card-title">Nombre: Jonathan Ocampo</p>
-                    <p class="card-text">Tipo de Documentación: Credencial</p>
-                    <p class="card-text">Fecha: 23/06/2024</p>
-                    <p class="card-text">Horario: 7:00 - 7:30</p>
+                    <p class="card-title">Nombre: <%=c.getAlumno()%></p>
+                    <p class="card-text">Tipo de Documentación: <%=c.getTipo_doc()%></p>
+                    <p class="card-text">Fecha: <%=c.getFecha()%></p>
+                    <p class="card-text">Horario: <%=c.getHora()%></p>
 
                     <div class="form-group">
-                        <label for="usuariosSelect<%= user.getId() %>">Selecciona un usuario:</label>
-                        <select class="form-select" id="usuariosSelect<%= user.getId() %>" name="usuariosSelect<%= user.getId() %>">
+                        <label for="usuariosSelect">Selecciona un usuario:</label>
+                        <select class="form-select" id="usuariosSelect" name="usuariosSelect">
                             <option selected>Selecciona un usuario...</option>
                             <%
-                                List<User> users = userDao.getAllVen();
-                                for (User u : users) {
+                                List<User> usersv = userDao.getAllVen();
+                                for (User u : usersv) {
                             %>
                             <option value="<%= u.getId() %>"><%= u.getNombre() %></option>
                             <% } %>

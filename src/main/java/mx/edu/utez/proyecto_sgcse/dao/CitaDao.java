@@ -6,7 +6,10 @@ import mx.edu.utez.proyecto_sgcse.utils.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CitaDao {
@@ -32,6 +35,33 @@ public class CitaDao {
 
         return fila;
     }
+
+
+    public List<Cita> getAllCitas() {
+        List<Cita> citas = new ArrayList<>();
+        String query = "select * from vista_citas";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Cita c = new Cita();
+                c.setId(rs.getInt("id"));
+                c.setFecha(rs.getString("fecha"));
+                c.setHora(rs.getString("hora"));
+                c.setAlumno(rs.getString("nombre"));
+                c.setTipo_doc(rs.getString("documento"));
+
+
+                citas.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return citas;
+    }
+
 
 
 

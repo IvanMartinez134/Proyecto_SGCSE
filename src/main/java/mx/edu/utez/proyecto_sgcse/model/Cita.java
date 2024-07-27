@@ -7,6 +7,10 @@ import java.io.Serializable;
 public class Cita implements Serializable {
     private int id;
     private String fecha_hora;
+    private String fecha;
+    private String hora;
+    private String alumno;
+    private String tipo_doc;
     private int status;
     private int usr_id;
     private int vta_id;
@@ -63,6 +67,38 @@ public class Cita implements Serializable {
 
     public void setTdt_id(int tdt_id) {
         this.tdt_id = tdt_id;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(String alumno) {
+        this.alumno = alumno;
+    }
+
+    public String getTipo_doc() {
+        return tipo_doc;
+    }
+
+    public void setTipo_doc(String tipo_doc) {
+        this.tipo_doc = tipo_doc;
     }
 }
 
