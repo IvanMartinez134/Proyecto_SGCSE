@@ -132,7 +132,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3 text-center mt-5 option-card orange">
-            <a href="#">
+            <a href="citasPendientes.jsp">
                 <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                      class="bi bi-calendar-fill" viewBox="0 0 16 16">
                     <path
