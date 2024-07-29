@@ -1,5 +1,19 @@
 
+let timeLeft = 300; // 5 minutos en segundos
+const timerElement = document.getElementById('timer');
 
+function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        window.location.href = 'timeout.jsp'; // Redirige al usuario si el tiempo se acaba
+    }
+    timeLeft--;
+}
+
+const timerInterval = setInterval(updateTimer, 1000);
 
 
 

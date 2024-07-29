@@ -132,7 +132,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3 text-center mt-5 option-card orange">
-            <a href="#" class="open-password-modal">
+            <a href="#">
                 <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                      class="bi bi-calendar-fill" viewBox="0 0 16 16">
                     <path
@@ -163,7 +163,7 @@
             <p class="des">Consultar usuarios</p>
         </div>
         <div class="col-md-3 text-center mt-5 option-card green">
-            <a href="usuarios.jsp" class="open-password-modal">
+            <a href="estadisticas.jsp">
                 <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                      class="bi bi-graph-up" viewBox="0 0 16 16">
                     <path fill-rule="evenodd"
@@ -174,6 +174,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <!-- Modal de contraseña -->
 <div class="modal col-md-6" id="modalPassword">
@@ -200,6 +203,7 @@
 </div>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="js/pageAdmin.js"></script>
 </body>
 

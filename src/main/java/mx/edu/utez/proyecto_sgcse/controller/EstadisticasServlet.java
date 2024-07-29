@@ -17,18 +17,16 @@ import java.util.Map;
 @WebServlet(name = "EstadisticasServlet", urlPatterns = {"/obtenerTramites"})
 public class EstadisticasServlet extends HttpServlet {
 
-    private TramiteDao tramiteDao = new TramiteDao();
 
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Map<String, Object>> estadisticas = tramiteDao.obtenerEstTramites();
-
-        Gson gson = new Gson();
-        String json = gson.toJson(estadisticas);
+        TramiteDao tramiteDao = new TramiteDao();
+        List<Map<String, Object>> tramites = tramiteDao.obtenerEstTramites();
 
         resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
-        out.print(json);
+        out.print(new Gson().toJson(tramites));
         out.flush();
     }
 }
+

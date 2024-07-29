@@ -2,7 +2,7 @@ package mx.edu.utez.proyecto_sgcse.model;
 
 import java.io.Serializable;
 
-public class Tramite implements Serializable {
+    public class Tramite implements Serializable {
 
     private  int id;
 
