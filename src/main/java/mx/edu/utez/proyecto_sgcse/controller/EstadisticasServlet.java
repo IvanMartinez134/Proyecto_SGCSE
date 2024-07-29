@@ -17,7 +17,7 @@ import java.util.Map;
 @WebServlet(name = "EstadisticasServlet", urlPatterns = {"/obtenerTramites"})
 public class EstadisticasServlet extends HttpServlet {
 
-
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TramiteDao tramiteDao = new TramiteDao();
         List<Map<String, Object>> tramites = tramiteDao.obtenerEstTramites();
@@ -28,5 +28,6 @@ public class EstadisticasServlet extends HttpServlet {
         out.print(new Gson().toJson(tramites));
         out.flush();
     }
+
 }
 
