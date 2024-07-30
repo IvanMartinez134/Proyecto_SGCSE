@@ -110,7 +110,7 @@
                 const values = Object.values(data);
 
                 new Chart(ctx, {
-                    type: 'line',
+                    type: 'bar',
                     data: {
                         labels: labels,
                         datasets: [{

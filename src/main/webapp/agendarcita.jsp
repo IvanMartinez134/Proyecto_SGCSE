@@ -46,9 +46,6 @@
   </style>
 </head>
 <body>
-<%
-  int id = Integer.parseInt(request.getParameter("id"));
-%>
 
 <nav class="navbar navbar-expand-lg  navbar-dark bg-success mb-4">
 
@@ -142,7 +139,7 @@
       <label for="fecha_hora" class="form-label">La fecha y hora es:</label>
       <input type="text" id="fecha_hora" name="fecha_hora" class="form-control" readonly>
     </div>
-    <input type="hidden" id="usr_id" name="usr_id" value="<%=id%>">
+    <input type="hidden" id="usr_id" name="usr_id" value="${sessionScope.user.id}">
     <button type="submit" class="btn btn-primary">Agendar Cita</button>
   </form>
 </div>
