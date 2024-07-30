@@ -17,26 +17,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas de Trámites</title>
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
-    <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
     <style>
-        #chart {
-            width: 80%; /* Ajusta el ancho según el diseño deseado */
-            height: 500px; /* Ajusta la altura según el diseño deseado */
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        .chart-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        h1 {
-            margin-bottom: 20px;
+        canvas {
+            width: 100% !important;
+            height: auto !important;
         }
     </style>
     <link rel="stylesheet" href="css/estadisticas.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
 
 
-<nav class="navbar navbar-expand-lg  navbar-dark bg-success mb-4">
+<nav class=" navbar navbar-expand-lg  navbar-dark bg-success">
 
     <div class="container-fluid m-0 p-0">
         <div class="navbar-logo-container">
@@ -48,9 +51,9 @@
 
 
 
-        <h3 class="text-white navbar-title  d-lg me-auto">
+        <h5 class="text-white navbar-title  d-lg me-auto">
             Estadisticas
-        </h3>
+        </h5>
 
 
 
@@ -78,10 +81,10 @@
                 justify-content-between px-0 " data-bs-theme="success">
                 <ul class="navbar-nav fs-5 justify-content-end">
                     <li class="nav-item p-lg-2 p-2 px-4 py-md-3">
-                        <a href="" class="nav-link  fs-6 d-lg "><i class="bi bi-person i"></i>Mi Perfil</a>
+                        <a href="perfil.jsp" class="nav-link  fs-6 d-lg "><i class="bi bi-person i"></i>Mi Perfil</a>
                     </li >
                     <li class="nav-item p-lg-2 p-2 px-4  py-md-3 c">
-                        <a href="" class="nav-link  fs-6 d-lg  "><i class="bi bi-box-arrow-right i"></i>Cerrar sesion</a>
+                        <a href="index.jsp" class="nav-link  fs-6 d-lg  "><i class="bi bi-box-arrow-right i"></i>Cerrar sesion</a>
                     </li>
                 </ul>
 
@@ -95,112 +98,72 @@
 </nav>
 
 
+<div class="container mt-5">
+    <h4>Trámites</h4>
+    <canvas id="myChart"></canvas>
+    <script>
+        fetch('/pruebaGit_war_exploded/obtenerTramites')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const labels = Object.keys(data);
+                const values = Object.values(data);
 
-<div class="chart-container">
-    <h3>Trámites por mes</h3>
-    <div id="chart"></div>
-    <div id="legend" class="chart-legend">
-        <div class="legend-item">
-            <span class="legend-color" style="background-color: rgba(75, 192, 192, 0.4) !important;"></span>
-            Inscripcion
-        </div>
-        <div class="legend-item">
-            <span class="legend-color" style="background-color: rgba(192, 75, 75, 0.4) !important;"></span>
-            Reinscripcion
-        </div>
-        <div class="legend-item">
-            <span class="legend-color" style="background-color: rgba(75, 75, 192, 0.4) !important;"></span>
-            Certificado
-        </div>
-    </div>
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Cantidad de Trámites',
+                            data: values,
+                            borderColor: '#4bc0c0',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderWidth: 2, // Grosor de la línea
+                            tension: 0.6 // Ajusta la curvatura de la línea (0 es una línea recta)
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.dataset.label + ': ' + context.raw;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Tipo de Trámite'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Cantidad'
+                                },
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error al cargar datos:', error));
+    </script>
+
+    <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 </div>
 
-<script>
-    console.log('Vamos');
 
-    fetch('/pruebaGit_war_exploded/obtenerTramites')
-        .then(response => response.json())
-        .then(data => {
-            console.log('Datos recibidos:', data);
-
-            if (!Array.isArray(data) || data.length === 0) {
-                console.error('No se recibieron datos válidos');
-                return;
-            }
-
-            // Procesa los datos para el gráfico
-            const seriesData = {};
-            data.forEach(item => {
-                if (item.fecha && item.tipo_de_tramite && item.cantidad !== null) {
-
-                    // Convertir la fecha de cadena a timestamp en segundos
-                    const timestamp = new Date(item.fecha).getTime() / 1000;
-                    console.log(`Procesando: ${item.fecha}, ${timestamp}, ${item.tipo_de_tramite}, ${item.cantidad}`);
-                    if (!seriesData[item.tipo_de_tramite]) {
-                        seriesData[item.tipo_de_tramite] = [];
-                    }
-                    seriesData[item.tipo_de_tramite].push({ time: timestamp, value: item.cantidad });
-                } else {
-                    console.error('Datos inválidos:', item);
-                }
-            });
-
-            // Verifica los datos de las series antes de crear el gráfico
-            console.log('Series de datos procesadas:', seriesData);
-
-            // Configura el gráfico
-            const chart = LightweightCharts.createChart(document.getElementById('chart'), {
-                width: document.getElementById('chart').clientWidth,
-                height: document.getElementById('chart').clientHeight,
-                layout: {
-                    textColor: '#d1d4dc',
-                    backgroundColor: '#000000',
-                },
-                grid: {
-                    vertLines: {
-                        color: 'rgba(42, 46, 57, 0.5)',
-                    },
-                    horzLines: {
-                        color: 'rgba(42, 46, 57, 0.5)',
-                    },
-                },
-            });
-
-            const colors = {
-                'Inscripción': { topColor: 'rgba(75, 192, 192, 0.4)', bottomColor: 'rgba(75, 192, 192, 0.1)', lineColor: 'rgb(75, 192, 192)' },
-                'Reinscripción': { topColor: 'rgba(192, 75, 75, 0.4)', bottomColor: 'rgba(192, 75, 75, 0.1)', lineColor: 'rgb(192, 75, 75)' },
-                'Certificado': { topColor: 'rgba(75, 75, 192, 0.4)', bottomColor: 'rgba(75, 75, 192, 0.1)', lineColor: 'rgb(75, 75, 192)' }
-            };
-
-            // Agrega una serie para cada tipo de trámite
-            Object.keys(seriesData).forEach(tipo => {
-                const areaSeries = chart.addAreaSeries({
-                    topColor: colors[tipo] ? colors[tipo].topColor : 'rgba(0, 0, 0, 0.4)',
-                    bottomColor: colors[tipo] ? colors[tipo].bottomColor : 'rgba(0, 0, 0, 0.1)',
-                    lineColor: colors[tipo] ? colors[tipo].lineColor : 'rgb(0, 0, 0)',
-                    lineWidth: 2
-                });
-                areaSeries.setData(seriesData[tipo]);
-            });
-
-            // Configura el formateador del eje X para incluir la hora sin los segundos
-
-
-            chart.timeScale().applyOptions({
-                timeVisible: true,
-                secondsVisible: false,
-                tickMarkFormatter: (timestamp, tickMarkType, locale) => {
-                    const date = new Date(timestamp * 1000);
-                    const options = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-                    return new Intl.DateTimeFormat('es-ES', options).format(date);
-                },
-            });
-
-        })
-        .catch(error => {
-            console.error('Error al obtener los datos:', error);
-        });
-</script>
 </body>
 </html>
 

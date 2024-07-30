@@ -20,9 +20,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Citas Pendientes | Administrador</title>
-    <link rel="stylesheet" href="css/citapen.css">
 
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/citapen.css">
+
 
 
 </head>
@@ -35,7 +36,7 @@
         <div class="navbar-logo-container">
             <img src="img/utezlogo.png" alt="Logo" class="navbar-logo m-0 p-0">
         </div>
-        <h3 class="text-white navbar-title d-lg me-auto">Estadisticas</h3>
+        <h3 class="text-white navbar-title d-lg me-auto">Citas Pendientes</h3>
         <button class="mr-4 navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu">
             <div></div>
             <div></div>

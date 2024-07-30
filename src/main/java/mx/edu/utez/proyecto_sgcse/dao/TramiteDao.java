@@ -35,25 +35,27 @@ public class TramiteDao {
         return actualizado;
     }
 
-    public List<Map<String, Object>> obtenerEstTramites() {
-        List<Map<String, Object>> estadisticas = new ArrayList<>();
-        String query = "SELECT DATE(c.fecha_y_hora) AS fecha, t.descripcion AS tipo_de_tramite, COUNT(c.id) AS cantidad FROM CITAS c JOIN TIPOS_DE_TRAMITES t ON c.tdt_id = t.id GROUP BY DATE(c.fecha_y_hora), t.descripcion";
+
+    public Map<String, Integer> obtenerEstTramites() {
+        Map<String, Integer> resultados = new HashMap<>();
+        String query = "SELECT tipo.decripcion AS tipo_de_tramite, COUNT(*) AS cantidad FROM CITAS c JOIN TIPOS_DE_TRAMITES tipo ON c.tdt_id = tipo.id WHERE c.status = true GROUP BY tipo.decripcion ORDER BY tipo.decripcion";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
              ResultSet rs = ps.executeQuery()) {
-
             while (rs.next()) {
-                Map<String, Object> estadistica = new HashMap<>();
-                estadistica.put("fecha", rs.getString("fecha"));
-                estadistica.put("tipo_de_tramite", rs.getString("tipo_de_tramite"));
-                estadistica.put("cantidad", rs.getInt("cantidad"));
-                estadisticas.add(estadistica);
+                String tipoDeTramite = rs.getString("tipo_de_tramite");
+                int cantidad = rs.getInt("cantidad");
+                resultados.put(tipoDeTramite, cantidad);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return estadisticas;
+        return resultados;
     }
+
+
+
+
 }
