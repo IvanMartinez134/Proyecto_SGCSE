@@ -36,8 +36,8 @@ public class CitaDao {
         return fila;
     }
 
-    public boolean asignarCita(int id,int vta_id) {
-        String query = "UPDATE cita SET vta_id = ? WHERE id = ?";
+    public boolean asignarCita(int vta_id,int id) {
+        String query = "UPDATE citas SET vta_id = ? WHERE id = ?";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();

@@ -81,8 +81,9 @@
                     <p class="card-text">Tipo de Documentación: <%=c.getTipo_doc()%></p>
                     <p class="card-text">Fecha: <%=c.getFecha()%></p>
                     <p class="card-text">Horario: <%=c.getHora()%></p>
-
+                    <form method="get" action="asignarCita">
                     <div class="form-group">
+                        <input type="hidden" name="id" value="<%=c.getId()%>">
                         <label for="usuariosSelect">Selecciona un usuario:</label>
                         <select class="form-select" id="usuariosSelect" name="usuariosSelect">
                             <option selected>Selecciona un usuario...</option>
@@ -94,34 +95,21 @@
                             <% } %>
                         </select>
                     </div>
+                        <div class="text-end mt-2">
+                            <input type="submit" value="Asignar" class="btn btn-success">
+                        </div>
+                    </form>
 
-                    <div class="text-end mt-2">
-                        <a href="#" onclick="asignarCita('<%=c.getId()%>', 'usuariosSelect<%= index %>')" >
-                            <button class="btn btn-success" >Asignar</button>
-                        </a>
-
-                    </div>
                 </div>
             </div>
         </div>
-        <% index++;} %>
+        <% } %>
 
 
         <!-- Lo repito para generar la card -->
     </div>
 </div>
 
-<script type="text/javascript">
-    function asignarCita(citaId, selectId) {
-        var select = document.getElementById(selectId);
-        var usuarioId = select.value;
-        if (usuarioId !== "Selecciona un usuario...") {
-            window.location.href = 'asignarCita?id=' + citaId + '&vta_id=' + usuarioId;
-        } else {
-            alert("Por favor, selecciona un usuario.");
-        }
-    }
-</script>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/citap.js"></script>

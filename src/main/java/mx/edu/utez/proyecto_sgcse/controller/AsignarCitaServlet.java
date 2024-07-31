@@ -16,9 +16,17 @@ public class AsignarCitaServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        int vta_id = Integer.parseInt(request.getParameter("vta_id"));
+        int vta_id = Integer.parseInt(request.getParameter("usuariosSelect"));
 
-        citaDao.asignarCita(id, vta_id);
+        System.out.println(id);
+        System.out.println(vta_id);
+
+        boolean updated = citaDao.asignarCita(vta_id,id);
+
+        if (updated) {
+            response.sendRedirect("citasPendientes.jsp");
+        }
+
 
     }
 

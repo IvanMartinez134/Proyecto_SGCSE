@@ -203,7 +203,7 @@ public class UserDao {
 
     public List<User> getAllVen() {
         List<User> vents = new ArrayList<>();
-        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v\n" +
+        String query = "select v.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v\n" +
                 "inner join usuarios u\n" +
                 "on u.id = v.usr_id\n" +
                 "inner join turnos t\n" +
