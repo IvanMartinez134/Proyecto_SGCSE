@@ -16,7 +16,6 @@
   <title>Agendar Cita</title>
   <!-- Enlace a Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
   <link rel="stylesheet" href="css/agendarcita.css">
   <style>
     body {
@@ -140,14 +139,20 @@
       <input type="text" id="fecha_hora" name="fecha_hora" class="form-control" readonly>
     </div>
     <input type="hidden" id="usr_id" name="usr_id" value="${sessionScope.user.id}">
+
     <button type="submit" class="btn btn-primary">Agendar Cita</button>
+
   </form>
 </div>
 
 <!-- Script de Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+
+
+
   function actualizarDescripcion() {
     var tramiteSeleccionado = document.getElementById("tramite").value;
     var descripcionInput = document.getElementById("descripcion");
@@ -158,10 +163,10 @@
         descripcionInput.value = "Descripción para Constancia";
         break;
       case '2':
-        descripcionInput.value = "Descripción para Trámite 2";
+        descripcionInput.value = "Descripción para Inscripcion";
         break;
       case '3':
-        descripcionInput.value = "Descripción para Trámite 3";
+        descripcionInput.value = "Descripción para Reinscripcion";
         break;
       default:
         descripcionInput.value = "";

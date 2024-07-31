@@ -36,10 +36,53 @@ public class CitaDao {
         return fila;
     }
 
+    public boolean asignarCita(int id,int vta_id) {
+        String query = "UPDATE cita SET vta_id = ? WHERE id = ?";
+        boolean fila = false;
 
-    public List<Cita> getAllCitas() {
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, vta_id);
+            ps.setInt(2, id);
+            fila = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return fila;
+    }
+
+
+
+
+    public List<Cita> getAllCitasPendientes() {
         List<Cita> citas = new ArrayList<>();
-        String query = "select * from vista_citas";
+        String query = "select * from ver_citas_pendientes";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Cita c = new Cita();
+                c.setId(rs.getInt("id"));
+                c.setFecha(rs.getString("fecha"));
+                c.setHora(rs.getString("hora"));
+                c.setAlumno(rs.getString("nombre"));
+                c.setTipo_doc(rs.getString("documento"));
+
+
+                citas.add(c);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return citas;
+    }
+
+    public List<Cita> getAllCitasAsignadas() {
+        List<Cita> citas = new ArrayList<>();
+        String query = "select * from ver_citas_asignadas";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);

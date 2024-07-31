@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: jonyo
@@ -69,7 +70,8 @@
         <% UserDao userDao = new UserDao();
             CitaDao citaDao = new CitaDao();
 
-            List<Cita> citas = citaDao.getAllCitas();
+            List<Cita> citas = citaDao.getAllCitasPendientes();
+            int index = 0;
             for (Cita c : citas) { %>
         <div class="col-md-4 card_margin">
             <div class="card mb-3">
@@ -94,19 +96,32 @@
                     </div>
 
                     <div class="text-end mt-2">
-                        <button class="btn btn-success">Asignar</button>
+                        <a href="#" onclick="asignarCita('<%=c.getId()%>', 'usuariosSelect<%= index %>')" >
+                            <button class="btn btn-success" >Asignar</button>
+                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
-        <% } %>
+        <% index++;} %>
 
 
         <!-- Lo repito para generar la card -->
     </div>
 </div>
 
-
+<script type="text/javascript">
+    function asignarCita(citaId, selectId) {
+        var select = document.getElementById(selectId);
+        var usuarioId = select.value;
+        if (usuarioId !== "Selecciona un usuario...") {
+            window.location.href = 'asignarCita?id=' + citaId + '&vta_id=' + usuarioId;
+        } else {
+            alert("Por favor, selecciona un usuario.");
+        }
+    }
+</script>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/citap.js"></script>

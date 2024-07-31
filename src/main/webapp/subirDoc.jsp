@@ -106,15 +106,19 @@
             </ul>
         </div>  --%>
 
-        <label for="pdfFile">Selecciona un PDF:</label>
-        <input type="file" name="pdfFile" id="pdfFile" accept="aplication/pdf">
+        <label for="archivo">Selecciona un PDF:</label>
+        <input type="file" id="archivo" name="archivo" accept="aplication/pdf">
         <div class="text-center">
             <button type="submit" class="btn btn-success">Subir Archivos</button>
         </div>
 
     </form>
 
-    <div id="timer">5:00</div>
+
+
+
+
+    <div id="timer" class="fs-3">5:00</div>
 
 
 

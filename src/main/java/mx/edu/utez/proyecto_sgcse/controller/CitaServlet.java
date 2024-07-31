@@ -42,11 +42,11 @@ public class CitaServlet extends HttpServlet {
             boolean citaProcesada = citaDao.generarCita(cita);
 
 
-            if (citaProcesada) {
-                resp.sendRedirect("success.jsp");
-            } else {
-                resp.sendRedirect("error.jsp");
-            }
+                if (citaProcesada) {
+                    resp.sendRedirect("subirDoc.jsp");
+                } else {
+                    resp.sendRedirect("error.jsp");
+                }
         } catch (Exception e) {
             e.printStackTrace();
             throw new ServletException("Error al procesar la cita", e);
