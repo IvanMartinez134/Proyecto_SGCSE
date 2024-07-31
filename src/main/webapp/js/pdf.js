@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize aside to be closed on page load
     aside.classList.remove("abrir");
 
+
     openCloseButton.addEventListener("click", (e) => {
         aside.classList.toggle("abrir");
-        e.stopPropagation(); // Prevent event from bubbling up to the document
+        e.stopPropagation();
     });
 
     // Close aside when clicking outside of it

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.io.File" %><%--
   Created by IntelliJ IDEA.
   User: jonyo
   Date: 16/07/2024
@@ -34,9 +34,9 @@
 
 
 
-        <h5 class="text-white navbar-title  d-lg me-auto">
+        <h3 class="text-white navbar-title  d-lg me-auto">
             Ver PDF
-        </h5>
+        </h3>
 
 
 
@@ -80,15 +80,55 @@
     </div>
 </nav>
 
-<div class="cont_pdf mt-4">
 
-    <% String archivo = request.getParameter("archivo"); %>
-    <object class="pdf_viewer" type="application/pdf" data="<%= request.getContextPath() %>/verPDF?archivo=<%= archivo %>"></object>
+<div class="container">
+    <%
+        // Obtener la ruta del archivo desde la sesión
+        String pdfPath = (String) session.getAttribute("pdfPath");
+        if (pdfPath != null) {
+    %>
+    <div class="embed-responsive embed-responsive-16by9  text-center justify-content-center mt-5">
+        <object class="embed-responsive-item" data="<%= request.getContextPath() + "/" + pdfPath %>" type="application/pdf" width="80%" height="600px">
+            <p>Tu navegador no admite la visualización de archivos PDF. Puedes descargar el archivo <a href="<%= request.getContextPath() + "/" + pdfPath %>">aquí</a>.</p>
+        </object>
+    </div>
+    <%
+    } else {
+    %>
+    <p>No se ha encontrado el archivo PDF.</p>
+    <%
+        }
+    %>
 </div>
 
 
-</body>
+<script>
+
+    ocument.getElementById('form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        fetch('subirArchivosJS', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.mensaje === 'Archivo subido exitosamente') {
+                    window.location.href = 'verpdf.jsp';
+                } else {
+                    alert('Error al subir el archivo');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+</script>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/pdf.js"></script>
+
+</body>
+
+
 </html>

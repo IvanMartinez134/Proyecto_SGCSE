@@ -58,9 +58,9 @@
 
 
 
-    <h3 class="text-white navbar-title  d-lg me-auto">
+    <h1 class="text-white navbar-title  d-lg me-auto">
       Agendar cita
-    </h3>
+    </h1>
 
 
 

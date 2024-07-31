@@ -1,61 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Función para llenar el selector de carreras según la división académica seleccionada
-
-
-    function llenarCarreras(divisionId) {
-        var carreraSelect = document.getElementById('carrera');
-
-
-
-        carreraSelect.innerHTML = '<option value="" disabled selected>Selecciona una carrera</option>';
-
-        // Realizar solicitud AJAX al servlet para obtener las carreras
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'ObtenerCarrerasServlet?divisionId=' + encodeURIComponent(divisionId), true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var carreras = JSON.parse(xhr.responseText);
-
-
-
-                    // Llenar el selector de carreras con las opciones recibidas
-
-
-                    carreras.forEach(function(carrera) {
-                        var option = document.createElement('option');
-                        option.value = carrera.id;
-                        option.textContent = carrera.nombre;
-                        carreraSelect.appendChild(option);
-                    });
-                } else {
-                    console.error('Error al obtener las carreras:', xhr.status, xhr.statusText);
-                }
-            }
-        };
-        xhr.send();
-    }
-
-    // Evento para manejar el cambio en el selector de división académica
-
-
-    var divisionAcademicaSelect = document.getElementById('divisionAcademica');
-    divisionAcademicaSelect.addEventListener('change', function() {
-        var divisionSeleccionada = this.value;
-        llenarCarreras(divisionSeleccionada);
-    });
-
-    // Validaciones en tiempo real
-
-
-
     var correoInput = document.getElementById("correo");
     var contrasenaInput = document.getElementById("contrasena");
     var repetirContrasenaInput = document.getElementById("repetirContrasena");
     var alerta = document.getElementById("alerta");
 
     correoInput.addEventListener("input", function() {
-        if (!correoInput.value.includes("@")) {
+        if (!correoInput.value.includes("@utez.edu.mx")) {
             alerta.textContent = "*Ingrese una dirección de correo electrónico válida";
         } else {
             alerta.textContent = "";
@@ -78,9 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
-
-
     var registroForm = document.getElementById("registroForm");
     registroForm.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -91,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var contrasena = contrasenaInput.value;
         var repetirContrasena = repetirContrasenaInput.value;
 
-        if (!correo.includes("@")) {
+        if (!correo.includes("@utez.edu.mx")) {
             alerta.textContent = "*Ingrese una dirección de correo electrónico válida";
             return;
         }
@@ -104,9 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        this.submit();
+        return;
     });
 });
-
-
-

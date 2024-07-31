@@ -120,7 +120,10 @@ body {
 
 
 
-
+.timer{
+    text-align: end;
+    margin-right: 20px;
+}
 
 .documentacion {
     background-color: #0d4ea2b9;
@@ -170,6 +173,8 @@ p {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.387);
 
 }
+
+
 
 
 @media (max-width: 500px){

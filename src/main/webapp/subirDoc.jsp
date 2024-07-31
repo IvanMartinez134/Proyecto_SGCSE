@@ -84,20 +84,27 @@
 
 
 <div class="container col-lg-8 col-sm-10 ">
-    <div class="documentacion">
-        <h2>Documentación</h2>
-        <p>Recuerda subir todos tus archivos escaneados y en formato PDF.</p>
-        <ul>
-            <li><strong>Constancia simple:</strong> Es el documento donde se observan…</li>
-            <li><strong>Comprobante de domicilio:</strong> Es el documento donde se establece el estado, el
-                municipio y la calle donde habitas.</li>
-            <li><strong>Comprobante de pago:</strong> En este documento se debe de observar tu matrícula, nombre y
-                fecha para ser validado.</li>
-        </ul>
+    <div class="justify-content-between align-items-center">
+        <div id="timer" class="fs-3 timer">0:50</div>
+        <div class="documentacion mt-3">
+            <h2>Documentación</h2>
+            <p>Recuerda subir todos tus archivos escaneados y en formato PDF.</p>
+            <ul>
+                <li><strong>Constancia simple:</strong> Es el documento donde se observan…</li>
+                <li><strong>Comprobante de domicilio:</strong> Es el documento donde se establece el estado, el
+                    municipio y la calle donde habitas.</li>
+                <li><strong>Comprobante de pago:</strong> En este documento se debe de observar tu matrícula, nombre y
+                    fecha para ser validado.</li>
+            </ul>
+        </div>
+
     </div>
 
+
+
+
     <!-- subirDoc.jsp -->
-    <form action="subirDoc" method="post" enctype="multipart/form-data">
+
        <%-- <div class="drag-drop" id="drag-drop-area">
             <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
             <input type="file" id="file-input" name="file" multiple>
@@ -106,27 +113,57 @@
             </ul>
         </div>  --%>
 
-        <label for="archivo">Selecciona un PDF:</label>
-        <input type="file" id="archivo" name="archivo" accept="aplication/pdf">
-        <div class="text-center">
-            <button type="submit" class="btn btn-success">Subir Archivos</button>
-        </div>
 
+
+    <form id="form" action="subirArchivosJS" method="post" enctype="multipart/form-data">
+        <label for="archivo">Selecciona un PDF:</label>
+        <input type="file" id="archivo" name="archivo" accept="application/pdf" required>
+        <div class="text-center">
+            <button type="submit" onclick="uploadFile()" class="btn btn-success mt-3">Subir Archivos</button>
+        </div>
     </form>
 
-
-
-
-
-    <div id="timer" class="fs-3">5:00</div>
-
-
+    <div id="msg" class="alert alert-success alert-dismissible fade show" role="alert" hidden></div>
 
 </div>
 
-<!-- Script de Bootstrap -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function uploadFile() {
+        const form = document.getElementById("form");
+        const formData = new FormData(form);
+
+        fetch('subirArchivosJS', {
+            method: 'POST',
+            body: formData
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            console.log("Respuesta: ", data);
+
+            let msg = document.getElementById("msg");
+            msg.hidden = false;
+            msg.innerHTML = `<strong>${data.mensaje}</strong>`;
+            let msg_button = document.createElement("button");
+            msg_button.setAttribute("type", "button");
+            msg_button.setAttribute("class", "btn-close");
+            msg_button.setAttribute("data-bs-dismiss", "alert");
+            msg_button.setAttribute("aria-label", "Close");
+            msg.appendChild(msg_button);
+
+        }).catch(error => {
+            console.log("Error al subir: ", error);
+        });
+
+
+        return false;
+    }
+</script>
 <script src="js/subirDoc.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

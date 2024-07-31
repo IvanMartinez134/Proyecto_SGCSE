@@ -22,31 +22,9 @@
     <link rel="stylesheet" href="css/registroEst.css">
     <link rel="icon" type="image/png" href="img/buscar.png">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript"  defer>
-        $(document).ready(function() {
-            $('#division').change(function() {
-                var division = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'obtenerCarreras',
-                    data: { 'division': division },
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#carrera').empty();
-                        $('#carrera').append('<option value="">Seleccione una carrera</option>');
-                        $.each(data, function(index, carrera) {
-                            $('#carrera').append('<option value="' + carrera.id + '">' + carrera.nombre + '</option>');
-                        });
-                    },
-                    error: function() {
-                        alert('Error al obtener las carreras.');
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="js/registroEst.js" defer></script>
+
 </head>
 
 <body class="d-flex justify-content-center align-items-center vh-100">
@@ -125,6 +103,8 @@
                     </select>
                 </div>
             </div>
+
+
             <div class="mb-3 row">
                 <label for="contrasena" class="col-sm-3 col-form-label">Contraseña: </label>
                 <div class="col-sm-9">
@@ -160,6 +140,33 @@
     </div>
 </section>
 
+
+<script type="text/javascript"  defer>
+    $(document).ready(function() {
+        $('#division').change(function() {
+            var division = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: 'obtenerCarreras',
+                data: { 'division': division },
+                dataType: 'json',
+                success: function(data) {
+                    $('#carrera').empty();
+                    $('#carrera').append('<option value="">Seleccione una carrera</option>');
+                    $.each(data, function(index, carrera) {
+                        $('#carrera').append('<option value="' + carrera.id + '">' + carrera.nombre + '</option>');
+                    });
+                },
+                error: function() {
+                    alert('Error al obtener las carreras.');
+                }
+            });
+        });
+    });
+</script>
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
@@ -169,7 +176,7 @@
     <% if (session.getAttribute("registroExitoso") != null && (boolean) session.getAttribute("registroExitoso")) { %>
     swal({
         title: "Registro exitoso!",
-        text: "Si deseas ver el registro, da click en Ver Alumnos!",
+        text: "",
         icon: "success",
         button: "Listo",
     });
@@ -180,7 +187,7 @@
 </script>
 
 
-<script src="js/registroEst.js"></script>
+
 
 
 </body>

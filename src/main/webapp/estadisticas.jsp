@@ -51,9 +51,9 @@
 
 
 
-        <h5 class="text-white navbar-title  d-lg me-auto">
+        <h3 class="text-white navbar-title  d-lg me-auto">
             Estadisticas
-        </h5>
+        </h3>
 
 
 

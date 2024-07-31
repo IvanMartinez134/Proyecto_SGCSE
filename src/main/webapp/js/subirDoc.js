@@ -1,8 +1,9 @@
 
-let timeLeft = 100; // 5 minutos en segundos
+let timeLeft = 50; // en segundos
 const timerElement = document.getElementById('timer');
 
 function updateTimer() {
+
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
@@ -15,8 +16,6 @@ function updateTimer() {
 }
 
 const timerInterval = setInterval(updateTimer, 1000);
-
-
 
 
 
