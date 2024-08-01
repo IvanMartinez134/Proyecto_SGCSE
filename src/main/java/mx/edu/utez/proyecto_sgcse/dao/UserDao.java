@@ -147,11 +147,39 @@ public class UserDao {
 
     public User consVen(int id) {
         User u = null;
-        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas inner join usuarios on u.id = v.usr_id inner join turnos on t.id = v.tro_id WHERE u.id = ?";
+        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v inner join usuarios u on u.id = v.usr_id inner join turnos t on t.id = v.tro_id WHERE u.id = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    u = new User();
+                    u.setId(rs.getInt("id"));
+                    u.setNombre(rs.getString("nombre"));
+                    u.setApll_1(rs.getString("apll_1"));
+                    u.setApll_2(rs.getString("apll_2"));
+                    u.setEmail(rs.getString("email"));
+                    u.setTurno(rs.getString("tipo"));
+                    u.setTel(rs.getString("tel"));
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return u;
+    }
+
+    public User getOneVen(int vta_id) {
+        User u = null;
+        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v inner join usuarios u on u.id = v.usr_id inner join turnos t on t.id = v.tro_id WHERE v.id = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, vta_id);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {

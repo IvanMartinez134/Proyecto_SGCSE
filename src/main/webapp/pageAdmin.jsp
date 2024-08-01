@@ -142,7 +142,7 @@
             <p class="des">Citas pendientes</p>
         </div>
         <div class="col-md-3 text-center mt-5 option-card red">
-            <a href="citasPendientes.jsp" class="open-password-modal">
+            <a href="consultarCitas.jsp" >
                 <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor"
                      class="bi bi-calendar-range" viewBox="0 0 16 16">
                     <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1M1 9h4a1 1 0 0 1 0 2H1z" />

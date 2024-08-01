@@ -94,6 +94,7 @@ public class CitaDao {
                 c.setHora(rs.getString("hora"));
                 c.setAlumno(rs.getString("nombre"));
                 c.setTipo_doc(rs.getString("documento"));
+                c.setVta_id(rs.getInt("vta_id"));
 
 
                 citas.add(c);
