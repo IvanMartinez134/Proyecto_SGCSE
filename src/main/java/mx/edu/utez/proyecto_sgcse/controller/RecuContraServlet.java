@@ -18,7 +18,7 @@ public class RecuContraServlet extends HttpServlet {
         UserDao dao = new UserDao();
         User u = dao.getOne(id);
         if (u.getCody().equals(cody)) {
-            resp.sendRedirect("http://localhost:8080/Proyecto_SGCSE_war_exploded/actualizarContra?id="+id);
+            resp.sendRedirect("http://localhost:8080/pruebaGit_war_exploded/actualizarContra?id="+id);
 
         }else {
             req.getSession().setAttribute("mensaje", "El correo no esta registrado");

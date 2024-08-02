@@ -77,13 +77,18 @@
         <div class="col-md-4 card_margin d-sm col-10">
             <div class="card mb-3">
                 <%User u = userDao.getOneVen(c.getVta_id());%>
-                <div class="card-header-custom">Estado: Asignado</div>
+                <%if(c.getEtsado() == 1){%>
+                <div class="card-header-custom">Estado: Asignada</div>
+                <%} else if (c.getEtsado() == 0) {%>
+                <div class="card-header-custom">Estado: Terminada</div>
+                <%}%>
                 <div class="card-body-custom">
                     <p class="card-title">Nombre: <%=c.getAlumno()%></p>
                     <p class="card-text">Tipo de Documentación: <%=c.getTipo_doc()%></p>
                     <p class="card-text">Fecha: <%=c.getFecha()%></p>
                     <p class="card-text">Horario: <%=c.getHora()%></p>
                     <p class="card-text">Encargado: <%=u.getNombre() + " " + u.getApll_1() + " " + u.getApll_2()%></p>
+
 
                 </div>
             </div>

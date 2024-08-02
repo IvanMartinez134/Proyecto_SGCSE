@@ -28,7 +28,7 @@ public class GenerarCodyServlet extends HttpServlet {
             dao.updateCody(email,u);
             try {
                 new GmailSender().sendMail(email,"Recupera tu contraseña",
-                        "<a href=\"http://localhost:8080/Proyecto_SGCSE_war_exploded/recuContra?cody="+cody+"&id="+ u.getId()+"\">Recuperar Contraseña</a>");
+                        "<a href=\"http://localhost:8080/pruebaGit_war_exploded/recuContra?cody="+cody+"&id="+ u.getId()+"\">Recuperar Contraseña</a>");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

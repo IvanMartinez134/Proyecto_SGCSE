@@ -15,6 +15,7 @@ public class Cita implements Serializable {
     private int usr_id;
     private int vta_id;
     private int tdt_id;
+    private int etsado;
 
 
     public Cita() {
@@ -100,6 +101,15 @@ public class Cita implements Serializable {
     public void setTipo_doc(String tipo_doc) {
         this.tipo_doc = tipo_doc;
     }
+
+    public int getEtsado() {
+        return etsado;
+    }
+
+    public void setEtsado(int etsado) {
+        this.etsado = etsado;
+    }
 }
+
 
 

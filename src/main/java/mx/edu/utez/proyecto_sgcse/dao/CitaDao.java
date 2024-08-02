@@ -95,6 +95,7 @@ public class CitaDao {
                 c.setAlumno(rs.getString("nombre"));
                 c.setTipo_doc(rs.getString("documento"));
                 c.setVta_id(rs.getInt("vta_id"));
+                c.setEtsado(rs.getInt("status"));
 
 
                 citas.add(c);
