@@ -16,6 +16,8 @@
     <title>Subir Documentos</title>
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+
+
     <link rel="stylesheet" href="css/subirDoc.css">
 
 </head>
@@ -23,7 +25,7 @@
 <body>
 
 
-<nav class="navbar navbar-expand-lg  navbar-dark bg-success mb-4">
+<nav class=" navbar navbar-expand-lg  navbar-dark bg-success">
 
     <div class="container-fluid m-0 p-0">
         <div class="navbar-logo-container">
@@ -35,8 +37,8 @@
 
 
 
-        <h3 class="text-white navbar-title  d-lg me-auto">
-            Subir documentos
+        <h3 class="text-white navbar-title  d-lg  me-auto">
+            Subir Doc
         </h3>
 
 
@@ -83,7 +85,7 @@
 
 
 
-<div class="container col-lg-8 col-sm-10 ">
+<div class="container col-lg-8 col-sm-10 d-sm mt-5">
     <div class="justify-content-between align-items-center">
         <div id="timer" class="fs-3 timer">0:50</div>
         <div class="documentacion mt-3">

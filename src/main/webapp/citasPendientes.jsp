@@ -23,6 +23,8 @@
     <title>Citas Pendientes | Administrador</title>
 
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+
     <link rel="stylesheet" href="css/citapen.css">
 
 
@@ -66,14 +68,14 @@
 
 
 <div class="container">
-    <div class="row mt-5">
+    <div class="row mt-5 justify-content-center">
         <% UserDao userDao = new UserDao();
             CitaDao citaDao = new CitaDao();
 
             List<Cita> citas = citaDao.getAllCitasPendientes();
             int index = 0;
             for (Cita c : citas) { %>
-        <div class="col-md-4 card_margin">
+        <div class="col-md-4 card_margin d-sm col-10">
             <div class="card mb-3">
                 <div class="card-header-custom">Estado: Pendiente</div>
                 <div class="card-body-custom">

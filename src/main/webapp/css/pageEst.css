@@ -356,7 +356,7 @@ body {
         object-fit: contain;
     }
 
-    .navbar-title{
+    .navbar-title {
         flex-grow: 1;
         text-align: center;
         margin-right: 0 !important;
@@ -364,26 +364,40 @@ body {
     }
 
 
-    .c{
+    .c {
         margin-right: 0;
     }
 
 
-
-    .option-card{
+    .option-card {
         margin-bottom: 40px;
     }
-
 
 
     .modal-content {
         padding: 1.5em 1em;
     }
 
-    .modal-title {
-        font-size: 1.4rem;
-    }
+
 }
+
+
+
+
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        padding-top: 9rem;
+        justify-content: center;
+        align-items: flex-start;
+        height: auto;
+    }
+
+}
+
+
+
+
 
 @media (max-width: 500px) {
 
@@ -393,6 +407,18 @@ body {
         margin-right: 2.4rem !important;
 
     }
+
+
+
+    .container {
+        display: flex;
+        padding-top: 5rem;
+        justify-content: center;
+        align-items: flex-start;
+        height: auto;
+    }
+
+
 
 
     .option-card{
@@ -430,4 +456,7 @@ body {
         padding: 0.5rem 1rem;
         font-size: 14px;
     }
+
+
+
 }

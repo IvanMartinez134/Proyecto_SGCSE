@@ -5,6 +5,9 @@
   Time: 12:36 p. m.
   To change this template use File | Settings | File Templates.
 --%>
+
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
@@ -19,19 +22,22 @@
     <title>Formulario de Registro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/registroEst.css">
     <link rel="icon" type="image/png" href="img/buscar.png">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/registroEst.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="css/registroEst.css">
+
 
 </head>
 
-<body class="d-flex justify-content-center align-items-center vh-100">
+<body class="d-flex justify-content-center align-items-center m-4">
 <div class="bg-white p-5 rounded-2 col-lg-8 col-md-8 col-sm-10 mb-4 con">
 
-    <form method="POST" action="registrarUsuario" id="registroForm">
+    <form id="registroForm" method="POST" action="registrarUsuario" >
+
         <legend class="bg-success rounded-2 p-2 text-white text-center mb-5">Registro de Usuario</legend>
+
         <fieldset>
             <div class="mb-3 row">
                 <label for="nombre" class="col-sm-3 col-form-label">Nombre/s: </label>
@@ -99,7 +105,6 @@
                         <option value="" disabled selected>Selecciona una carrera</option>
 
 
-                        <!-- Se llenará dinámicamente con JavaScript -->
                     </select>
                 </div>
             </div>
@@ -132,14 +137,6 @@
     </form>
 </div>
 
-<section class="modal">
-    <div class="modal_contain">
-        <h1 class="modal_title">Registro exitoso</h1>
-        <img src="img/checklist-1-7.svg" alt="check" class="modal_img">
-        <a href="#" class="modal_close"></a>
-    </div>
-</section>
-
 
 <script type="text/javascript"  defer>
     $(document).ready(function() {
@@ -167,10 +164,11 @@
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 <script>
-
 
     // Verificar si hay un mensaje de registro exitoso en la sesión
     <% if (session.getAttribute("registroExitoso") != null && (boolean) session.getAttribute("registroExitoso")) { %>
@@ -186,7 +184,7 @@
 
 </script>
 
-
+<script src="js/registroAdmintivo.js"></script>
 
 
 

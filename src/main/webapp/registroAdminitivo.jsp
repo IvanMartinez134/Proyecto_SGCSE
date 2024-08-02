@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,6 +21,8 @@
     <link rel="stylesheet" href="css/registroAdmintivo.css">
     <link rel="icon" type="img/png" href="img/buscar.png">
 
+
+
 </head>
 
 <body class="d-flex justify-content-center align-items-center m-4">
@@ -25,6 +30,7 @@
 
 
     <form id="registroForm" method="post" action="registroVetanilla">
+
         <legend class="bg-success rounded-2 p-2 text-white text-center mb-5">Registro Administrativo</legend>
         <fieldset>
             <div class="mb-3 row">
@@ -99,15 +105,33 @@
     </form>
 </div>
 
-<section class="modal">
-    <div class="modal_contain">
-        <h1 class="modal_title">Registro exitoso</h1>
-        <img src="img/checklist-1-7.svg" alt="check" class="modal_img">
-        <a href="#" class="modal_close"></a>
-    </div>
-</section>
 
-<%--  <script src="js/registroAdmintivo.js" defer></script> --%>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script>
+
+
+    // Verificar si hay un mensaje de registro exitoso en la sesión
+    <% if (session.getAttribute("registroExitoso") != null && (boolean) session.getAttribute("registroExitoso")) { %>
+    swal({
+        title: "Registro exitoso!",
+        text: "",
+        icon: "success",
+        button: "Listo",
+    });
+    <% session.removeAttribute("registroExitoso"); %>
+    <% } %>
+
+
+</script>
+
+<script src="js/registroAdmintivo.js"></script>
+
+
+
+
 </body>
 
 </html>

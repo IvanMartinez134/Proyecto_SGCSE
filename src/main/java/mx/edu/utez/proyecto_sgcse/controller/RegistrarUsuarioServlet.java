@@ -57,11 +57,14 @@ public class RegistrarUsuarioServlet  extends HttpServlet {
         UserDao dao = new UserDao();
         boolean registroExitoso = dao.agregarUser(nUser);
 
+
+
         if (registroExitoso) {
 
             HttpSession session = req.getSession();
             session.setAttribute("registroExitoso", true);
             resp.sendRedirect("registroEst.jsp");
+
         } else {
 
             req.setAttribute("errorRegistro", true);

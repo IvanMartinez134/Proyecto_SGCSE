@@ -168,6 +168,8 @@ body {
 }
 
 @media (max-width: 992px) {
+
+
     .navbar {
         height: 70px;
         justify-content: space-between;
@@ -188,6 +190,11 @@ body {
         object-fit: contain; /* Ajuste de la imagen dentro del contenedor */
     }
 
+    .navbar-title{
+        margin-left: 8rem !important;
+    }
+
+
     .container {
         margin-top: 10px; /* Reducir el margen superior del contenido */
     }
@@ -196,16 +203,7 @@ body {
         padding: 1.5em 1em; /* Ajustar el relleno del modal para pantallas más pequeñas */
     }
 
-    .modal-title {
-        font-size: 1.6rem; /* Tamaño de fuente más grande para el título del modal */
-    }
 
-    .title {
-        font-size: 1.4rem;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-    }
 
     .nav_menu {
         margin-right: 24px;
@@ -229,6 +227,11 @@ body {
         margin: 0;
     }
 
+    .navbar-title{
+        margin-left: 8rem !important;
+    }
+
+
     .navbar-logo-container {
         display: flex;
         align-items: center;
@@ -247,13 +250,7 @@ body {
         margin-top: 10px; /* Reducir el margen superior del contenido */
     }
 
-    .modal-content {
-        padding: 1.5em 1em; /* Ajustar el relleno del modal para pantallas más pequeñas */
-    }
 
-    .modal-title {
-        font-size: 1.6rem; /* Tamaño de fuente más grande para el título del modal */
-    }
 
     .perfil{
         margin-bottom: 3rem;
@@ -311,17 +308,14 @@ body {
         object-fit: contain; /* Ajuste de la imagen dentro del contenedor */
     }
 
+
+
     .container {
         margin-top: 10px; /* Reducir el margen superior del contenido */
     }
 
-    .modal-content {
-        padding: 1.5em 1em; /* Ajustar el relleno del modal para pantallas más pequeñas */
-    }
 
-    .modal-title {
-        font-size: 1.6rem; /* Tamaño de fuente más grande para el título del modal */
-    }
+
 
     .title {
         margin-top: 10px;

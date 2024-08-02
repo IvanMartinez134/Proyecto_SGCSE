@@ -124,30 +124,72 @@ body {
 
 
 
-div.dataTables_filter input {
-    width: 18rem !important;
 
-
+.bg-gray {
+    background-color: #9c9fa2;
 }
 
-div.dataTables_filter {
-
-    margin-bottom: 22px !important;
-}
-
-
-.centered{
-    text-align: center !important;
-    vertical-align: middle !important;
-}
-
-
-.centro{
+.header {
     text-align: center;
-    justify-content: center;
+    margin-bottom: 2px;
 }
 
 
+
+
+.card_margin{
+    margin-top: 40px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.387);
+}
+
+.card-header-custom {
+    background-color: #13677d;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+
+}
+
+.card-body-custom {
+    padding: 20px;
+
+}
+
+.card-text {
+    margin-bottom: 10px;
+}
+
+
+
+.items{
+    padding: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.items li{
+    padding: 4px;
+    cursor: default;
+    border-radius: 3px;
+    display: none;
+}
+
+
+.items li:hover{
+    background-color: #9c9fa222;
+}
+
+
+.text-end {
+    text-align: right;
+}
 
 
 @media(max-width: 568px){

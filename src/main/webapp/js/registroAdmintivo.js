@@ -1,5 +1,5 @@
 document.getElementById("registroForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+
     const alerta = document.getElementById("alerta");
     alerta.textContent = "";
     alerta.style.color = "red";
@@ -8,7 +8,7 @@ document.getElementById("registroForm").addEventListener("submit", function(even
     const contrasena = document.getElementById("contrasena").value;
     const repetirContrasena = document.getElementById("repetirContrasena").value;
 
-    if (!correo.includes("@")) {
+    if (!correo.includes("@utez.edu.mx")) {
         alerta.textContent = "*Ingrese una dirección de correo electrónico válida";
         return;
     }
@@ -21,21 +21,6 @@ document.getElementById("registroForm").addEventListener("submit", function(even
         return;
     }
 
-
-    const modal = document.querySelector('.modal');
-    modal.classList.add('modal--show');
-
-    // Cierra el modal automáticamente después de 2 segundos
-    setTimeout(() => {
-        modal.classList.remove('modal--show');
-    }, 2000);
-});
-
-const closeModal = document.querySelector('.modal_close');
-closeModal.addEventListener('click', (e) => {
-    e.preventDefault();
-    const modal = document.querySelector('.modal');
-    modal.classList.remove('modal--show');
 });
 
 // Validaciones en tiempo real
@@ -45,7 +30,7 @@ const repetirContrasenaInput = document.getElementById("repetirContrasena");
 
 correoInput.addEventListener("input", function() {
     const alerta = document.getElementById("alerta");
-    if (!correoInput.value.includes("@")) {
+    if (!correoInput.value.includes("@utez.edu.mx")) {
         alerta.textContent = "*Ingrese una dirección de correo electrónico válida";
     } else {
         alerta.textContent = "";

@@ -16,6 +16,8 @@
   <title>Agendar Cita</title>
   <!-- Enlace a Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+
   <link rel="stylesheet" href="css/agendarcita.css">
   <style>
     body {
@@ -58,9 +60,9 @@
 
 
 
-    <h1 class="text-white navbar-title  d-lg me-auto">
+    <h3 class="text-white navbar-title  d-lg me-auto">
       Agendar cita
-    </h1>
+    </h3>
 
 
 
@@ -106,7 +108,7 @@
 
 
 
-<div class="container col-lg-6 col-sm-8 col-xsm-8 mt-5">
+<div class="container col-lg-6 col-sm-8 col-xsm-8 mt-5 d-sm col-10">
   <form id="agendarCitaForm" action="procesarCita" method="POST">
     <div class="mb-3">
       <label for="tramite" class="form-label">Trámite:</label>
@@ -114,7 +116,7 @@
         <option value="1">Constancia</option>
         <option value="2">Trámite 2</option>
         <option value="3">Trámite 3</option>
-        <!-- Agrega más opciones según tus necesidades -->
+
       </select>
     </div>
     <div class="mb-3">
@@ -131,7 +133,7 @@
         <option value="8:00">8:00 AM</option>
         <option value="9:00">9:00 AM</option>
         <option value="10:00">10:00 AM</option>
-        <!-- Agrega más opciones según tus necesidades -->
+
       </select>
     </div>
     <div class="mb-3">
@@ -145,6 +147,7 @@
   </form>
 </div>
 
+
 <!-- Script de Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -157,7 +160,6 @@
     var tramiteSeleccionado = document.getElementById("tramite").value;
     var descripcionInput = document.getElementById("descripcion");
 
-    // Actualizar la descripción según el trámite seleccionado
     switch (tramiteSeleccionado) {
       case '1':
         descripcionInput.value = "Descripción para Constancia";

@@ -23,7 +23,7 @@
 
 <body class="d-flex justify-content-center align-items-center">
 
-<div class="bg-white p-5 rounded-5 col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-5 form">
+<div class="bg-white p-5 rounded-5 col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-5 d-sm col-10 mb-5 form">
     <div class="d-flex justify-content-center mb-2">
         <img src="img/utezlogo.png" alt="login" style="height: 6rem;">
     </div>

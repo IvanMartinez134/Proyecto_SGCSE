@@ -22,7 +22,7 @@
 <body>
 
 
-<nav class=" navbar navbar-expand-lg  navbar-dark bg-success">
+<nav class=" navbar navbar-expand-lg  navbar-dark bg-success ">
 
     <div class="container-fluid m-0 p-0">
         <div class="navbar-logo-container">
@@ -34,7 +34,7 @@
 
 
 
-        <h3 class="text-white navbar-title  d-lg me-auto">
+        <h3 class="text-white navbar-title d-lg me-auto">
             Ver PDF
         </h3>
 
@@ -95,7 +95,7 @@
     <%
     } else {
     %>
-    <p>No se ha encontrado el archivo PDF.</p>
+    <p>No se ha encontrado el archivo.</p>
     <%
         }
     %>

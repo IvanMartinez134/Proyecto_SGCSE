@@ -75,8 +75,8 @@
 @media (max-width: 1000px){
 
     .t_regis{
-        padding: 2px 8px;
-        font-size: small;
+        padding: 6px 8px;
+        font-size: medium;
     }
 
 }
@@ -85,8 +85,9 @@
 @media (max-width: 500px){
 
     .t_regis{
-        padding: 2px 8px;
-        font-size: 0.6rem;
+        width: 40px;
+        padding: 4px 8px;
+        font-size: 0.8rem;
     }
 
 }

@@ -1,7 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ page import="java.util.List" %>
 <%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %>
 <%@ page import="mx.edu.utez.proyecto_sgcse.dao.UserDao" %>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -50,8 +52,10 @@
             <div class="card h-80">
 
                 <div class="card-header-custom">
-                    <input type="text" class="header-input" value="<%= user.getNombre() %> <%= user.getApll_1() %> <%= user.getApll_2() %>"
-                           readonly>
+
+                        <input type="text" class="header-input" value="<%= user.getNombre() %> <%= user.getApll_1() %> <%= user.getApll_2() %>"
+                               readonly>
+
                 </div>
                 <div class="card-body-custom">
                     <div class="flex items-center justify-between">
@@ -68,7 +72,7 @@
                 <div class="card-footer-custom">
 
                     <a href="eliminarVen?email=<%= user.getEmail() %>" class="borrar"
-                       data-id="<%= user.getId() %>" >
+                       data-id="<%= user.getId() %>">
                     <button class="btn-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -79,7 +83,7 @@
                     </button>
                     </a>
 
-                    <a href="editarVentanilla.jsp?id=<%=user.getId() %>">
+                    <a href="editarVentanilla.jsp?id=<%=user.getId()%>">
 
                     <button class="btn-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
@@ -105,7 +109,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-    // Tu código JavaScript personalizado
+
+
     document.addEventListener("DOMContentLoaded", function () {
         const searchInput = document.getElementById('searchInput');
         const userList = document.getElementById('userList').getElementsByClassName('col-lg-4');

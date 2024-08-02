@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="css/pageEst.css">
+    <link rel="stylesheet" href="css/pageAdmin.css">
 </head>
 <body>
 

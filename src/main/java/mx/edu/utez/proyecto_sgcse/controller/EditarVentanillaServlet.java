@@ -21,7 +21,7 @@ public class EditarVentanillaServlet extends HttpServlet {
 
         if (user != null) {
             req.setAttribute("user", user);
-            req.getRequestDispatcher("editarUsuario.jsp").forward(req, resp);
+            req.getRequestDispatcher("editarVentanilla.jsp").forward(req, resp);
         } else {
             req.setAttribute("message", "Usuario no encontrado");
             req.getRequestDispatcher("error.jsp").forward(req, resp);

@@ -19,10 +19,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citas Pendientes | Administrador</title>
+    <title>Consultar Citas | Administrador</title>
 
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/citapen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/consCita.css">
 
 
 
@@ -36,7 +38,7 @@
         <div class="navbar-logo-container">
             <img src="img/utezlogo.png" alt="Logo" class="navbar-logo m-0 p-0">
         </div>
-        <h3 class="text-white navbar-title d-lg me-auto">Citas Pendientes</h3>
+        <h3 class="text-white navbar-title d-lg me-auto">Consultar Citas</h3>
         <button class="mr-4 navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu">
             <div></div>
             <div></div>
@@ -65,17 +67,17 @@
 
 
 <div class="container">
-    <div class="row mt-5">
+    <div class="row mt-5 justify-content-center">
         <% UserDao userDao = new UserDao();
             CitaDao citaDao = new CitaDao();
 
             List<Cita> citas = citaDao.getAllCitasAsignadas();
 
             for (Cita c : citas) { %>
-        <div class="col-md-4 card_margin">
+        <div class="col-md-4 card_margin d-sm col-10">
             <div class="card mb-3">
                 <%User u = userDao.getOneVen(c.getVta_id());%>
-                <div class="card-header-custom">Estado: Pendiente</div>
+                <div class="card-header-custom">Estado: Asignado</div>
                 <div class="card-body-custom">
                     <p class="card-title">Nombre: <%=c.getAlumno()%></p>
                     <p class="card-text">Tipo de Documentación: <%=c.getTipo_doc()%></p>

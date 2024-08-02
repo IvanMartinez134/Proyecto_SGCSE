@@ -351,6 +351,10 @@ body {
 
 
 @media (max-width: 800px) {
+
+
+
+
     .navbar-logo {
         height: 70px; /* Ajusta el tamaño de la imagen */
         width: 6rem; /* Mantiene la proporción de la imagen */
@@ -386,7 +390,24 @@ body {
     }
 }
 
+
+
+
+
+@media (max-width: 768px) {
+    .container {
+        display: flex;
+        padding-top: 5rem;
+        justify-content: center;
+        align-items: flex-start;
+        height: auto;
+    }
+
+}
+
+
 @media (max-width: 500px) {
+
 
     .navbar-title{
         flex-grow: 1;
@@ -394,6 +415,16 @@ body {
         margin-right: 2.4rem !important;
 
     }
+
+    .container {
+        display: flex;
+        padding-top: 5rem;
+        justify-content: center;
+        align-items: flex-start;
+        height: auto;
+    }
+
+
 
 
     .option-card{

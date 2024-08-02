@@ -59,13 +59,13 @@ body {
 }
 
 .navbar-toggler{
-    border: 0;
+    border: 0 !important;
 
 }
 
 .navbar-toggler:focus{
-    outline: none;
-    box-shadow: none;
+    outline: none !important;
+    box-shadow: none !important;
 
 }
 
@@ -97,7 +97,7 @@ body {
 }
 
 .nav-link:hover{
-    color: #333333;
+    color: #333333 !important;
     font-size: 2rem;
 }
 
@@ -109,7 +109,7 @@ body {
 
 
 .navbar-nav > li a:hover{
-    color: #333;
+    color: #333 !important;
 
 }
 
@@ -190,5 +190,17 @@ body {
 
 .text-end {
     text-align: right;
+}
+
+
+
+@media(max-width: 568px){
+
+    .navbar-logo {
+        height: 70px;
+        width: 90px;
+        object-fit: contain;
+
+    }
 }
 

@@ -92,14 +92,14 @@
 
 
 
-<div class="container my-4">
+<div class="container my-4 justify-content-center">
 
     <button class="btn btn-success m-3">
         <a href="registroEst.jsp" style="color: white; text-decoration: none;">Registrar Alumno</a>
     </button>
 
 
-    <table id="table_users" class="display table table-striped table-hover">
+    <table id="table_users" class="display table table-striped table-hover d-sm col-10" >
         <thead class="table-primary">
         <tr class="table-active">
             <th class="centered">ID</th>

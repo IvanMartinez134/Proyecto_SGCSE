@@ -20,6 +20,7 @@ public class RegistroAdministrativoServlet  extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String nombre = req.getParameter("nombre");
         String apll_1 = req.getParameter("apellidoPaterno");
         String apll_2 = req.getParameter("apellidoMaterno");
@@ -32,14 +33,15 @@ public class RegistroAdministrativoServlet  extends HttpServlet {
 
 
 
-        // Validar que las contraseñas coincidan
+
         if (!pwd.equals(rPwd)) {
             req.setAttribute("errorRegistro", true);
             req.getRequestDispatcher("pageAdministrativo.jsp").forward(req, resp);
             return;
         }
 
-        // Crear un nuevo objeto User y configurar sus propiedades
+
+
         User nUser = new User();
         nUser.setNombre(nombre);
         nUser.setApll_1(apll_1);
@@ -51,21 +53,27 @@ public class RegistroAdministrativoServlet  extends HttpServlet {
 
 
 
-        // Instanciar UserDao para manejar la lógica de base de datos
+
         UserDao dao = new UserDao();
         boolean registroExitoso = dao.agregarVen(nUser);
+
+
         User u = dao.getOne(nUser.getEmail());
         VentanillaDao vdao = new VentanillaDao();
         vdao.agregarVen(u,turno);
 
-        // Redireccionar o enviar de vuelta al formulario según el resultado del registro
+
+        System.out.println(u.getId());
+
+
         if (registroExitoso) {
+
             HttpSession session = req.getSession();
             session.setAttribute("registroExitoso", true);
-            resp.sendRedirect("consVentanilla.jsp");
+            resp.sendRedirect("registroAdminitivo.jsp");
         } else {
             req.setAttribute("errorRegistro", true);
-            req.getRequestDispatcher("pageEst.jsp").forward(req, resp);
+            req.getRequestDispatcher("pageAdminitivo.jsp").forward(req, resp);
         }
     }
 
