@@ -57,7 +57,7 @@ public class CitaDao {
 
     public List<Cita> getAllCitasPendientes() {
         List<Cita> citas = new ArrayList<>();
-        String query = "select * from ver_citas_pendientes";
+        String query = "select * from ver_citas where vta_id is null";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
@@ -82,7 +82,7 @@ public class CitaDao {
 
     public List<Cita> getAllCitasAsignadas() {
         List<Cita> citas = new ArrayList<>();
-        String query = "select * from ver_citas_asignadas";
+        String query = "select * from ver_citas where vta_id is not null";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
@@ -107,7 +107,36 @@ public class CitaDao {
         return citas;
     }
 
+    public List<Cita> getAllCitasPendientesVen(int vta_id) {
+        List<Cita> citas = new ArrayList<>();
+        String query = "select * from ver_citas where vta_id is not null and vta_id = ?";
 
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+                ps.setInt(1, vta_id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Cita c = new Cita();
+                    c.setId(rs.getInt("id"));
+                    c.setFecha(rs.getString("fecha"));
+                    c.setHora(rs.getString("hora"));
+                    c.setAlumno(rs.getString("nombre"));
+                    c.setTipo_doc(rs.getString("documento"));
+                    c.setVta_id(rs.getInt("vta_id"));
+                    c.setEtsado(rs.getInt("status"));
+
+
+                    citas.add(c);
+                }
+            }
+
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+
+        return citas;
+    }
 
 
 

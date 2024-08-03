@@ -25,6 +25,8 @@ public class User implements Serializable {
 
     private String turno;
 
+    private int vta_id;
+
     public User() {
     }
 
@@ -159,5 +161,13 @@ public class User implements Serializable {
 
     public void setTurno(String turno) {
         this.turno = turno;
+    }
+
+    public int getVta_id() {
+        return vta_id;
+    }
+
+    public void setVta_id(int vta_id) {
+        this.vta_id = vta_id;
     }
 }

@@ -105,7 +105,7 @@
     <h4>Trámites</h4>
     <canvas id="myChart"></canvas>
     <script>
-        fetch('/pruebaGit_war_exploded/obtenerTramites')
+        fetch('/Proyecto_SGCSE_war_exploded/obtenerTramites')
             .then(response => response.json())
             .then(data => {
                 const ctx = document.getElementById('myChart').getContext('2d');

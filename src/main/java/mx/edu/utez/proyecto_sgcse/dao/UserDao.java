@@ -49,6 +49,7 @@ public class UserDao {
         return user;
     }
 
+
     public User getOne(String email) {
         User user = new User();
         String query = "SELECT * FROM usuarios WHERE email = ?";
@@ -80,6 +81,8 @@ public class UserDao {
 
         return user;
     }
+
+
 
     public User getOne(int id) {
         User user = new User();
@@ -147,7 +150,7 @@ public class UserDao {
 
     public User consVen(int id) {
         User u = null;
-        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v inner join usuarios u on u.id = v.usr_id inner join turnos t on t.id = v.tro_id WHERE u.id = ?";
+        String query = "select u.id,v.id as vta_id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v inner join usuarios u on u.id = v.usr_id inner join turnos t on t.id = v.tro_id WHERE u.id = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -157,6 +160,7 @@ public class UserDao {
                 if (rs.next()) {
                     u = new User();
                     u.setId(rs.getInt("id"));
+                    u.setVta_id(rs.getInt("vta_id"));
                     u.setNombre(rs.getString("nombre"));
                     u.setApll_1(rs.getString("apll_1"));
                     u.setApll_2(rs.getString("apll_2"));

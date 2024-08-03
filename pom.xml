@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>mx.edu.utez</groupId>
-    <artifactId>pruebaGit</artifactId>
+    <artifactId>Proyecto_SGCSE</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>pruebaGit</name>
+    <name>Proyecto_SGCSE</name>
     <packaging>war</packaging>
 
     <properties>
