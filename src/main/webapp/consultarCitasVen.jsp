@@ -1,10 +1,11 @@
-
 <%--
   Created by IntelliJ IDEA.
-  User: jonyo
-  Date: 16/07/2024
-  Time: 12:45 a. m.
+  User: death
+  Date: 03/08/2024
+  Time: 06:50 p. m.
   To change this template use File | Settings | File Templates.
+--%>
+<%--
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %>
@@ -20,12 +21,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citas Pendientes | Administrador</title>
+    <title>Consultar Citas | Administrador</title>
 
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="css/citapen.css">
+    <link rel="stylesheet" href="css/consCita.css">
 
 
 
@@ -39,7 +40,7 @@
         <div class="navbar-logo-container">
             <img src="img/utezlogo.png" alt="Logo" class="navbar-logo m-0 p-0">
         </div>
-        <h3 class="text-white navbar-title d-lg me-auto">Citas Pendientes</h3>
+        <h3 class="text-white navbar-title d-lg me-auto">Consultar Citas</h3>
         <button class="mr-4 navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu">
             <div></div>
             <div></div>
@@ -69,39 +70,50 @@
 
 <div class="container">
     <div class="row mt-5 justify-content-center">
-        <% UserDao userDao = new UserDao();
-            CitaDao citaDao = new CitaDao();
 
-            List<Cita> citas = citaDao.getAllCitasPendientes();
-            int index = 0;
+        <%
+            UserDao userDao = new UserDao();
+            CitaDao citaDao = new CitaDao();
+            int id = Integer.parseInt(request.getParameter("vta_id"));
+            User u = userDao.consVen(id);
+
+            List<Cita> citas = citaDao.getAllCitasVen(u.getVta_id());
+
             for (Cita c : citas) { %>
         <div class="col-md-4 card_margin d-sm col-10">
             <div class="card mb-3">
-                <div class="card-header-custom">Estado: Pendiente</div>
+                <%if(c.getEtsado() == 0){%>
+                <div class="card-header-custom-0">Estado: Concluida</div>
+                <%} else if (c.getEtsado() == 1) {%>
+                <div class="card-header-custom-1">Estado: Asignada</div>
+                <%} else if (c.getEtsado() == 2) {%>
+                <div class="card-header-custom-2">Estado: Corregida</div>
+                <%} else if (c.getEtsado() == 3) {%>
+                <div class="card-header-custom-3">Estado: Correcta</div>
+                <%} else if (c.getEtsado() == 4) {%>
+                <div class="card-header-custom-4">Estado: Terminada</div>
+                <%}%>
                 <div class="card-body-custom">
                     <p class="card-title">Nombre: <%=c.getAlumno()%></p>
                     <p class="card-text">Tipo de Documentación: <%=c.getTipo_doc()%></p>
                     <p class="card-text">Fecha: <%=c.getFecha()%></p>
                     <p class="card-text">Horario: <%=c.getHora()%></p>
-                    <form method="get" action="asignarCita">
-                    <div class="form-group">
-                        <input type="hidden" name="id" value="<%=c.getId()%>">
-                        <label for="usuariosSelect">Selecciona un usuario:</label>
-                        <select class="form-select" id="usuariosSelect" name="usuariosSelect">
-                            <option selected>Selecciona un usuario...</option>
-                            <%
-                                List<User> usersv = userDao.getAllVen();
-                                for (User u : usersv) {
-                            %>
-                            <option value="<%= u.getVta_id() %>"><%= u.getNombre() %></option>
-                            <% } %>
-                        </select>
-                    </div>
-                        <div class="text-end mt-2">
-                            <input type="submit" value="Asignar" class="btn btn-success">
-                        </div>
-                    </form>
 
+
+                </div>
+                <div class="card-footer-custom">
+
+                    <a href="verPDF.jsp?cta_id=<%=c.getId()%>">
+
+                        <button class="btn-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v10"></path>
+                                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                                <path d="M10.4 12.6a2 2 0 1 1 3 3L8 21l-4 1 1-4Z"></path>
+                            </svg>
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

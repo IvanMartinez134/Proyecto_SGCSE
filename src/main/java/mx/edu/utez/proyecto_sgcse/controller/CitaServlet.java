@@ -43,7 +43,8 @@ public class CitaServlet extends HttpServlet {
 
 
                 if (citaProcesada) {
-                    resp.sendRedirect("subirDoc.jsp");
+                    Cita c = citaDao.getOneCita(fecha_hora);
+                    resp.sendRedirect("subirDoc.jsp?cta_id=" + c.getId());
                 } else {
                     resp.sendRedirect("error.jsp");
                 }

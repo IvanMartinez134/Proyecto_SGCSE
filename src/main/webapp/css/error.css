@@ -1,0 +1,56 @@
+
+
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+}
+
+
+.page_404{
+    padding: 50px 0;
+    font-family: "Poppins", sans-serif;
+
+}
+
+
+.page_404 img{
+    width: 100%;
+}
+
+
+
+
+.back{
+    background: url('img/cav.gif');
+    height: 400px;
+    background-position: center;
+
+}
+
+h1{
+    font-size: 80px;
+
+}
+
+
+h3{
+    font-size: 70px;
+}
+
+
+
+a{
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+.content_box_404{
+    margin-top: -50px;
+}

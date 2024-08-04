@@ -7,6 +7,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import mx.edu.utez.proyecto_sgcse.dao.CitaDao;
+import mx.edu.utez.proyecto_sgcse.dao.DocumentoDao;
+import mx.edu.utez.proyecto_sgcse.model.Cita;
+import mx.edu.utez.proyecto_sgcse.model.Documento;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,10 +47,18 @@ public class SubirArchivoServlet extends HttpServlet {
         String relativePath = UPLOAD_DIR + "/" + fileName;
         request.getSession().setAttribute("pdfPath", relativePath);
 
+        DocumentoDao docDao = new DocumentoDao();
+        Documento d = new Documento();
+        d.setDireccion(relativePath);
+        d.setCta_id(Integer.parseInt(request.getParameter("cta_id")));
+
 
         String jsonResponse = String.format("{\"mensaje\": \"Archivo subido\", \"doc:\": \"%s\"}", UPLOAD_DIR + "/" + fileName);
         out.print(jsonResponse);
         out.flush();
+
+        System.out.println(relativePath);
+        docDao.agregarDoc(d);
     }
 
 }

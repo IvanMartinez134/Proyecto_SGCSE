@@ -1,4 +1,7 @@
-<%@ page import="java.io.File" %><%--
+<%@ page import="java.io.File" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.DocumentoDao" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.Documento" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: jonyo
   Date: 16/07/2024
@@ -83,8 +86,17 @@
 
 <div class="container">
     <%
+        DocumentoDao docDao = new DocumentoDao();
+        int cta_id = Integer.parseInt(request.getParameter("cta_id"));
+
+        List<Documento> docs = docDao.getAllDocumentos(cta_id);
+
+        for (Documento d : docs) {
+
         // Obtener la ruta del archivo desde la sesión
-        String pdfPath = (String) session.getAttribute("pdfPath");
+        String pdfPath = d.getDireccion();
+        System.out.println( "Direccion" + pdfPath);
+
         if (pdfPath != null) {
     %>
     <div class="embed-responsive embed-responsive-16by9  text-center justify-content-center mt-5">
@@ -98,7 +110,35 @@
     <p>No se ha encontrado el archivo.</p>
     <%
         }
+        }
     %>
+
+    <div class="card-footer-custom">
+
+        <a href="docIncorrecta?id=<%=cta_id%>" class="borrar"
+           data-id="<%%>">
+            <button class="btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18"></path>
+                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                </svg>
+            </button>
+        </a>
+
+        <a href="docCorrecta?id=<%=cta_id%>">
+
+            <button class="btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v10"></path>
+                    <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                    <path d="M10.4 12.6a2 2 0 1 1 3 3L8 21l-4 1 1-4Z"></path>
+                </svg>
+            </button>
+        </a>
+    </div>
 </div>
 
 

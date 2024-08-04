@@ -147,12 +147,12 @@ body {
 }
 
 .card-header-custom {
-    background-color: #13677d;
     color: white;
     font-weight: bold;
     padding: 10px 20px;
 
 }
+
 
 .card-body-custom {
     padding: 20px;

@@ -36,6 +36,30 @@ public class CitaDao {
         return fila;
     }
 
+    public Cita getOneCita(String fecha_hora) {
+        Cita c = null;
+        String query = "SELECT * FROM citas WHERE fecha_y_hora = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, fecha_hora);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    c = new Cita();
+                    c.setId(rs.getInt("id"));
+                    c.setFecha_hora(rs.getString("fecha_y_hora"));
+                    c.setUsr_id(rs.getInt("usr_id"));
+                    c.setTdt_id(rs.getInt("tdt_id"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
+
+
     public boolean asignarCita(int vta_id,int id) {
         String query = "UPDATE citas SET vta_id = ? WHERE id = ?";
         boolean fila = false;
@@ -44,6 +68,22 @@ public class CitaDao {
              PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, vta_id);
             ps.setInt(2, id);
+            fila = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return fila;
+    }
+
+    public boolean updateCitaStatus(Cita c) {
+        String query = "UPDATE citas SET status = ? WHERE id = ?";
+        boolean fila = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, c.getStatus());
+            ps.setInt(2,c.getId());
             fila = ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -109,7 +149,7 @@ public class CitaDao {
 
     public List<Cita> getAllCitasPendientesVen(int vta_id) {
         List<Cita> citas = new ArrayList<>();
-        String query = "select * from ver_citas where vta_id is not null and vta_id = ?";
+        String query = "select * from ver_citas where vta_id = ? and status in (1,2)";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -133,6 +173,37 @@ public class CitaDao {
 
         } catch (SQLException e) {
                 e.printStackTrace();
+        }
+
+        return citas;
+    }
+
+    public List<Cita> getAllCitasVen(int vta_id) {
+        List<Cita> citas = new ArrayList<>();
+        String query = "select * from ver_citas where vta_id = ? and status in (3)";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, vta_id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Cita c = new Cita();
+                    c.setId(rs.getInt("id"));
+                    c.setFecha(rs.getString("fecha"));
+                    c.setHora(rs.getString("hora"));
+                    c.setAlumno(rs.getString("nombre"));
+                    c.setTipo_doc(rs.getString("documento"));
+                    c.setVta_id(rs.getInt("vta_id"));
+                    c.setEtsado(rs.getInt("status"));
+
+
+                    citas.add(c);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return citas;

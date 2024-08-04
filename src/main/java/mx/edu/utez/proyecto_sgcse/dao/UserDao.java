@@ -235,18 +235,19 @@ public class UserDao {
 
     public List<User> getAllVen() {
         List<User> vents = new ArrayList<>();
-        String query = "select v.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v\n" +
+        String query = "select v.id,v.usr_id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v\n" +
                 "inner join usuarios u\n" +
                 "on u.id = v.usr_id\n" +
                 "inner join turnos t\n" +
-                "on t.id = v.tro_id where u.tdu_id = 2";
+                "on t.id = v.tro_id where u.tdu_id = 2 and status = 1";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 User user = new User();
-                user.setId(rs.getInt("id"));
+                user.setId(rs.getInt("usr_id"));
+                user.setVta_id(rs.getInt("id"));
                 user.setNombre(rs.getString("nombre"));
                 user.setApll_1(rs.getString("apll_1"));
                 user.setApll_2(rs.getString("apll_2"));

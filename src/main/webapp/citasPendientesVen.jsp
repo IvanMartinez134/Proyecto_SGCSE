@@ -82,10 +82,16 @@
             for (Cita c : citas) { %>
         <div class="col-md-4 card_margin d-sm col-10">
             <div class="card mb-3">
-                <%if(c.getEtsado() == 1){%>
-                <div class="card-header-custom">Estado: Asignada</div>
+                <%if(c.getEtsado() == 0){%>
+                <div class="card-header-custom-0">Estado: Concluida</div>
+                <%} else if (c.getEtsado() == 1) {%>
+                <div class="card-header-custom-1">Estado: Asignada</div>
                 <%} else if (c.getEtsado() == 2) {%>
-                <div class="card-header-custom">Estado: Corregida</div>
+                <div class="card-header-custom-2">Estado: Corregida</div>
+                <%} else if (c.getEtsado() == 3) {%>
+                <div class="card-header-custom-3">Estado: Correcta</div>
+                <%} else if (c.getEtsado() == 4) {%>
+                <div class="card-header-custom-4">Estado: Terminada</div>
                 <%}%>
                 <div class="card-body-custom">
                     <p class="card-title">Nombre: <%=c.getAlumno()%></p>
@@ -94,6 +100,20 @@
                     <p class="card-text">Horario: <%=c.getHora()%></p>
 
 
+                </div>
+                <div class="card-footer-custom">
+
+                    <a href="verPDF.jsp?cta_id=<%=c.getId()%>">
+
+                        <button class="btn-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v10"></path>
+                                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                                <path d="M10.4 12.6a2 2 0 1 1 3 3L8 21l-4 1 1-4Z"></path>
+                            </svg>
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

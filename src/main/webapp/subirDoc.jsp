@@ -120,8 +120,9 @@
     <form id="form" action="subirArchivosJS" method="post" enctype="multipart/form-data">
         <label for="archivo">Selecciona un PDF:</label>
         <input type="file" id="archivo" name="archivo" accept="application/pdf" required>
+        <input type="hidden" name="cta_id" value="<%=request.getParameter("cta_id")%>">
         <div class="text-center">
-            <button type="submit" onclick="uploadFile()" class="btn btn-success mt-3">Subir Archivos</button>
+            <button type="submit" onclick="" class="btn btn-success mt-3">Subir Archivos</button>
         </div>
     </form>
 
@@ -132,6 +133,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<%--
 <script>
     function uploadFile() {
         const form = document.getElementById("form");
@@ -163,6 +165,7 @@
         return false;
     }
 </script>
+--%>
 <script src="js/subirDoc.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 

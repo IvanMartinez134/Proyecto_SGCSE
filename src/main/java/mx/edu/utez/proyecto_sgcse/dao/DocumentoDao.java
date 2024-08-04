@@ -1,4 +1,5 @@
 package mx.edu.utez.proyecto_sgcse.dao;
+import mx.edu.utez.proyecto_sgcse.model.Cita;
 import mx.edu.utez.proyecto_sgcse.model.Documento;
 import mx.edu.utez.proyecto_sgcse.model.User;
 import mx.edu.utez.proyecto_sgcse.utils.DatabaseConnectionManager;
@@ -7,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DocumentoDao {
@@ -56,6 +59,32 @@ public class DocumentoDao {
         return doc;
     }
 
+    public List<Documento> getAllDocumentos(int cta_id) {
+        List<Documento> dco = new ArrayList<>();
+        String query = "select * from documentos where cta_id = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, cta_id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Documento d = new Documento();
+                    d.setId(rs.getInt("id"));
+                    d.setDireccion(rs.getString("direccion"));
+                    d.setCta_id(rs.getInt("cta_id"));
+
+
+                    dco.add(d);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return dco;
+    }
 
 
 }
