@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/pdf.css">
+    <link rel="stylesheet" href="css/vercoment.css">
 </head>
 <body>
 
@@ -83,8 +84,10 @@
     </div>
 </nav>
 
+<div class="d-flex">
 
-<div class="container">
+
+<div class="container col-7">
     <%
         DocumentoDao docDao = new DocumentoDao();
         int cta_id = Integer.parseInt(request.getParameter("cta_id"));
@@ -142,9 +145,38 @@
 </div>
 
 
+    <div class="container mt-5 d-lg col-3">
+        <h3>Comentarios</h3>
+        <form id="comentForm" >
+            <div class="mb-3">
+                <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones"></textarea>
+            </div>
+
+            <div class="text-end">
+
+
+
+                <button class="btn btn-danger mt-2" id="canComent"><i class="bi bi-file-earmark-excel"></i></button>
+
+                <button class=" btn btn-success mt-2" id="subirComent" type="submit"><i class="bi bi-clipboard-check"></i></button>
+
+
+
+
+
+            </div>
+        </form>
+    </div>
+
+
+
+
+</div>
+
+
 <script>
 
-    ocument.getElementById('form').addEventListener('submit', function (e) {
+    document.getElementById('form').addEventListener('submit', function (e) {
         e.preventDefault();
         const formData = new FormData(this);
 
@@ -163,6 +195,16 @@
             .catch(error => console.error('Error:', error));
     });
 
+</script>
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#comentForm').on('submit', function() {
+            $('#comen').val('');
+        });
+    });
 </script>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>

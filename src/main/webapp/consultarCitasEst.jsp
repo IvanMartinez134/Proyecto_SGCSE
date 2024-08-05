@@ -1,11 +1,9 @@
 <%--
   Created by IntelliJ IDEA.
   User: death
-  Date: 02/08/2024
-  Time: 07:15 p. m.
+  Date: 04/08/2024
+  Time: 01:23 p. m.
   To change this template use File | Settings | File Templates.
---%>
-<%--
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %>
@@ -74,14 +72,15 @@
         <%
             UserDao userDao = new UserDao();
             CitaDao citaDao = new CitaDao();
-            int id = Integer.parseInt(request.getParameter("vta_id"));
+            int id = Integer.parseInt(request.getParameter("id"));
             User u = userDao.consVen(id);
 
-            List<Cita> citas = citaDao.getAllCitasPendientesVen(u.getVta_id());
+            List<Cita> citas = citaDao.getAllCitasPendientesEst(u.getId());
 
             for (Cita c : citas) { %>
         <div class="col-md-4 card_margin d-sm col-10">
             <div class="card mb-3">
+                <%User v = userDao.getOneVen(c.getVta_id());%>
                 <%if(c.getEtsado() == 0){%>
                 <div class="card-header-custom" style="background-color: green">Estado: Concluida</div>
                 <%} else if (c.getEtsado() == 1) {%>
@@ -94,10 +93,10 @@
                 <div class="card-header-custom" style="background-color: orange">Estado: Incorrecta</div>
                 <%}%>
                 <div class="card-body-custom">
-                    <p class="card-title">Nombre: <%=c.getAlumno()%></p>
                     <p class="card-text">Tipo de Documentación: <%=c.getTipo_doc()%></p>
                     <p class="card-text">Fecha: <%=c.getFecha()%></p>
                     <p class="card-text">Horario: <%=c.getHora()%></p>
+                    <p class="card-text">Encargado: <%=v.getNombre() + " " + v.getApll_1() + " " + v.getApll_2()%></p>
 
 
                 </div>

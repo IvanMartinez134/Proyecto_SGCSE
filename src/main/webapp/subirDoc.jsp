@@ -107,7 +107,7 @@
 
     <!-- subirDoc.jsp -->
 
-       <%-- <div class="drag-drop" id="drag-drop-area">
+    <%--  <div class="drag-drop" id="drag-drop-area">
             <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
             <input type="file" id="file-input" name="file" multiple>
             <ul class="file-list" id="file-list">
@@ -117,16 +117,29 @@
 
 
 
-    <form id="form" action="subirArchivosJS" method="post" enctype="multipart/form-data">
-        <label for="archivo">Selecciona un PDF:</label>
-        <input type="file" id="archivo" name="archivo" accept="application/pdf" required>
-        <input type="hidden" name="cta_id" value="<%=request.getParameter("cta_id")%>">
-        <div class="text-center">
-            <button type="submit" onclick="" class="btn btn-success mt-3">Subir Archivos</button>
-        </div>
-    </form>
+    <form id="form" action="subirArchivosJS?cta_id<%=request.getParameter("cta_id")%>" method="post" enctype="multipart/form-data">
 
-    <div id="msg" class="alert alert-success alert-dismissible fade show" role="alert" hidden></div>
+
+        <div class="drag-drop" id="drag-drop-area">
+            <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
+
+            <input type="file" id="file-input" name="archivo" multiple>
+
+           <!-- <input type="hidden" name="cta_id" value=""> -->
+
+            <ul class="file-list" id="file-list">
+                <!-- Aquí se mostrarán los archivos seleccionados -->
+            </ul>
+        </div>
+
+        <div class="text-center">
+            <input type="submit" class="btn btn-success mt-3" value="Subir Archivos">
+        </div>
+
+
+   </form>
+
+   <div id="msg" class="alert alert-success alert-dismissible fade show" role="alert" hidden></div>
 
 </div>
 
@@ -135,35 +148,35 @@
 
 <%--
 <script>
-    function uploadFile() {
-        const form = document.getElementById("form");
-        const formData = new FormData(form);
+   function uploadFile() {
+       const form = document.getElementById("form");
+       const formData = new FormData(form);
 
-        fetch('subirArchivosJS', {
-            method: 'POST',
-            body: formData
-        }).then(response => {
-            return response.json();
-        }).then(data => {
-            console.log("Respuesta: ", data);
+       fetch('subirArchivosJS', {
+           method: 'POST',
+           body: formData
+       }).then(response => {
+           return response.json();
+       }).then(data => {
+           console.log("Respuesta: ", data);
 
-            let msg = document.getElementById("msg");
-            msg.hidden = false;
-            msg.innerHTML = `<strong>${data.mensaje}</strong>`;
-            let msg_button = document.createElement("button");
-            msg_button.setAttribute("type", "button");
-            msg_button.setAttribute("class", "btn-close");
-            msg_button.setAttribute("data-bs-dismiss", "alert");
-            msg_button.setAttribute("aria-label", "Close");
-            msg.appendChild(msg_button);
+           let msg = document.getElementById("msg");
+           msg.hidden = false;
+           msg.innerHTML = `<strong>${data.mensaje}</strong>`;
+           let msg_button = document.createElement("button");
+           msg_button.setAttribute("type", "button");
+           msg_button.setAttribute("class", "btn-close");
+           msg_button.setAttribute("data-bs-dismiss", "alert");
+           msg_button.setAttribute("aria-label", "Close");
+           msg.appendChild(msg_button);
 
-        }).catch(error => {
-            console.log("Error al subir: ", error);
-        });
+       }).catch(error => {
+           console.log("Error al subir: ", error);
+       });
 
 
-        return false;
-    }
+       return false;
+   }
 </script>
 --%>
 <script src="js/subirDoc.js"></script>

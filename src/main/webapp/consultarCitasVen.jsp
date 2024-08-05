@@ -83,15 +83,15 @@
         <div class="col-md-4 card_margin d-sm col-10">
             <div class="card mb-3">
                 <%if(c.getEtsado() == 0){%>
-                <div class="card-header-custom-0">Estado: Concluida</div>
+                <div class="card-header-custom" style="background-color: green">Estado: Concluida</div>
                 <%} else if (c.getEtsado() == 1) {%>
-                <div class="card-header-custom-1">Estado: Asignada</div>
+                <div class="card-header-custom" style="background-color: red">Estado: Asignada</div>
                 <%} else if (c.getEtsado() == 2) {%>
-                <div class="card-header-custom-2">Estado: Corregida</div>
+                <div class="card-header-custom" style="background-color: grey">Estado: Corregida</div>
                 <%} else if (c.getEtsado() == 3) {%>
-                <div class="card-header-custom-3">Estado: Correcta</div>
+                <div class="card-header-custom" style="background-color: lightskyblue">Estado: Correcta</div>
                 <%} else if (c.getEtsado() == 4) {%>
-                <div class="card-header-custom-4">Estado: Terminada</div>
+                <div class="card-header-custom" style="background-color: orange">Estado: Incorrecta</div>
                 <%}%>
                 <div class="card-body-custom">
                     <p class="card-title">Nombre: <%=c.getAlumno()%></p>

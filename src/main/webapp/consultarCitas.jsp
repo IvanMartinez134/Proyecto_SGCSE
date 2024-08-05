@@ -87,7 +87,7 @@
                 <%} else if (c.getEtsado() == 3) {%>
                 <div class="card-header-custom" style="background-color: lightskyblue">Estado: Correcta</div>
                 <%} else if (c.getEtsado() == 4) {%>
-                <div class="card-header-custom" style="background-color: orange">Estado: Terminada</div>
+                <div class="card-header-custom" style="background-color: orange">Estado: Incorrecta</div>
                 <%}%>
                 <div class="card-body-custom">
                     <p class="card-title">Nombre: <%=c.getAlumno()%></p>
