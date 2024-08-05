@@ -117,19 +117,13 @@
 
 
 
-    <form id="form" action="subirArchivosJS?cta_id<%=request.getParameter("cta_id")%>" method="post" enctype="multipart/form-data">
+    <form id="form" action="subirArchivosJS" method="post" enctype="multipart/form-data">
 
 
-        <div class="drag-drop" id="drag-drop-area">
-            <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
+        <div class="mt-3 d-lg col-8" >
 
-            <input type="file" id="file-input" name="archivo" multiple>
+            <input type="file" accept="application/pdf" name="archivo" value="Subir Archivo">
 
-           <!-- <input type="hidden" name="cta_id" value=""> -->
-
-            <ul class="file-list" id="file-list">
-                <!-- Aquí se mostrarán los archivos seleccionados -->
-            </ul>
         </div>
 
         <div class="text-center">

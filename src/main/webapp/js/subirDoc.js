@@ -1,5 +1,5 @@
 
-let timeLeft = 50; // en segundos
+let timeLeft = 200; // en segundos
 const timerElement = document.getElementById('timer');
 
 function updateTimer() {

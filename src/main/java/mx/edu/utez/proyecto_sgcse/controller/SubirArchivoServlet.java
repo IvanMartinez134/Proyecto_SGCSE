@@ -26,77 +26,7 @@ public class SubirArchivoServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
 
-        String applicationPath = request.getServletContext().getRealPath("");
-        String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
-
-        File uploadDir = new File(uploadFilePath);
-        if (!uploadDir.exists()) {
-            if (uploadDir.mkdirs()) {
-                System.out.println("Directory created: " + uploadFilePath);
-            } else {
-                System.err.println("Failed to create directory: " + uploadFilePath);
-            }
-        }
-
-        List<String> filePaths = new ArrayList<>();
-        boolean isSuccessful = true;
-
-        try {
-            for (Part part : request.getParts()) {
-                System.out.println("Part received: " + part.getName() + ", size: " + part.getSize());
-
-                if (part.getName().equals("archivo") && part.getSize() > 0) {
-                    String fileName = part.getSubmittedFileName();
-                    System.out.println("File received: " + fileName);
-
-                    String filePath = uploadFilePath + File.separator + fileName;
-
-                    // Asegúrate de que no haya conflictos de nombres de archivos
-                    File file = new File(filePath);
-                    if (file.exists()) {
-                        throw new IOException("El archivo ya existe: " + filePath);
-                    }
-
-                    part.write(filePath);
-                    String relativePath = UPLOAD_DIR + "/" + fileName;
-                    filePaths.add(relativePath);
-                    System.out.println("Archivo subido: " + relativePath);
-
-                    DocumentoDao docDao = new DocumentoDao();
-                    Documento d = new Documento();
-                    d.setDireccion(relativePath);
-                    d.setCta_id(Integer.parseInt(request.getParameter("cta_id")));
-
-                    // Asegúrate de que la base de datos se actualiza correctamente
-                    if (!docDao.agregarDoc(d)) {
-                        isSuccessful = false;
-                        throw new IOException("Error al guardar en la base de datos.");
-                    }
-
-                    System.out.println("Archivo guardado en la base de datos: " + relativePath);
-                }
-            }
-
-            if (isSuccessful) {
-                String jsonResponse = String.format("{\"mensaje\": \"Archivos subidos\", \"docs\": \"%s\"}", String.join(",", filePaths));
-                out.print(jsonResponse);
-            } else {
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                out.print("{\"mensaje\": \"Error al subir los archivos\"}");
-            }
-        } catch (Exception e) {
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            out.print("{\"mensaje\": \"Error al subir los archivos: " + e.getMessage() + "\"}");
-            e.printStackTrace();
-        } finally {
-            out.flush();
-        }
-
-
-        /*
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
 
@@ -119,7 +49,7 @@ public class SubirArchivoServlet extends HttpServlet {
 
         // Guardar el archivo en la sesssion
         String relativePath = UPLOAD_DIR + "/" + fileName;
-        request.getSession().setAttribute("pdfPath", relativePath);
+        // request.getSession().setAttribute("pdfPath", relativePath);
 
         DocumentoDao docDao = new DocumentoDao();
         Documento d = new Documento();
@@ -133,8 +63,6 @@ public class SubirArchivoServlet extends HttpServlet {
 
         System.out.println(relativePath);
         docDao.agregarDoc(d);
-        */
-
 
 
 
