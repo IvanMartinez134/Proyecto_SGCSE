@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @WebServlet (name= "SubirArchivosServlet", value = "/subirArchivosJS")
@@ -27,49 +28,38 @@ public class SubirArchivoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-
-
         String applicationPath = request.getServletContext().getRealPath("");
         String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
-
         File uploadDir = new File(uploadFilePath);
         if (!uploadDir.exists()) {
             uploadDir.mkdirs();
         }
 
-        for (Part filePart : request.getParts()) {
+        try {
+            Collection<Part> parts = request.getParts();
+            for (Part filePart : parts) {
+                String fileName = filePart.getSubmittedFileName();
+                String filePath = uploadFilePath + File.separator + fileName;
+                filePart.write(filePath);
 
-            // Obtener el archivo subido
-            //Part filePart = request.getPart("file");
+                // Guardar el archivo en la base de datos
+                String relativePath = UPLOAD_DIR + "/" + fileName;
+                DocumentoDao docDao = new DocumentoDao();
+                Documento d = new Documento();
+                d.setDireccion(relativePath);
+                d.setCta_id(Integer.parseInt(request.getParameter("cta_id")));
+                docDao.agregarDoc(d);
+            }
 
-            String fileName = filePart.getSubmittedFileName();
+            // Establecer mensaje en la sesión y redirigir al JSP
+            request.getSession().setAttribute("mensaje", "Archivos subidos correctamente.");
+            response.sendRedirect("subirDoc.jsp");
 
-            // Guardar el archivo en el servidor
-            String filePath = uploadFilePath + File.separator + fileName;
-            filePart.write(filePath);
-
-            // Guardar el archivo en la sesssion
-            String relativePath = UPLOAD_DIR + "/" + fileName;
-            // request.getSession().setAttribute("pdfPath", relativePath);
-
-            DocumentoDao docDao = new DocumentoDao();
-            Documento d = new Documento();
-            d.setDireccion(relativePath);
-            d.setCta_id(Integer.parseInt(request.getParameter("cta_id")));
-
-
-            String jsonResponse = String.format("{\"mensaje\": \"Archivo subido\", \"doc:\": \"%s\"}", UPLOAD_DIR + "/" + fileName);
-            out.print(jsonResponse);
-            out.flush();
-
-            System.out.println(relativePath);
-            docDao.agregarDoc(d);
-
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.getSession().setAttribute("mensaje", "Error al subir los archivos.");
+            response.sendRedirect("subirDoc.jsp");
         }
-
-
     }
 
 }

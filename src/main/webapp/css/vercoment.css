@@ -2,5 +2,40 @@
 
 .areaCom{
     height: 200px;
+    width: 100%;
+}
+
+
+
+.cd{
+    margin-right: 8rem !important;
+}
+
+
+.card{
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.387);
 
 }
+
+/* Estilos para las cards */
+.card-header-custom {
+    background-color: orange;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+.card-body-custom {
+    padding: 1.5rem;
+}
+
+.card-footer-custom {
+    display: flex;
+    justify-content: end;
+    padding: 1rem 1.5rem;
+}
+
+
+
+

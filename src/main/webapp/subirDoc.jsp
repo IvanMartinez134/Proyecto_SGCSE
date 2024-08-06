@@ -16,6 +16,7 @@
     <title>Subir Documentos</title>
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
 
     <link rel="stylesheet" href="css/subirDoc.css">
@@ -87,7 +88,7 @@
 
 <div class="container col-lg-8 col-sm-10 d-sm mt-5">
     <div class="justify-content-between align-items-center">
-        <div id="timer" class="fs-3 timer">0:50</div>
+        <div id="timer" class="fs-3 timer">5:00</div>
         <div class="documentacion mt-3">
             <h2>Documentación</h2>
             <p>Recuerda subir todos tus archivos escaneados y en formato PDF.</p>
@@ -121,7 +122,7 @@
 
 
             <div class="drag-drop" id="drag-drop-area">
-                <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
+                <p>Haz clic para seleccionar archivos.</p>
                 <input class="mt-2" type="file" id="file-input"  accept=".pdf" name="file" multiple>
                 <ul class="file-list" id="file-list">
                     <!-- Aquí se mostrarán los archivos seleccionados -->
@@ -180,6 +181,30 @@
 --%>
 <script src="js/subirDoc.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        <%
+            String mensaje = (String) session.getAttribute("mensaje");
+            if (mensaje != null) {
+        %>
+        Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: '<%= mensaje %>'
+        }).then(function(){
+            window.location.href = 'pageEst.jsp';
+        });
+        <%
+            session.removeAttribute("mensaje");
+        }
+    %>
+    });
+
+</script>
 
 </body>
 

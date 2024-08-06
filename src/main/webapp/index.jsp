@@ -19,11 +19,15 @@
     <link rel="stylesheet" href="css/Login.css">
 
 
+
+
+
+
 </head>
 
 <body class="d-flex justify-content-center align-items-center">
 
-<div class="bg-white p-5 rounded-5 col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-5 d-sm col-10 mb-5 form">
+<div id="login-container" class="bg-white p-5 rounded-5 col-lg-4 col-md-8 col-sm-8 col-xs-8 mb-5 d-sm col-10 mb-5 form">
     <div class="d-flex justify-content-center mb-2">
         <img src="img/utezlogo.png" alt="login" style="height: 6rem;">
     </div>
@@ -80,8 +84,6 @@
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/login.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
 
 

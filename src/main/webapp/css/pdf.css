@@ -119,6 +119,11 @@ body {
 }
 
 
+.cd{
+    margin-right: 8rem !important;
+}
+
+
 .pdf_v{
     display: block;
     margin: auto;

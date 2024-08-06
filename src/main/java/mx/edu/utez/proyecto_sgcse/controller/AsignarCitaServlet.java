@@ -24,6 +24,7 @@ public class AsignarCitaServlet extends HttpServlet {
         boolean updated = citaDao.asignarCita(vta_id,id);
 
         if (updated) {
+            request.getSession().setAttribute("mensaje", "Cita asignada");
             response.sendRedirect("citasPendientes.jsp");
         }
 

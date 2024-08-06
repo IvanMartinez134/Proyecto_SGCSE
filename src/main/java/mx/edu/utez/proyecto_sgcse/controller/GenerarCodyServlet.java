@@ -29,6 +29,13 @@ public class GenerarCodyServlet extends HttpServlet {
             try {
                 new GmailSender().sendMail(email,"Recupera tu contraseña",
                         "<a href=\"http://localhost:8080/Proyecto_SGCSE_war_exploded/recuContra?cody="+cody+"&id="+ u.getId()+"\">Recuperar Contraseña</a>");
+
+
+
+                req.getSession().setAttribute("mensaje", "Correo de recuperación enviado con éxito.");
+                resp.sendRedirect("esperarCody.jsp");
+
+
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

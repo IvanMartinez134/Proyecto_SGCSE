@@ -30,16 +30,14 @@
             <div class="col-sm-12">
                 <div class="col-sm-10 col-sm-offset-1 text-center">
                     <div class="four_zero_four_bg">
-                        <h1 class="text-center">404</h1>
+                        <h3 class="text-center">Datos incorrectos</h3>
                     </div>
 
-                    <div class="back">
-                        <img src="img/cav.gif" alt="error">
-                    </div>
+                    <div class="back"></div>
 
 
                     <div class="content_box_404">
-                        <h3 class="h2">Datos incorrectos</h3>
+
 
                         <a class="btn btn-success" href="index.jsp">Vuelve a intentarlo</a>
                     </div>

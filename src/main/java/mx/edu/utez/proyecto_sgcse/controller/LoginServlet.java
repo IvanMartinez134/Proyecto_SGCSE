@@ -19,59 +19,35 @@ public class LoginServlet extends HttpServlet {
         String pwd = req.getParameter("pwd");
         UserDao dao = new UserDao();
         User u = dao.getOne(email, pwd);
-        int rol = u.getRol();
-//        String apll_1 = u.getApll_1();
-////        System.out.println(rol);
-////        System.out.println(u.getEmail());
-////        System.out.println(u.getId());
-////        System.out.println(u.getCarrera());
 
-        // String ruta = "index.jsp";
+        if (u == null) {
+            req.setAttribute("mensaje", "El usuario no existe o la contraseña es incorrecta");
+            req.getRequestDispatcher("contraMala.jsp").forward(req, resp);
+        } else {
 
-        try {
+            HttpSession session = req.getSession(true);
+            session.setAttribute("user", u);
 
-            if (u.getEmail() != null) {
-
-                HttpSession session = req.getSession(true);
-                session.setAttribute("user", u);
-
-
-                System.out.println("Usuario guardado en sesión: " + u.getNombre());
-                System.out.println(u.getApll_1());
-                System.out.println(u.getMatri());
-
-
-                switch (rol) {
-                    case 1:
-                        req.getRequestDispatcher("pageAdmin.jsp").forward(req, resp);
-                        //ruta = "pageAdministrativo.jsp";
-                        break;
-                    case 2:
-                        req.getRequestDispatcher("pageAdministrativo.jsp").forward(req, resp);
-                        //ruta = "pageAdministrativo.jsp";
-                        break;
-                    case 3:
-                        req.getRequestDispatcher("pageEst.jsp").forward(req, resp);
-                        //ruta = "pageEst.jsp";
-                        break;
-                    default:
-
-                        req.getRequestDispatcher("contraMala.jsp").forward(req, resp);
-                        break;
-                }
-
-                resp.sendRedirect("index.jsp");
-            } else {
-                // El usuario no existe en la base de datos
-                HttpSession session = req.getSession();
-                session.setAttribute("mensaje", "El usuario no existe en la base de datos");
+            int rol = u.getRol();
+            String ruta = "";
+            switch (rol) {
+                case 1:
+                    ruta = "pageAdmin.jsp";
+                    break;
+                case 2:
+                    ruta = "pageAdministrativo.jsp";
+                    break;
+                case 3:
+                    ruta = "pageEst.jsp";
+                    break;
+                default:
+                    ruta = "error.jsp";
+                    break;
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            resp.sendRedirect("error.jsp");
+            resp.sendRedirect(ruta);
         }
     }
+
 }
 
 

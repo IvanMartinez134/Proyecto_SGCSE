@@ -21,7 +21,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Ver Comentarios</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
@@ -132,14 +132,14 @@
     </div>
 
 
-    <div class="container mt-5 d-lg col-3 d-block">
-        <h3>Comentarios</h3>
+    <div class="container mt-5 d-lg col-3 ms-5 cd">
+        <h3 class="text-center mb-4">Comentarios</h3>
 
             <div class="mb-3">
-                <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones" readonly><%=com.getComentario()%></textarea>
+                <textarea class="areaCom" rows="3" id="comen" name="comentario" readonly><%=com.getComentario()%></textarea>
             </div>
 
-            <div class="text-end">
+            <div class="text-center col-10 m-auto fs-6">
                 <p class="mt-2">Estos comentarios los realizo un ventanilla, tomalos en cuenta</p>
 
 
@@ -148,14 +148,14 @@
             </div>
 
 
-        <div class="container mt-5">
+        <div class="container mt-4">
             <div class="mt-2 justify-content-center">
 
                 <%
                     UserDao userDao = new UserDao();
 
                 %>
-                <div class="col-md-4 card_margin d-sm col-10" style="width: 400px">
+                <div class="col-md-4 card_margin" style="width: 100%">
                     <div class="card mb-3">
                         <%User v = userDao.getOneVen(c.getVta_id());%>
                         <div class="card-header-custom">Estado: Incorrecta</div>

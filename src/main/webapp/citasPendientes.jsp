@@ -24,6 +24,7 @@
 
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
     <link rel="stylesheet" href="css/citapen.css">
 
@@ -83,10 +84,12 @@
                     <p class="card-text">Tipo de Documentación: <%=c.getTipo_doc()%></p>
                     <p class="card-text">Fecha: <%=c.getFecha()%></p>
                     <p class="card-text">Horario: <%=c.getHora()%></p>
-                    <form method="get" action="asignarCita">
+
+
+                    <form method="get" action="asignarCita" id="form">
                     <div class="form-group">
                         <input type="hidden" name="id" value="<%=c.getId()%>">
-                        <label for="usuariosSelect">Selecciona un usuario:</label>
+                        <label for="usuariosSelect">Selecciona un administrador:</label>
                         <select class="form-select" id="usuariosSelect" name="usuariosSelect">
                             <option selected>Selecciona un usuario...</option>
                             <%
@@ -115,6 +118,26 @@
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/citap.js"></script>
+
+
+
+<%
+    String mensaje = (String) session.getAttribute("mensaje");
+    if (mensaje != null) {
+%>
+<script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Éxito',
+        text: '<%= mensaje %>'
+    }).then(function() {
+
+    });
+</script>
+<%
+        session.removeAttribute("mensaje");
+    }
+%>
 
 </body>
 

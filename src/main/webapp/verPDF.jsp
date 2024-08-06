@@ -16,7 +16,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Ver PDF</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
@@ -118,9 +118,9 @@
 
     <div class="card-footer-custom">
 
-        <a href="docIncorrecta?id=<%=cta_id%>" class="borrar"
+        <a href="docIncorrecta?id=<%=cta_id%>" class="borrar "
            data-id="<%%>">
-            <button class="btn-icon">
+            <button class="btn-icon ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 6h18"></path>
@@ -145,28 +145,26 @@
 </div>
 
 
-    <div class="container mt-5 d-lg col-3">
+    <div class="container mt-5 d-lg col-3 ms-5 cd">
         <h3>Comentarios</h3>
         <form id="comentForm" method="post" action="docIncorrecta">
             <div class="mb-3">
-                <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones"></textarea>
+                <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones ..."></textarea>
             </div>
+
+
 
             <div class="text-end">
 
-
                 <a href="docCorrecta?id=<%=cta_id%>">
-                <button class="btn btn-danger mt-2" id="canComent"><i class="bi bi-file-earmark-excel"></i></button>
+                <button class="btn btn-danger mt-2 me-3" id="canComent"><i class="bi bi-file-earmark-excel"></i></button>
                 </a>
 
                 <input type="hidden" name="id" value="<%=cta_id%>">
-                <button class=" btn btn-success mt-2" id="subirComent" type="submit"><i class="bi bi-clipboard-check"></i></button>
-
-
-
-
+                <button class="btn btn-success mt-2 me-1" id="subirComent" type="submit"><i class="bi bi-clipboard-check"></i></button>
 
             </div>
+
         </form>
     </div>
 

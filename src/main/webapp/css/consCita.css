@@ -159,6 +159,11 @@ body {
 
 }
 
+.card-footer-custom{
+
+    margin-right: 2rem !important;
+}
+
 .card-text {
     margin-bottom: 10px;
 }
