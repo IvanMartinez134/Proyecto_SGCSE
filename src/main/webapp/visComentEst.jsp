@@ -1,6 +1,12 @@
 <%@ page import="mx.edu.utez.proyecto_sgcse.dao.DocumentoDao" %>
 <%@ page import="mx.edu.utez.proyecto_sgcse.model.Documento" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.UserDao" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.CitaDao" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.Cita" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.Comentario" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.ComentarioDao" %><%--
   Created by IntelliJ IDEA.
   User: jonyo
   Date: 16/07/2024
@@ -88,10 +94,17 @@
 
     <div class="container col-7">
         <%
+            CitaDao citaDao = new CitaDao();
+            ComentarioDao comDao = new ComentarioDao();
             DocumentoDao docDao = new DocumentoDao();
-            int cta_id = Integer.parseInt(request.getParameter("cta_id"));
 
-            List<Documento> docs = docDao.getAllDocumentos(cta_id);
+            int cta_id = Integer.parseInt(request.getParameter("id"));
+
+            Cita c = citaDao.getOneCita(cta_id);
+
+            Comentario com = comDao.getOneComentario(c.getId());
+
+            List<Documento> docs = docDao.getAllDocumentos(c.getId());
 
             for (Documento d : docs) {
 
@@ -121,32 +134,36 @@
 
     <div class="container mt-5 d-lg col-3 d-block">
         <h3>Comentarios</h3>
-        <form id="comentForm" method="post" action="docIncorrecta">
+
             <div class="mb-3">
-                <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones" readonly></textarea>
+                <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones" readonly><%=com.getComentario()%></textarea>
             </div>
 
             <div class="text-end">
                 <p class="mt-2">Estos comentarios los realizo un ventanilla, tomalos en cuenta</p>
 
-                <input type="hidden" name="id" value="<%=cta_id%>">
+
 
 
             </div>
-        </form>
 
 
         <div class="container mt-5">
             <div class="mt-2 justify-content-center">
 
+                <%
+                    UserDao userDao = new UserDao();
+
+                %>
                 <div class="col-md-4 card_margin d-sm col-10" style="width: 400px">
                     <div class="card mb-3">
-                        <div class="card-header-custom">Estado: Pendiente</div>
+                        <%User v = userDao.getOneVen(c.getVta_id());%>
+                        <div class="card-header-custom">Estado: Incorrecta</div>
                         <div class="card-body-custom">
-                            <p class="card-title">Nombre:</p>
-                            <p class="card-text">Tipo de Documentación:</p>
-                            <p class="card-text">Fecha: </p>
-                            <p class="card-text">Horario: </p>
+                            <p class="card-text">Tipo de Documentación: <%=c.getTipo_doc()%></p>
+                            <p class="card-text">Fecha: <%=c.getFecha()%></p>
+                            <p class="card-text">Horario: <%=c.getHora()%></p>
+                            <p class="card-text">Encargado: <%=v.getNombre() + " " + v.getApll_1() + " " + v.getApll_2()%></p>
 
                         </div>
                     </div>
@@ -157,8 +174,6 @@
 
 
     </div>
-
-
 
 
 

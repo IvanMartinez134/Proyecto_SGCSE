@@ -26,44 +26,52 @@ public class LoginServlet extends HttpServlet {
 ////        System.out.println(u.getId());
 ////        System.out.println(u.getCarrera());
 
-        //String ruta = "index.jsp";
+        // String ruta = "index.jsp";
 
-        if (u.getEmail() != null) {
+        try {
 
-            HttpSession session = req.getSession(true);
-            session.setAttribute("user", u);
+            if (u.getEmail() != null) {
 
-
-            System.out.println("Usuario guardado en sesión: " + u.getNombre());
-            System.out.println(u.getApll_1());
-            System.out.println(u.getMatri());
+                HttpSession session = req.getSession(true);
+                session.setAttribute("user", u);
 
 
-            switch (rol) {
-                case 1:
-                    req.getRequestDispatcher("pageAdmin.jsp").forward(req, resp);
-                    //ruta = "pageAdministrativo.jsp";
-                    break;
-                case 2:
-                    req.getRequestDispatcher("pageAdministrativo.jsp").forward(req, resp);
-                    //ruta = "pageAdministrativo.jsp";
-                    break;
-                case 3:
-                    req.getRequestDispatcher("pageEst.jsp").forward(req, resp);
-                    //ruta = "pageEst.jsp";
-                    break;
-                default:
+                System.out.println("Usuario guardado en sesión: " + u.getNombre());
+                System.out.println(u.getApll_1());
+                System.out.println(u.getMatri());
 
-                    //ruta = "error.jsp";
-                    break;
+
+                switch (rol) {
+                    case 1:
+                        req.getRequestDispatcher("pageAdmin.jsp").forward(req, resp);
+                        //ruta = "pageAdministrativo.jsp";
+                        break;
+                    case 2:
+                        req.getRequestDispatcher("pageAdministrativo.jsp").forward(req, resp);
+                        //ruta = "pageAdministrativo.jsp";
+                        break;
+                    case 3:
+                        req.getRequestDispatcher("pageEst.jsp").forward(req, resp);
+                        //ruta = "pageEst.jsp";
+                        break;
+                    default:
+
+                        req.getRequestDispatcher("contraMala.jsp").forward(req, resp);
+                        break;
+                }
+
+                resp.sendRedirect("index.jsp");
+            } else {
+                // El usuario no existe en la base de datos
+                HttpSession session = req.getSession();
+                session.setAttribute("mensaje", "El usuario no existe en la base de datos");
             }
-        } else {
-            // El usuario no existe en la base de datos
-            HttpSession session = req.getSession();
-            session.setAttribute("mensaje", "El usuario no existe en la base de datos");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            resp.sendRedirect("error.jsp");
         }
-
-
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }
+
+

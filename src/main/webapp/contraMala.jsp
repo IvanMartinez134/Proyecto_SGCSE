@@ -1,12 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
   User: death
-  Date: 03/08/2024
-  Time: 03:43 p. m.
+  Date: 05/08/2024
+  Time: 11:41 p. m.
   To change this template use File | Settings | File Templates.
 --%>
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
@@ -16,7 +14,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page 404</title>
+    <title>Contraseña Incorrecta</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel='stylesheet' type='text/css' media='screen' href='css/error.css'>
@@ -36,12 +34,12 @@
                     </div>
 
                     <div class="back">
-                        <img src="img/cav.gif">
+                        <img src="img/cav.gif" alt="error">
                     </div>
 
 
                     <div class="content_box_404">
-                        <h3 class="h2">Página no disponible</h3>
+                        <h3 class="h2">Datos incorrectos</h3>
 
                         <a class="btn btn-success" href="index.jsp">Vuelve a intentarlo</a>
                     </div>

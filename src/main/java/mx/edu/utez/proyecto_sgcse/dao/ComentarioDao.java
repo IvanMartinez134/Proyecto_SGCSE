@@ -1,11 +1,13 @@
 package mx.edu.utez.proyecto_sgcse.dao;
 
+import mx.edu.utez.proyecto_sgcse.model.Cita;
 import mx.edu.utez.proyecto_sgcse.model.Comentario;
 import mx.edu.utez.proyecto_sgcse.model.Documento;
 import mx.edu.utez.proyecto_sgcse.utils.DatabaseConnectionManager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ComentarioDao {
@@ -32,4 +34,28 @@ public class ComentarioDao {
 
         return fila;
     }
+
+    public Comentario getOneComentario(int id) {
+        Comentario c = null;
+        String query = "SELECT * FROM COMENTARIOS WHERE cta_id = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    c = new Comentario();
+                    c.setId(rs.getInt("id"));
+                    c.setComentario(rs.getString("texto"));
+                    c.setCta_id(rs.getInt("cta_id"));
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
+
 }

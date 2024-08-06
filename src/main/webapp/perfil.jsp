@@ -72,29 +72,33 @@
                         <h3 class="h6 text-muted-custom">Email</h3>
                         <p>${sessionScope.user.email}</p>
                     </div>
+
+
+
                     <div class="col-md-6 mb-3">
-                        <h3 class="h6 text-muted-custom">Matrícula</h3>
-                        <p>${sessionScope.user.matri}</p>
+                        <h3 class="h6 text-muted-custom">Nombre:</h3>
+                        <p>${sessionScope.user.nombre}</p>
                     </div>
+
                     <div class="col-md-6 mb-3">
-                        <h3 class="h6 text-muted-custom">Carrera</h3>
-                        <p>${sessionScope.user.carrera}</p>
+                        <h3 class="h6 text-muted-custom">Apellido paterno:</h3>
+                        <p>${sessionScope.user.apll_1}</p>
                     </div>
+
                     <div class="col-md-6 mb-3">
-                        <h3 class="h6 text-muted-custom">Cuatrimestre</h3>
-                        <p>${sessionScope.user.cuatri}</p>
+                        <h3 class="h6 text-muted-custom">Apellido materno</h3>
+                        <p>${sessionScope.user.apll_2}</p>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <h3 class="h6 text-muted-custom">Grupo</h3>
-                        <p>${sessionScope.user.grupo}</p>
-                    </div>
-                    <a href="registroEst.jsp">
+
+                    <a href="editarPerfil.jsp">
                         <div class="cont_b mb-3">
                             <button class="btn bg-primary btn_p" type="button">
                                 Editar perfil
                             </button>
                         </div>
                     </a>
+
+
                 </div>
             </div>
         </div>

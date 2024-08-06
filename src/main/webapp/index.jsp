@@ -83,21 +83,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const errorMessage = '<%= (String) request.getSession().getAttribute("mensaje") %>';
-        if (errorMessage) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Intente de nuevo',
-                text: errorMessage,
-            })
 
-            request.getSession().removeAttribute("mensaje");
 
-        }
-    });
-</script>
+
 
 </body>
 

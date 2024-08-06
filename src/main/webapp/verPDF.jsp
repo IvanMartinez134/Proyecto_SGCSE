@@ -160,7 +160,6 @@
                 </a>
 
                 <input type="hidden" name="id" value="<%=cta_id%>">
-
                 <button class=" btn btn-success mt-2" id="subirComent" type="submit"><i class="bi bi-clipboard-check"></i></button>
 
 
