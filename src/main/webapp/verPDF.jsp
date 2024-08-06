@@ -147,7 +147,7 @@
 
     <div class="container mt-5 d-lg col-3">
         <h3>Comentarios</h3>
-        <form id="comentForm" >
+        <form id="comentForm" method="post" action="docIncorrecta">
             <div class="mb-3">
                 <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones"></textarea>
             </div>
@@ -155,8 +155,11 @@
             <div class="text-end">
 
 
-
+                <a href="docCorrecta?id=<%=cta_id%>">
                 <button class="btn btn-danger mt-2" id="canComent"><i class="bi bi-file-earmark-excel"></i></button>
+                </a>
+
+                <input type="hidden" name="id" value="<%=cta_id%>">
 
                 <button class=" btn btn-success mt-2" id="subirComent" type="submit"><i class="bi bi-clipboard-check"></i></button>
 

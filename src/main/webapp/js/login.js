@@ -53,7 +53,7 @@ function togglePassword() {
         passwordIcon.src = 'img/eye-block.svg'; // Cambia el ícono
     } else {
         passwordInput.type = 'password';
-        passwordIcon.src = 'img/eye.svg'; // Cambia el ícono de vuelta
+        passwordIcon.src = 'img/eye.svg';
     }
 }
 

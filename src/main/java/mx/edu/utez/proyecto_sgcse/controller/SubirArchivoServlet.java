@@ -39,31 +39,35 @@ public class SubirArchivoServlet extends HttpServlet {
             uploadDir.mkdirs();
         }
 
-        // Obtener el archivo subido
-        Part filePart = request.getPart("archivo");
-        String fileName = filePart.getSubmittedFileName();
+        for (Part filePart : request.getParts()) {
 
-        // Guardar el archivo en el servidor
-        String filePath = uploadFilePath + File.separator + fileName;
-        filePart.write(filePath);
+            // Obtener el archivo subido
+            //Part filePart = request.getPart("file");
 
-        // Guardar el archivo en la sesssion
-        String relativePath = UPLOAD_DIR + "/" + fileName;
-        // request.getSession().setAttribute("pdfPath", relativePath);
+            String fileName = filePart.getSubmittedFileName();
 
-        DocumentoDao docDao = new DocumentoDao();
-        Documento d = new Documento();
-        d.setDireccion(relativePath);
-        d.setCta_id(Integer.parseInt(request.getParameter("cta_id")));
+            // Guardar el archivo en el servidor
+            String filePath = uploadFilePath + File.separator + fileName;
+            filePart.write(filePath);
+
+            // Guardar el archivo en la sesssion
+            String relativePath = UPLOAD_DIR + "/" + fileName;
+            // request.getSession().setAttribute("pdfPath", relativePath);
+
+            DocumentoDao docDao = new DocumentoDao();
+            Documento d = new Documento();
+            d.setDireccion(relativePath);
+            d.setCta_id(Integer.parseInt(request.getParameter("cta_id")));
 
 
-        String jsonResponse = String.format("{\"mensaje\": \"Archivo subido\", \"doc:\": \"%s\"}", UPLOAD_DIR + "/" + fileName);
-        out.print(jsonResponse);
-        out.flush();
+            String jsonResponse = String.format("{\"mensaje\": \"Archivo subido\", \"doc:\": \"%s\"}", UPLOAD_DIR + "/" + fileName);
+            out.print(jsonResponse);
+            out.flush();
 
-        System.out.println(relativePath);
-        docDao.agregarDoc(d);
+            System.out.println(relativePath);
+            docDao.agregarDoc(d);
 
+        }
 
 
     }

@@ -107,7 +107,7 @@
 
     <!-- subirDoc.jsp -->
 
-    <%--  <div class="drag-drop" id="drag-drop-area">
+    <%-- <div class="drag-drop" id="drag-drop-area">
             <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
             <input type="file" id="file-input" name="file" multiple>
             <ul class="file-list" id="file-list">
@@ -120,11 +120,16 @@
     <form id="form" action="subirArchivosJS" method="post" enctype="multipart/form-data">
 
 
-        <div class="mt-3 d-lg col-8" >
+            <div class="drag-drop" id="drag-drop-area">
+                <p>Arrastra y suelta tus archivos aquí o haz clic para seleccionar archivos.</p>
+                <input class="mt-2" type="file" id="file-input"  accept=".pdf" name="file" multiple>
+                <ul class="file-list" id="file-list">
+                    <!-- Aquí se mostrarán los archivos seleccionados -->
+                </ul>
+            </div>
 
-            <input type="file" accept="application/pdf" name="archivo" value="Subir Archivo">
+            <input type="hidden" name="cta_id" value="<%=request.getParameter("cta_id")%>">
 
-        </div>
 
         <div class="text-center">
             <input type="submit" class="btn btn-success mt-3" value="Subir Archivos">

@@ -73,7 +73,7 @@
             UserDao userDao = new UserDao();
             CitaDao citaDao = new CitaDao();
             int id = Integer.parseInt(request.getParameter("id"));
-            User u = userDao.consVen(id);
+            User u = userDao.consUser(id);
 
             List<Cita> citas = citaDao.getAllCitasPendientesEst(u.getId());
 

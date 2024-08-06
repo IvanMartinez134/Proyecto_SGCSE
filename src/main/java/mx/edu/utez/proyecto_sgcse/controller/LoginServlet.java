@@ -63,7 +63,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("mensaje", "El usuario no existe en la base de datos");
         }
 
-        // Redirigir al usuario a la ruta correspondiente
-        req.getRequestDispatcher("error.jsp").forward(req, resp);
+
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

@@ -81,7 +81,23 @@
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/login.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorMessage = '<%= (String) request.getSession().getAttribute("mensaje") %>';
+        if (errorMessage) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Intente de nuevo',
+                text: errorMessage,
+            })
+
+            request.getSession().removeAttribute("mensaje");
+
+        }
+    });
+</script>
 
 </body>
 
