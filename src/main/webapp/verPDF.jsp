@@ -118,29 +118,9 @@
 
     <div class="card-footer-custom">
 
-        <a href="docIncorrecta?id=<%=cta_id%>" class="borrar "
-           data-id="<%%>">
-            <button class="btn-icon ">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 6h18"></path>
-                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                </svg>
-            </button>
-        </a>
 
-        <a href="docCorrecta?id=<%=cta_id%>">
 
-            <button class="btn-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v10"></path>
-                    <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                    <path d="M10.4 12.6a2 2 0 1 1 3 3L8 21l-4 1 1-4Z"></path>
-                </svg>
-            </button>
-        </a>
+
     </div>
 </div>
 
@@ -152,16 +132,14 @@
                 <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones ..."></textarea>
             </div>
 
-
-
             <div class="text-end">
 
-                <a href="docCorrecta?id=<%=cta_id%>">
                 <button class="btn btn-danger mt-2 me-3" id="canComent"><i class="bi bi-file-earmark-excel"></i></button>
-                </a>
 
                 <input type="hidden" name="id" value="<%=cta_id%>">
-                <button class="btn btn-success mt-2 me-1" id="subirComent" type="submit"><i class="bi bi-clipboard-check"></i></button>
+
+
+                <button class="btn btn-success mt-2 me-1" id="docCorrecta" type="button"><i class="bi bi-clipboard-check"></i></button>
 
             </div>
 
@@ -172,6 +150,12 @@
 
 
 </div>
+
+<script>
+    document.getElementById('docCorrecta').addEventListener('click', function() {
+        window.location.href = 'docCorrecta?id=<%=cta_id%>';
+    });
+</script>
 
 
 <script>

@@ -30,7 +30,7 @@
             return;
         }
     %>
-    <form action="actualizarUsuario" method="post">
+    <form action="actualizarPerfil" method="post">
         <input type="hidden" name="id" value="<%= user.getId() %>">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre</label>

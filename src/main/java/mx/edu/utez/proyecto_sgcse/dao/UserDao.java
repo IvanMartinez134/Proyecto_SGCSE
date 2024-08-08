@@ -341,6 +341,25 @@ public class UserDao {
         return fila;
     }
 
+    public boolean updatePerfil(User u) {
+        String query = "UPDATE usuarios SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ? WHERE id = ?";
+        boolean fila = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getApll_1());
+            ps.setString(3, u.getApll_2());
+            ps.setString(4, u.getEmail());
+            ps.setInt(5,u.getId());
+            fila = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return fila;
+    }
+
     public boolean updateVen(User u) {
         String query = "UPDATE usuarios SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ?, tel = ? WHERE id = ?";
         boolean fila = false;

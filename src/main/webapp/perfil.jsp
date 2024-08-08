@@ -46,7 +46,9 @@
     <div class="aside_c">
         <div class="aside_i">
             <i class="bi-box-arrow-right"></i>
+            <a href="index.jsp" class="text-decoration-none">
             <span class="a_span">Cerrar sesion</span>
+            </a>
         </div>
     </div>
 </aside>
@@ -90,7 +92,7 @@
                         <p>${sessionScope.user.apll_2}</p>
                     </div>
 
-                    <a href="editarPerfil.jsp">
+                    <a href="editarPerfil.jsp?id=${sessionScope.user.id}">
                         <div class="cont_b mb-3">
                             <button class="btn bg-primary btn_p" type="button">
                                 Editar perfil

@@ -38,7 +38,7 @@ public class TramiteDao {
 
     public Map<String, Integer> obtenerEstTramites() {
         Map<String, Integer> resultados = new HashMap<>();
-        String query = "SELECT tipo.decripcion AS tipo_de_tramite, COUNT(*) AS cantidad FROM CITAS c JOIN TIPOS_DE_TRAMITES tipo ON c.tdt_id = tipo.id WHERE c.status = true GROUP BY tipo.decripcion ORDER BY tipo.decripcion";
+        String query = "SELECT tipo.decripcion AS tipo_de_tramite, COUNT(*) AS cantidad FROM CITAS c JOIN TIPOS_DE_TRAMITES tipo ON c.tdt_id = tipo.id WHERE c.status != 7 GROUP BY tipo.decripcion ORDER BY tipo.decripcion";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);

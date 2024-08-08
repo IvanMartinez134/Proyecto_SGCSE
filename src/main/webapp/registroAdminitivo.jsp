@@ -110,6 +110,8 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
+
+
 <script>
 
 
@@ -120,6 +122,8 @@
         text: "",
         icon: "success",
         button: "Listo",
+    }).then(function (){
+        window.location.href = 'pageAdmin.jsp';
     });
     <% session.removeAttribute("registroExitoso"); %>
     <% } %>

@@ -52,10 +52,10 @@
             <div class="offcanvas-body d-flex flex-column justify-content-between px-0" data-bs-theme="success">
                 <ul class="navbar-nav fs-5 justify-content-end">
                     <li class="nav-item p-lg-2 p-2 px-4 py-md-3">
-                        <a href="" class="nav-link fs-6 d-lg"><i class="bi bi-person i"></i>Mi Perfil</a>
+                        <a href="perfil.jsp" class="nav-link fs-6 d-lg"><i class="bi bi-person i"></i>Mi Perfil</a>
                     </li>
                     <li class="nav-item p-lg-2 p-2 px-4 py-md-3 c">
-                        <a href="" class="nav-link fs-6 d-lg"><i class="bi bi-box-arrow-right i"></i>Cerrar sesión</a>
+                        <a href="index.jsp" class="nav-link fs-6 d-lg"><i class="bi bi-box-arrow-right i"></i>Cerrar sesión</a>
                     </li>
                 </ul>
             </div>

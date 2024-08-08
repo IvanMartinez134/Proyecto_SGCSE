@@ -177,6 +177,8 @@
         text: "",
         icon: "success",
         button: "Listo",
+    }).then(function (){
+        window.location.href = 'index.jsp';
     });
     <% session.removeAttribute("registroExitoso"); %>
     <% } %>
