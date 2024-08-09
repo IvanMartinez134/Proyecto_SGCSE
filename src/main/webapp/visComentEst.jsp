@@ -92,57 +92,82 @@
 <div class="d-flex">
 
 
-    <div class="container col-7">
-        <%
-            CitaDao citaDao = new CitaDao();
-            ComentarioDao comDao = new ComentarioDao();
-            DocumentoDao docDao = new DocumentoDao();
 
-            int cta_id = Integer.parseInt(request.getParameter("id"));
+    <div id="documentCarousel" class="carousel slide col-7 mx-auto" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <%
+                CitaDao citaDao = new CitaDao();
+                ComentarioDao comDao = new ComentarioDao();
+                DocumentoDao docDao = new DocumentoDao();
 
-            Cita c = citaDao.getOneCita(cta_id);
+                int cta_id = Integer.parseInt(request.getParameter("id"));
 
-            Comentario com = comDao.getOneComentario(c.getId());
+                Cita c = citaDao.getOneCita(cta_id);
+                Comentario com = comDao.getOneComentario(c.getId());
+                List<Documento> docs = docDao.getAllDocumentos(c.getId());
 
-            List<Documento> docs = docDao.getAllDocumentos(c.getId());
+                int index = 0;
+                for (Documento d : docs) {
+                    String pdfPath = d.getDireccion();
+                    boolean isActive = (index == 0); // Establece el primer elemento como activo
+                    index++;
 
-            for (Documento d : docs) {
-
-                // Obtener la ruta del archivo desde la sesión
-                String pdfPath = d.getDireccion();
-                System.out.println( "Direccion" + pdfPath);
-
-                if (pdfPath != null) {
-        %>
-        <div class="embed-responsive embed-responsive-16by9  text-center justify-content-center mt-5">
-            <object class="embed-responsive-item" data="<%= request.getContextPath() + "/" + pdfPath %>" type="application/pdf" width="80%" height="600px">
-                <p>Tu navegador no admite la visualización de archivos PDF. Puedes descargar el archivo <a href="<%= request.getContextPath() + "/" + pdfPath %>">aquí</a>.</p>
-            </object>
-        </div>
-        <%
-        } else {
-        %>
-        <p>No se ha encontrado el archivo.</p>
-        <%
+                    if (pdfPath != null) {
+            %>
+            <div class="carousel-item <%= isActive ? "active" : "" %>">
+                <div class="embed-responsive embed-responsive-16by9 text-center justify-content-center mt-5">
+                    <object class="embed-responsive-item" data="<%= request.getContextPath() + "/" + pdfPath %>" type="application/pdf" width="80%" height="600px">
+                        <p>Puedes descargar el archivo <a href="<%= request.getContextPath() + "/" + pdfPath %>">aquí</a>.</p>
+                    </object>
+                </div>
+            </div>
+            <%
+            } else {
+            %>
+            <div class="carousel-item">
+                <p>No se ha encontrado el archivo.</p>
+            </div>
+            <%
+                    }
                 }
-            }
-        %>
+            %>
+        </div>
 
 
+        <button class="carousel-control-prev" type="button" data-bs-target="#documentCarousel" data-bs-slide="prev">
+            <div class="fle">
+                <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+            </div>
+
+
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#documentCarousel" data-bs-slide="next">
+            <div class="fle">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </div>
+
+
+        </button>
     </div>
+
+
+
+
+
+
 
 
     <div class="container mt-5 d-lg col-3 ms-5 cd">
         <h3 class="text-center mb-4">Comentarios</h3>
 
             <div class="mb-3">
-                <textarea class="areaCom" rows="3" id="comen" name="comentario" readonly><%=com.getComentario()%></textarea>
+                <textarea class="areaCom rounded-3" rows="3" id="comen" name="comentario" readonly><%=com.getComentario()%></textarea>
             </div>
 
             <div class="text-center col-10 m-auto fs-6">
-                <p class="mt-2">Estos comentarios los realizo un ventanilla, tomalos en cuenta</p>
-
-
+                <a href="subirDoc.jsp" class="text-decoration-none">
+                    <input class="btn btn-success" value="Reenviar Documentos ">
+                </a>
 
 
             </div>

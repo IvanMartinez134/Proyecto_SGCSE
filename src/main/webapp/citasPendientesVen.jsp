@@ -101,6 +101,8 @@
 
 
                 </div>
+
+
                 <div class="card-footer-custom ms-auto mb-4">
 
                     <a href="verPDF.jsp?cta_id=<%=c.getId()%>">
@@ -112,6 +114,7 @@
                     </a>
 
                 </div>
+
             </div>
         </div>
         <% } %>
