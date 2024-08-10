@@ -210,7 +210,7 @@ public class UserDao {
 
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        String query = "SELECT id, nombre, apll_1, apll_2, email, status FROM usuarios where tdu_id = 3";
+        String query = "select * from lista_usuarios where status = 1";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
@@ -218,11 +218,14 @@ public class UserDao {
             while (rs.next()) {
                 User user = new User();
                 user.setId(rs.getInt("id"));
+                user.setStatus(rs.getInt("status"));
                 user.setNombre(rs.getString("nombre"));
                 user.setApll_1(rs.getString("apll_1"));
                 user.setApll_2(rs.getString("apll_2"));
                 user.setEmail(rs.getString("email"));
-                user.setStatus(rs.getInt("status"));
+                user.setMatri(rs.getString("matri"));
+                user.setNom_carrera(rs.getString("nombre_carrera"));
+                user.setDivision(rs.getString("division"));
                 users.add(user);
             }
         } catch (SQLException e) {

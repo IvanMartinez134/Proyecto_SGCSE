@@ -103,7 +103,9 @@
             <th class="centered">Nombre</th>
             <th class="centered">Apellido</th>
             <th class="centered">Email</th>
-            <th class="centered">Status</th>
+            <th class="centered">Matricula</th>
+            <th class="centered">Carrera</th>
+            <th class="centered">Division</th>
             <th class="centered">Editar</th>
             <th class="centered">Eliminar</th>
         </tr>
@@ -117,7 +119,9 @@
             <td><%= user.getNombre() %></td>
             <td><%= user.getApll_1() %> <%= user.getApll_2() %></td>
             <td><%= user.getEmail() %></td>
-            <td><%= user.getStatus() %></td>
+            <td><%= user.getMatri() %></td>
+            <td><%= user.getNom_carrera() %></td>
+            <td><%= user.getDivision() %></td>
             <td>
                 <a href="editarUsuario.jsp?id=<%= user.getId() %>">
                     <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>

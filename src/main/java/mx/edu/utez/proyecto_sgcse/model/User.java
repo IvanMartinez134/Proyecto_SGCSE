@@ -19,6 +19,7 @@ public class User implements Serializable {
     private int status;
     private int carrera;
     private String division;
+    private String nom_carrera;
     private int rol;
 
     private String matri;
@@ -169,5 +170,13 @@ public class User implements Serializable {
 
     public void setVta_id(int vta_id) {
         this.vta_id = vta_id;
+    }
+
+    public String getNom_carrera() {
+        return nom_carrera;
+    }
+
+    public void setNom_carrera(String nom_carrera) {
+        this.nom_carrera = nom_carrera;
     }
 }
