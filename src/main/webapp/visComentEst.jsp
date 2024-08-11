@@ -92,7 +92,7 @@
 
 
 
-    <div id="documentCarousel" class="carousel slide col-7 mx-auto" data-bs-ride="carousel">
+    <div id="documentCarousel" class="carousel slide container  col-7" data-bs-ride="carousel">
         <div class="carousel-inner">
             <%
                 CitaDao citaDao = new CitaDao();
@@ -108,7 +108,7 @@
                 int index = 0;
                 for (Documento d : docs) {
                     String pdfPath = d.getDireccion();
-                    boolean isActive = (index == 0); // Establece el primer elemento como activo
+                    boolean isActive = (index == 0);
                     index++;
 
                     if (pdfPath != null) {
@@ -144,6 +144,9 @@
             <div class="fle">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </div>
+
+
+            <p>Holaaa</p>
 
 
         </button>
