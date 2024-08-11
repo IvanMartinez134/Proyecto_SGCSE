@@ -142,6 +142,37 @@ public class CitaDao {
     }
 
 
+    public List<Cita> getAllCitas(String fecha) {
+        List<Cita> citas = new ArrayList<>();
+        String query = "select * from ver_citas where fecha = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, fecha);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Cita c = new Cita();
+                    c.setId(rs.getInt("id"));
+                    c.setFecha(rs.getString("fecha"));
+                    c.setHora(rs.getString("hora"));
+                    c.setAlumno(rs.getString("nombre"));
+                    c.setTipo_doc(rs.getString("documento"));
+                    c.setVta_id(rs.getInt("vta_id"));
+                    c.setEtsado(rs.getInt("status"));
+
+
+                    citas.add(c);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return citas;
+    }
+
 
 
     public List<Cita> getAllCitasPendientes() {
@@ -196,6 +227,7 @@ public class CitaDao {
         return citas;
     }
 
+
     public List<Cita> getAllCitasPendientesVen(int vta_id) {
         List<Cita> citas = new ArrayList<>();
         String query = "select * from ver_citas where vta_id = ? and status in (1,2)";
@@ -226,6 +258,7 @@ public class CitaDao {
 
         return citas;
     }
+
 
     public List<Cita> getAllCitasPendientesEst(int id) {
         List<Cita> citas = new ArrayList<>();

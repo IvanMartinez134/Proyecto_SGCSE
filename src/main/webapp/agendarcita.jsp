@@ -1,5 +1,9 @@
+
 <%@ page import="mx.edu.utez.proyecto_sgcse.dao.UserDao" %>
-<%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %><%--
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.dao.CitaDao" %>
+<%@ page import="mx.edu.utez.proyecto_sgcse.model.Cita" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: jonyo
   Date: 16/07/2024
@@ -107,7 +111,6 @@
 </nav>
 
 
-
 <div class="container col-lg-6 col-sm-8 col-xsm-8 mt-5 d-sm col-10">
   <form id="agendarCitaForm" action="procesarCita" method="POST">
     <div class="mb-3">
@@ -125,7 +128,7 @@
     </div>
     <div class="mb-3">
       <p>Seleccione una fecha para recoger tus documentos:</p>
-      <input type="date" id="fecha_recoger" name="fecha_recoger" class="form-control">
+        <input type="date" id="fecha_recoger" name="fecha_recoger" class="form-control">
     </div>
     <div class="mb-3">
       <label for="horario" class="form-label">Seleccione el horario:</label>
