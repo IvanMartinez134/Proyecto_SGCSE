@@ -153,14 +153,8 @@ public class CitaDao {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Cita c = new Cita();
-                    c.setId(rs.getInt("id"));
                     c.setFecha(rs.getString("fecha"));
                     c.setHora(rs.getString("hora"));
-                    c.setAlumno(rs.getString("nombre"));
-                    c.setTipo_doc(rs.getString("documento"));
-                    c.setVta_id(rs.getInt("vta_id"));
-                    c.setEtsado(rs.getInt("status"));
-
 
                     citas.add(c);
                 }

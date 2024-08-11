@@ -104,7 +104,6 @@
                     <select id="carrera" name="carrera" class="form-select">
                         <option value="" disabled selected>Selecciona una carrera</option>
 
-
                     </select>
                 </div>
             </div>

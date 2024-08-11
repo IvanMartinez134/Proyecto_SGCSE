@@ -28,6 +28,10 @@ public class ObtenerCarrerasServlet  extends HttpServlet {
 
         List<Carrera> carreras = carreraDao.obtenerCarrerasPorDivision(div);
 
+
+
+
+
         // Convertir la lista de carreras a formato JSON
 
         Gson gson = new Gson();

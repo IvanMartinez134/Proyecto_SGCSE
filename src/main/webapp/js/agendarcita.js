@@ -1,5 +1,4 @@
 
-
 const $openClose = document.getElementById("open_close"),
     $aside = document.getElementById("aside");
 

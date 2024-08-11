@@ -21,6 +21,7 @@
   <!-- Enlace a Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <link rel="stylesheet" href="css/agendarcita.css">
   <style>
@@ -128,14 +129,13 @@
     </div>
     <div class="mb-3">
       <p>Seleccione una fecha para recoger tus documentos:</p>
-        <input type="date" id="fecha_recoger" name="fecha_recoger" class="form-control">
+        <input type="date" id="fecha_recoger" name="fecha_recoger" class="form-control" >
     </div>
     <div class="mb-3">
       <label for="horario" class="form-label">Seleccione el horario:</label>
       <select name="horario" id="horario" class="form-select" onchange="actualizarFechaHora()">
-        <option value="8:00">8:00 AM</option>
-        <option value="9:00">9:00 AM</option>
-        <option value="10:00">10:00 AM</option>
+        <option value="" disabled selected>Seleccione su horario:</option>
+
 
       </select>
     </div>
@@ -188,6 +188,32 @@
     document.getElementById("fecha_hora").value = fechaHora;
   }
 </script>
+
+
+<script type="text/javascript"  defer>
+  $(document).ready(function() {
+    $('#fecha_recoger').change(function() {
+      var fecha = $(this).val();
+      $.ajax({
+        type: 'POST',
+        url: 'fechaServlet',
+        data: { 'fecha_recoger': fecha },
+        dataType: 'json',
+        success: function(data) {
+          $('#horario').empty();
+          $('#horario').append('<option value="">Seleccione una carrera</option>');
+          $.each(data, function(index, hora) {
+            $('#horario').append('<option value="' + hora + '">' + hora + '</option>');
+          });
+        },
+        error: function() {
+          alert('Error al obtener las carreras.');
+        }
+      });
+    });
+  });
+</script>
+
 
 </body>
 </html>

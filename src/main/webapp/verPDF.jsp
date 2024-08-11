@@ -87,42 +87,53 @@
 <div class="d-flex">
 
 
-<div class="container col-7">
-    <%
-        DocumentoDao docDao = new DocumentoDao();
-        int cta_id = Integer.parseInt(request.getParameter("cta_id"));
 
-        List<Documento> docs = docDao.getAllDocumentos(cta_id);
+    <div id="documentCarousel" class="carousel slide container col-7" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <%
+                DocumentoDao docDao = new DocumentoDao();
+                int cta_id = Integer.parseInt(request.getParameter("cta_id"));
 
-        for (Documento d : docs) {
+                List<Documento> docs = docDao.getAllDocumentos(cta_id);
+                boolean isFirst = true;
 
-        // Obtener la ruta del archivo desde la sesión
-        String pdfPath = d.getDireccion();
-        System.out.println( "Direccion" + pdfPath);
+                for (Documento d : docs) {
+                    String pdfPath = d.getDireccion();
+                    if (pdfPath != null) {
+            %>
+            <div class="carousel-item <%= isFirst ? "active" : "" %>">
+                <div class="embed-responsive embed-responsive-16by9 text-center justify-content-center mt-5">
+                    <object class="embed-responsive-item" data="<%= request.getContextPath() + "/" + pdfPath %>" type="application/pdf" width="80%" height="600px">
+                        <p>Tu navegador no admite la visualización de archivos PDF. Puedes descargar el archivo <a href="<%= request.getContextPath() + "/" + pdfPath %>">aquí</a>.</p>
+                    </object>
+                </div>
+            </div>
+            <%
+                isFirst = false;
+            } else {
+            %>
+            <div class="carousel-item">
+                <p>No se ha encontrado el archivo.</p>
+            </div>
+            <%
+                    }
+                }
+            %>
+        </div>
 
-        if (pdfPath != null) {
-    %>
-    <div class="embed-responsive embed-responsive-16by9  text-center justify-content-center mt-5">
-        <object class="embed-responsive-item" data="<%= request.getContextPath() + "/" + pdfPath %>" type="application/pdf" width="80%" height="600px">
-            <p>Tu navegador no admite la visualización de archivos PDF. Puedes descargar el archivo <a href="<%= request.getContextPath() + "/" + pdfPath %>">aquí</a>.</p>
-        </object>
+        <button class="carousel-control-prev" type="button" data-bs-target="#documentCarousel" data-bs-slide="prev">
+            <div class="fle">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </div>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#documentCarousel" data-bs-slide="next">
+            <div class="fle">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </div>
+        </button>
     </div>
-    <%
-    } else {
-    %>
-    <p>No se ha encontrado el archivo.</p>
-    <%
-        }
-        }
-    %>
-
-    <div class="card-footer-custom">
 
 
-
-
-    </div>
-</div>
 
 
     <div class="container mt-5 d-lg col-3 ms-5 cd">
