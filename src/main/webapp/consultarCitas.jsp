@@ -102,7 +102,7 @@
 
                 <div class="card-footer-custom ms-auto mb-4">
 
-                    <a href="?cta_id=<%=c.getId()%>">
+                    <a href="cancelarCita?cta_id=<%=c.getId()%>">
 
                         <button class="btn btn-danger">
                             <i class="bi bi-x-square"></i>

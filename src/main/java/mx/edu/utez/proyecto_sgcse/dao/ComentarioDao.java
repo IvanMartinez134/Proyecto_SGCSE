@@ -58,4 +58,19 @@ public class ComentarioDao {
         return c;
     }
 
+    public boolean eliminarComent(int id) {
+        String query = "delete from COMENTARIOS where cta_id = ?";
+        boolean rowDeleted = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+            rowDeleted = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rowDeleted;
+    }
+
 }

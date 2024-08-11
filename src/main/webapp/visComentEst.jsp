@@ -30,7 +30,6 @@
 </head>
 <body>
 
-
 <nav class=" navbar navbar-expand-lg  navbar-dark bg-success ">
 
     <div class="container-fluid m-0 p-0">
@@ -100,9 +99,9 @@
                 ComentarioDao comDao = new ComentarioDao();
                 DocumentoDao docDao = new DocumentoDao();
 
-                int cta_id = Integer.parseInt(request.getParameter("id"));
+                int usr_id = Integer.parseInt(request.getParameter("id"));
 
-                Cita c = citaDao.getOneCita(cta_id);
+                Cita c = citaDao.getOneCita(usr_id);
                 Comentario com = comDao.getOneComentario(c.getId());
                 List<Documento> docs = docDao.getAllDocumentos(c.getId());
 
@@ -165,7 +164,7 @@
             </div>
 
             <div class="text-center col-10 m-auto fs-6">
-                <a href="subirDoc.jsp" class="text-decoration-none">
+                <a href="resubirDoc.jsp?cta_id=<%=c.getId()%>" class="text-decoration-none">
                     <input class="btn btn-success" value="Reenviar Documentos ">
                 </a>
 
@@ -199,19 +198,6 @@
 
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </div>
 

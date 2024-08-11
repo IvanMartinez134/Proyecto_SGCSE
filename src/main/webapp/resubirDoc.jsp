@@ -89,7 +89,6 @@
 
 <div class="container col-lg-8 col-sm-10 d-sm mt-5">
     <div class="justify-content-between align-items-center">
-        <div id="timer" class="fs-3 timer">5:00</div>
         <div class="documentacion mt-3">
             <h2>Documentación</h2>
             <p>Recuerda subir todos tus archivos escaneados y en formato PDF.</p>
@@ -119,7 +118,7 @@
 
 
 
-    <form id="form" action="subirArchivosJS" method="post" enctype="multipart/form-data">
+    <form id="form" action="ResubirArchivosJS" method="post" enctype="multipart/form-data">
 
 
             <div class="drag-drop" id="drag-drop-area">
@@ -180,27 +179,6 @@
    }
 </script>
 --%>
-
-
-<script>
-    let timeLeft = 60; // en segundos
-    const timerElement = document.getElementById('timer');
-
-    function updateTimer() {
-
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            window.location.href = 'eliminarCita?cta_id=<%=request.getParameter("cta_id")%>';
-        }
-        timeLeft--;
-    }
-
-    const timerInterval = setInterval(updateTimer, 1000);
-
-</script>
 
 
 <script>

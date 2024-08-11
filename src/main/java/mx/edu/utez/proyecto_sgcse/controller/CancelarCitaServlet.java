@@ -10,8 +10,8 @@ import mx.edu.utez.proyecto_sgcse.model.Cita;
 
 import java.io.IOException;
 
-@WebServlet(name = "EliminarCitaServlet", value = "/eliminarCita")
-public class EliminarCitaServlet extends HttpServlet {
+@WebServlet(name = "CancelarCitaServlet", value = "/cancelarCita")
+public class CancelarCitaServlet extends HttpServlet {
     private CitaDao citaDao = new CitaDao();
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,9 +19,9 @@ public class EliminarCitaServlet extends HttpServlet {
         Cita c = citaDao.getCita(id);
 
         if (c != null) {
-            boolean deleted = citaDao.eliminarCita(id);
+            boolean deleted = citaDao.cancelarCita(id);
                 if(deleted){
-                    resp.sendRedirect("pageEst.jsp");
+                    resp.sendRedirect("consultarCitas.jsp");
                 } else {
                     req.setAttribute("message", "Error al eliminar la cita");
                     req.getRequestDispatcher("error.jsp").forward(req, resp);

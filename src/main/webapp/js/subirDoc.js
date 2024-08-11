@@ -1,24 +1,4 @@
 
-let timeLeft = 300; // en segundos
-const timerElement = document.getElementById('timer');
-
-function updateTimer() {
-
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        window.location.href = 'pageEst.jsp';
-        window.location.href = 'borrarCita';
-    }
-    timeLeft--;
-}
-
-const timerInterval = setInterval(updateTimer, 1000);
-
-
-
 const dragDropArea = document.getElementById('drag-drop-area');
 const fileList = document.getElementById('file-list');
 const fileInput = document.getElementById('file-input');

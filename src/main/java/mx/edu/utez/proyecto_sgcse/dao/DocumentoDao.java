@@ -86,5 +86,20 @@ public class DocumentoDao {
         return dco;
     }
 
+    public boolean eliminarDoc(int id) {
+        String query = "delete from DOCUMENTOS where cta_id = ?";
+        boolean rowDeleted = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+            rowDeleted = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rowDeleted;
+    }
+
 
 }

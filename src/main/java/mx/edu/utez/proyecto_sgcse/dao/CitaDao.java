@@ -84,6 +84,30 @@ public class CitaDao {
         return c;
     }
 
+    public Cita getCita(int id) {
+        Cita c = null;
+        String query = "SELECT * FROM ver_citas WHERE id = ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    c = new Cita();
+                    c.setId(rs.getInt("id"));
+                    c.setFecha(rs.getString("fecha"));
+                    c.setHora(rs.getString("hora"));
+                    c.setVta_id(rs.getInt("vta_id"));
+                    c.setTipo_doc(rs.getString("documento"));
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return c;
+    }
 
     public boolean asignarCita(int vta_id,int id) {
         String query = "UPDATE citas SET vta_id = ? WHERE id = ?";
@@ -263,6 +287,36 @@ public class CitaDao {
         }
 
         return citas;
+    }
+
+    public boolean cancelarCita(int id) {
+        String query = "UPDATE citas set fecha_y_hora = null,usr_id = null,tdt_id = null,vta_id = null, status = 7 WHERE id = ?";
+        boolean rowDeleted = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+            rowDeleted = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rowDeleted;
+    }
+
+    public boolean eliminarCita(int id) {
+        String query = "delete from citas where id = ?";
+        boolean rowDeleted = false;
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, id);
+            rowDeleted = ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rowDeleted;
     }
 
 
