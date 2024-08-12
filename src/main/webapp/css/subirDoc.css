@@ -124,7 +124,9 @@ body {
 .timer{
     text-align: end;
     margin-right: 20px;
+    color : #333 !important;
 }
+
 
 .documentacion {
     background-color: #0d4ea2b9;

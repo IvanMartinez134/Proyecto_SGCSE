@@ -201,7 +201,7 @@
         dataType: 'json',
         success: function(data) {
           $('#horario').empty();
-          $('#horario').append('<option value="">Seleccione una carrera</option>');
+          $('#horario').append('<option value="">Seleccione un horario</option>');
           $.each(data, function(index, hora) {
             $('#horario').append('<option value="' + hora + '">' + hora + '</option>');
           });

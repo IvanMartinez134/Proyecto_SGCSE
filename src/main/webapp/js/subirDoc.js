@@ -40,6 +40,12 @@ function handleFiles(files) {
         listItem.textContent = file.name;
         fileList.appendChild(listItem);
     }
+
+    // Declarar variables del contador
+
+
+
+
 }
 
 

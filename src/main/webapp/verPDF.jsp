@@ -88,7 +88,7 @@
 
 
 
-    <div id="documentCarousel" class="carousel slide container col-7" data-bs-ride="carousel">
+    <div id="documentCarousel" class="carousel slide container mb-4 col-7" data-bs-ride="carousel">
         <div class="carousel-inner">
             <%
                 DocumentoDao docDao = new DocumentoDao();
