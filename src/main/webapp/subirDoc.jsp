@@ -17,10 +17,11 @@
     <title>Subir Documentos</title>
     <link rel="stylesheet" href="bootstrap-5.2.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/subirDoc.css">
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 
 
-    <link rel="stylesheet" href="css/subirDoc.css">
 
 </head>
 
@@ -89,8 +90,14 @@
 
 <div class="container col-lg-8 col-sm-10 d-sm mt-5">
     <div class="justify-content-between align-items-center">
+
+
         <div id="timer" class="fs-3 timer">5:00</div>
+
+
+
         <div class="documentacion mt-3">
+
             <h2>Documentación</h2>
             <p>Recuerda subir todos tus archivos escaneados y en formato PDF.</p>
             <ul>
@@ -145,60 +152,32 @@
 </div>
 
 
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<%--
-<script>
-   function uploadFile() {
-       const form = document.getElementById("form");
-       const formData = new FormData(form);
-
-       fetch('subirArchivosJS', {
-           method: 'POST',
-           body: formData
-       }).then(response => {
-           return response.json();
-       }).then(data => {
-           console.log("Respuesta: ", data);
-
-           let msg = document.getElementById("msg");
-           msg.hidden = false;
-           msg.innerHTML = `<strong>${data.mensaje}</strong>`;
-           let msg_button = document.createElement("button");
-           msg_button.setAttribute("type", "button");
-           msg_button.setAttribute("class", "btn-close");
-           msg_button.setAttribute("data-bs-dismiss", "alert");
-           msg_button.setAttribute("aria-label", "Close");
-           msg.appendChild(msg_button);
-
-       }).catch(error => {
-           console.log("Error al subir: ", error);
-       });
-
-
-       return false;
-   }
-</script>
---%>
-
 
 <script>
-    let timeLeft = 300; // en segundos
-    const timerElement = document.getElementById('timer');
 
-    function updateTimer() {
+    document.addEventListener("DOMContentLoaded", function() {
+        let timeLeft = 300; // en segundos
+        const timerElement = document.getElementById('timer');
 
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            window.location.href = 'eliminarCita?cta_id=<%=request.getParameter("cta_id")%>';
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                window.location.href = 'eliminarCita?cta_id=<%=request.getParameter("cta_id")%>';
+            }
+            timeLeft--;
         }
-        timeLeft--;
-    }
 
-    const timerInterval = setInterval(updateTimer, 1000);
+        const timerInterval = setInterval(updateTimer, 1000);
+    });
+
+
 
 </script>
 
@@ -225,7 +204,7 @@
 </script>
 
 <script src="js/subirDoc.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
