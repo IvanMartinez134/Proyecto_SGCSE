@@ -16,6 +16,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
+<%
+    CitaDao citaDao = new CitaDao();
+    int usr_id = Integer.parseInt(request.getParameter("id"));
+    Cita c = citaDao.getOneCita(usr_id);
+
+    if (c != null){
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,13 +102,11 @@
     <div id="documentCarousel" class="carousel slide container mb-4  col-7" data-bs-ride="carousel">
         <div class="carousel-inner">
             <%
-                CitaDao citaDao = new CitaDao();
+
                 ComentarioDao comDao = new ComentarioDao();
                 DocumentoDao docDao = new DocumentoDao();
 
-                int usr_id = Integer.parseInt(request.getParameter("id"));
 
-                Cita c = citaDao.getOneCita(usr_id);
                 Comentario com = comDao.getOneComentario(c.getId());
                 List<Documento> docs = docDao.getAllDocumentos(c.getId());
 
@@ -245,3 +250,7 @@
 
 
 </html>
+
+<%
+    }
+%>
