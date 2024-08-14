@@ -92,7 +92,7 @@
     <div class="justify-content-between align-items-center">
 
 
-        <div id="timer" class="fs-3 timer">5:00</div>
+        <div id="timer" class=" fs-3 timer">5:00</div>
 
 
 
@@ -157,26 +157,31 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
+
+
+
 <script>
 
     document.addEventListener("DOMContentLoaded", function() {
-        let timeLeft = 300; // en segundos
-        const timerElement = document.getElementById('timer');
+        let timeLeft = 300;
+        const ele = document.getElementById('timer');
 
         function updateTimer() {
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
-            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            ele.innerHTML = minutes + ':' + (seconds.toString().padStart(2, '0'));
+
+
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
-                window.location.href = 'eliminarCita?cta_id=<%=request.getParameter("cta_id")%>';
+                window.location.href = 'eliminarCita?cta_id=<%=request.getParameter("cta_id")%> ';
             }
+
             timeLeft--;
         }
 
         const timerInterval = setInterval(updateTimer, 1000);
     });
-
 
 
 </script>

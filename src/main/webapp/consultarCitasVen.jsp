@@ -28,14 +28,11 @@
 
     <link rel="stylesheet" href="css/consCita.css">
 
-
-
 </head>
 
 <body>
 
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-success mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success m-0 mb-4 ">
     <div class="container-fluid m-0 p-0">
         <div class="navbar-logo-container">
             <img src="img/utezlogo.png" alt="Logo" class="navbar-logo m-0 p-0">
@@ -64,6 +61,7 @@
         </section>
     </div>
 </nav>
+
 
 
 
@@ -101,7 +99,14 @@
 
 
                 </div>
-                <div class="card-footer-custom">
+                <div class="card-footer-custom  ms-auto mb-4">
+
+                    <a href="#">
+
+                        <button class="btn btn-success">
+                            <i class="bi bi-check2-square"></i>
+                        </button>
+                    </a>
 
                 </div>
             </div>

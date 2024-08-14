@@ -51,7 +51,6 @@ public class CitaServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
 
-
             req.getSession().setAttribute("mensaje", "Error al procesar la cita. Por favor, intenta de nuevo.");
             resp.sendRedirect("error500.jsp");
         }

@@ -121,10 +121,8 @@ body {
 
 
 
-#timer {
-    font-size: 2rem;
+.timer {
     padding: 10px;
-    border-radius: 5px;
     color: #333333;
     text-align: end;
     margin-right: 20px;

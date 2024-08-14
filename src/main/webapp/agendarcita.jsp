@@ -119,6 +119,7 @@
 
 
 <div class="container col-lg-6 col-sm-8 col-xsm-8 mt-5 d-sm col-10">
+
   <form id="agendarCitaForm" action="procesarCita" method="POST">
     <div class="mb-3">
       <label for="tramite" class="form-label">Trámite:</label>

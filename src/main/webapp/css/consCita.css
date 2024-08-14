@@ -1,6 +1,7 @@
 
 
 
+
 body {
     margin: 0;
 
@@ -121,7 +122,15 @@ body {
 
 
 
+@media(max-width: 568px){
 
+    .navbar-logo {
+        height: 70px;
+        width: 90px;
+        object-fit: contain; /
+
+    }
+}
 
 
 
