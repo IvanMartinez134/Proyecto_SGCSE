@@ -95,7 +95,7 @@
 <div class="container my-4 justify-content-center">
 
 
-
+    <div class="table-responsive">
     <table id="table_users" class="display table table-striped table-hover d-sm col-10" >
         <thead class="table-primary">
         <tr class="table-active">
@@ -138,6 +138,7 @@
     </table>
 </div>
 
+</div>
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

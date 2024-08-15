@@ -27,6 +27,7 @@
 
     if (c != null){
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +40,9 @@
     <link rel="stylesheet" href="css/pdf.css">
     <link rel="stylesheet" href="css/vercoment.css">
 </head>
+
+
+
 <body>
 
 <nav class=" navbar navbar-expand-lg  navbar-dark bg-success ">
@@ -122,6 +126,9 @@
 
                     if (pdfPath != null) {
             %>
+
+
+
             <div class="carousel-item <%= isActive ? "active" : "" %>">
                 <div class="embed-responsive embed-responsive-16by9 text-center justify-content-center mt-5">
                     <object class="embed-responsive-item" data="<%= request.getContextPath() + "/" + pdfPath %>" type="application/pdf" width="80%" height="600px">
@@ -255,9 +262,23 @@
 
 </html>
 
+
+<%
+} else {
+%>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    Swal.fire({
+        title: 'No hay comentarios disponibles',
+        text: 'No se encontraron comentarios asociados a tu cita.',
+        icon: 'info',
+        confirmButtonText: 'Aceptar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = 'pageEst.jsp';
+        }
+    });
+</script>
 <%
     }
-
-
-
 %>

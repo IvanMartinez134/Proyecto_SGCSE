@@ -158,6 +158,16 @@ div.dataTables_filter {
         object-fit: contain;
 
     }
+
+    .table-responsive {
+        overflow-x: auto;
+
+    }
+
+    div.dataTables_filter {
+
+        margin-bottom: 22px !important;
+    }
 }
 
 
