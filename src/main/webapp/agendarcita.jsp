@@ -15,7 +15,7 @@
   int usr_id = Integer.parseInt(request.getParameter("id"));
   CitaDao cta_dao= new CitaDao();
   Cita cita = cta_dao.getOneCita(usr_id);
-  if(cita == null){
+  if(cita.getEtsado() != 0){
 
 %>
 <!DOCTYPE html>

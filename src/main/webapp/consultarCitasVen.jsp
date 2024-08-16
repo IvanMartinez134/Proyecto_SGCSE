@@ -81,15 +81,15 @@
         <div class="col-md-4 card_margin d-sm col-10">
             <div class="card mb-3">
                 <%if(c.getEtsado() == 0){%>
-                <div class="card-header-custom" style="background-color: green">Estado: Concluida</div>
+                <div class="card-header-custom" style="background-color: #198754">Estado: Concluida</div>
                 <%} else if (c.getEtsado() == 1) {%>
-                <div class="card-header-custom" style="background-color: red">Estado: Asignada</div>
+                <div class="card-header-custom" style="background-color: #C0392B">Estado: Asignada</div>
                 <%} else if (c.getEtsado() == 2) {%>
                 <div class="card-header-custom" style="background-color: grey">Estado: Corregida</div>
                 <%} else if (c.getEtsado() == 3) {%>
-                <div class="card-header-custom" style="background-color: lightskyblue">Estado: Correcta</div>
+                <div class="card-header-custom" style="background-color: #2980B9">Estado: Correcta</div>
                 <%} else if (c.getEtsado() == 4) {%>
-                <div class="card-header-custom" style="background-color: orange">Estado: Incorrecta</div>
+                <div class="card-header-custom" style="background-color: #F39C12">Estado: Incorrecta</div>
                 <%}%>
                 <div class="card-body-custom">
                     <p class="card-title">Nombre: <%=c.getAlumno()%></p>
@@ -97,11 +97,13 @@
                     <p class="card-text">Fecha: <%=c.getFecha()%></p>
                     <p class="card-text">Horario: <%=c.getHora()%></p>
 
-
                 </div>
+                <%
+                    if(c.getEtsado() == 3){
+                %>
                 <div class="card-footer-custom  ms-auto mb-4">
 
-                    <a href="#">
+                    <a href="terminarCita?id=<%=c.getId()%>&&vta_id=<%=id%>">
 
                         <button class="btn btn-success">
                             <i class="bi bi-check2-square"></i>
@@ -109,6 +111,7 @@
                     </a>
 
                 </div>
+                <% } %>
             </div>
         </div>
         <% } %>
