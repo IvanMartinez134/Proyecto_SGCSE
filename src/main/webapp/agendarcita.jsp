@@ -12,10 +12,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+
   int usr_id = Integer.parseInt(request.getParameter("id"));
-  CitaDao cta_dao= new CitaDao();
+  CitaDao cta_dao = new CitaDao();
   Cita cita = cta_dao.getOneCita(usr_id);
-  if(cita.getEtsado() != 0){
+
+  if( cita == null || cita.getStatus() == 0 || cita.getStatus() == 7 ){
 %>
 <!DOCTYPE html>
 <html lang="es">

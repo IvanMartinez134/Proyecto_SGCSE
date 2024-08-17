@@ -14,7 +14,7 @@ import java.util.List;
 
 public class CitaDao {
     public boolean generarCita(Cita c) {
-        String query = "INSERT INTO CITAS ( fecha_y_hora, usr_id, tdt_id) VALUES ( ?, ?, ?)";
+        String query = "CALL agendar_cita( ?, ?, ?)";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -75,6 +75,7 @@ public class CitaDao {
                     c.setHora(rs.getString("hora"));
                     c.setVta_id(rs.getInt("vta_id"));
                     c.setTipo_doc(rs.getString("documento"));
+                    c.setStatus(rs.getInt("status"));
 
                 }
             }
