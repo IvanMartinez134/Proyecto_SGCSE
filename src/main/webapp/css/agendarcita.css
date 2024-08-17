@@ -139,6 +139,11 @@ button[type="submit"]:hover {
     background-color: #0b5ed7;
 }
 
+#horario {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
 
 
 @media ( max-width: 768px){

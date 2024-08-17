@@ -19,6 +19,12 @@
     background-color: white;
 }
 
+
+#carrera{
+    max-height: 150px;
+    overflow-y: auto;
+}
+
 @media (max-width: 800px) {
     .modal_contain{
         padding: 1.5em 1em;

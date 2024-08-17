@@ -264,21 +264,7 @@
 
 
 <%
-} else {
-%>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    Swal.fire({
-        title: 'No hay comentarios disponibles',
-        text: 'No se encontraron comentarios asociados a tu cita.',
-        icon: 'info',
-        confirmButtonText: 'Aceptar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = 'pageEst.jsp';
-        }
-    });
-</script>
-<%
+    } else {
+        response.sendRedirect("alertaC.jsp");
     }
 %>

@@ -76,7 +76,7 @@
 
     .t_regis{
         padding: 6px 8px;
-        font-size: medium;
+        font-size: small;
     }
 
 }
@@ -84,10 +84,31 @@
 
 @media (max-width: 500px){
 
-    .t_regis{
-        width: 40px;
-        padding: 4px 8px;
+    .header-input{
+        max-width: 10rem;
         font-size: 0.8rem;
+    }
+
+    .t_regis{
+        width: 6rem;
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+
+}
+
+
+@media (max-width: 380px){
+
+    .header-input{
+        max-width: 10rem;
+        font-size: 0.8rem;
+    }
+
+    .t_regis{
+        width: 70px;
+        padding: 4px 8px;
+        font-size: 0.6rem;
     }
 
 }

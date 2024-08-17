@@ -16,7 +16,6 @@
   CitaDao cta_dao= new CitaDao();
   Cita cita = cta_dao.getOneCita(usr_id);
   if(cita.getEtsado() != 0){
-
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,7 +23,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agendar Cita</title>
-  <!-- Enlace a Bootstrap CSS -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -138,6 +137,8 @@
       <p>Seleccione una fecha para recoger tus documentos:</p>
         <input type="date" id="fecha_recoger" name="fecha_recoger" class="form-control" >
     </div>
+
+
     <div class="mb-3">
       <label for="horario" class="form-label">Seleccione el horario:</label>
       <select name="horario" id="horario" class="form-select" onchange="actualizarFechaHora()">
@@ -226,5 +227,8 @@
 </html>
 
 <%
+  } else {
+
+    response.sendRedirect("alerta.jsp");
   }
 %>

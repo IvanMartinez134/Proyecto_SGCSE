@@ -129,7 +129,7 @@
 
                 <div class="card-footer-custom ms-auto mb-4">
 
-                    <a href="cancelarCita?cta_id=<%=c.getId()%>">
+                    <a href="cancelarCita?cta_id=<%=c.getId()%>" class="btn-delete" >
 
                         <button class="btn btn-danger">
                             <i class="bi bi-x-square"></i>
@@ -146,6 +146,47 @@
     </div>
 </div>
 
+
+
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- SweetAlert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+
+
+    $(document).ready(function() {
+        $('.btn-delete').on('click', function(event) {
+            event.preventDefault();
+
+            var href = $(this).attr('href');
+            var id = $(this).data('id');
+
+            Swal.fire({
+                title: "Estas seguro?",
+                text: "Una vez eliminada, se perdera la cita!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Si, eliminarla",
+                cancelButtonText: "Cancelar",
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    window.location.href = 'pageAdmin.jsp';
+                } else {
+
+                    Swal.fire("Cancelado", "Tu cita sigue disponible");
+                }
+            });
+        });
+    });
+</script>
 
 <script src="bootstrap-5.2.3-dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/citap.js"></script>

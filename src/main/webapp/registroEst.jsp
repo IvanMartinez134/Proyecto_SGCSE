@@ -79,7 +79,7 @@
                 </div>
                 <label for="grupo" class="col-sm-3 col-form-label">Grupo : </label>
                 <div class="col-sm-3">
-                    <input type="text" id="grupo" name="grupo" class="form-control" placeholder="A" >
+                    <input type="text" id="grupo" name="grupo" class="form-control" placeholder="Ingresa tu grupo" >
                 </div>
             </div>
 
