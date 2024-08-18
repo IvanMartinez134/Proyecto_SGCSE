@@ -463,3 +463,62 @@ body {
         font-size: 14px;
     }
 }
+
+
+@media (max-width: 370px) {
+
+
+    .navbar-title{
+        flex-grow: 1;
+        text-align: center;
+        margin-right: 0.3rem !important;
+
+    }
+
+    .container {
+        display: flex;
+        padding-top: 5rem;
+        justify-content: center;
+        align-items: flex-start;
+        height: auto;
+    }
+
+
+
+
+    .option-card{
+        margin-bottom: 30px;
+    }
+
+    .bg-white {
+        margin-top: 2rem;
+    }
+
+    /* Ajustes específicos para pantallas pequeñas */
+    .modal-dialog {
+        max-width: 90%;
+        margin: 1.75rem auto;
+    }
+
+    .modal-content {
+        padding: 1em 0.5em;
+    }
+
+    .modal-title {
+        font-size: 1.2rem;
+    }
+
+    .form-control {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .form-label {
+        font-size: 14px;
+    }
+
+    .modal-footer .btn {
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+    }
+}

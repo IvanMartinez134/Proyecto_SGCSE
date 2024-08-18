@@ -45,7 +45,7 @@
     <div class="lateral"></div>
     <div class="aside_c">
         <div class="aside_i">
-            <i class="bi-box-arrow-right"></i>
+            <i class="bi-box-arrow-right "></i>
             <a href="index.jsp" class="text-decoration-none">
             <span class="a_span">Cerrar sesion</span>
             </a>
@@ -94,7 +94,7 @@
 
                     <a href="editarPerfil.jsp?id=${sessionScope.user.id}">
                         <div class="cont_b mb-3">
-                            <button class="btn bg-primary btn_p" type="button">
+                            <button class="btn bg-primary btn_p text-decoration-none" type="button" style="color: white">
                                 Editar perfil
                             </button>
                         </div>

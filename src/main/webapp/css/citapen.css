@@ -204,3 +204,20 @@ body {
     }
 }
 
+
+
+@media (max-width: 370px) {
+
+
+    .navbar-title{
+        flex-grow: 1;
+        text-align: center;
+        font-size: 1.2rem;
+        margin-right: 0.3rem !important;
+
+    }
+
+
+}
+
+

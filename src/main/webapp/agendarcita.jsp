@@ -28,7 +28,12 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
   <link rel="stylesheet" href="css/agendarcita.css">
   <style>
@@ -119,7 +124,7 @@
 </nav>
 
 
-<div class="container col-lg-6 col-sm-8 col-xsm-8 mt-5 d-sm col-10">
+<div class="container col-lg-6 col-sm-8 col-xsm-8 mt-5 d-sm col-10 mb-4">
 
   <form id="agendarCitaForm" action="procesarCita" method="POST">
     <div class="mb-3">
@@ -200,8 +205,17 @@
 </script>
 
 
-<script type="text/javascript"  defer>
+<script type="text/javascript" defer>
   $(document).ready(function() {
+
+    $('#horario').select2({
+      placeholder: "Selecciona un horario",
+      allowClear: true,
+      width: 'resolve',
+      dropdownCssClass: 'custom-dropdown-width-hours'
+    });
+
+    // Función para obtener y actualizar las horas
     $('#fecha_recoger').change(function() {
       var fecha = $(this).val();
       $.ajax({
@@ -210,19 +224,21 @@
         data: { 'fecha_recoger': fecha },
         dataType: 'json',
         success: function(data) {
-          $('#horario').empty();
-          $('#horario').append('<option value="">Seleccione un horario</option>');
+          $('#horario').empty().trigger('change');
+          $('#horario').append('<option value="" disabled selected>Selecciona un horario</option>');
           $.each(data, function(index, hora) {
-            $('#horario').append('<option value="' + hora + '">' + hora + '</option>');
+            var newOption = new Option(hora, hora, false, false);
+            $('#horario').append(newOption).trigger('change');
           });
         },
         error: function() {
-          alert('Error al obtener las carreras.');
+          alert('Error al obtener los horarios.');
         }
       });
     });
   });
 </script>
+
 
 
 </body>

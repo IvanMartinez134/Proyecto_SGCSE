@@ -139,30 +139,28 @@ button[type="submit"]:hover {
     background-color: #0b5ed7;
 }
 
-#horario {
-    max-height: 150px;
-    overflow-y: auto;
+.select2-dropdown {
+
+    min-width: 300px;
+    max-width: 500px;
 }
 
 
-
-@media ( max-width: 768px){
-    .navbar-logo-container{
-        display: flex;
-        align-items: center;
-        height: 100%;
-        position: absolute !important;
-        left: 10px;
-    }
-
-    .navbar-logo{
+@media ( max-width: 568px){
+    .navbar-logo {
         height: 70px;
+        width: 90px;
+        object-fit: contain;
 
-        width: 90px !important; /* Ancho automático para mantener la proporción */
-        object-fit: contain !important; /* Ajuste de la imagen dentro del contenedor */
+    }
+}
+
+
+@media (max-width: 370px){
+    .select2-dropdown {
+
+        min-width: 200px;
+        max-width: 400px;
     }
 
-    .navbar-title{
-        margin-left: 8rem !important;
-    }
 }

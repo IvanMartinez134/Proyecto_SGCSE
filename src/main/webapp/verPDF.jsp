@@ -84,79 +84,72 @@
     </div>
 </nav>
 
-<div class="d-flex">
+<div class="container">
+    <div class="row justify-content-center">
 
+        <div id="documentCarousel" class="carousel slide col-lg-8 mb-4 mt-2" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <%
+                    DocumentoDao docDao = new DocumentoDao();
+                    int cta_id = Integer.parseInt(request.getParameter("cta_id"));
 
+                    List<Documento> docs = docDao.getAllDocumentos(cta_id);
+                    boolean isFirst = true;
 
-    <div id="documentCarousel" class="carousel slide container mb-4 col-7" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <%
-                DocumentoDao docDao = new DocumentoDao();
-                int cta_id = Integer.parseInt(request.getParameter("cta_id"));
-
-                List<Documento> docs = docDao.getAllDocumentos(cta_id);
-                boolean isFirst = true;
-
-                for (Documento d : docs) {
-                    String pdfPath = d.getDireccion();
-                    if (pdfPath != null) {
-            %>
-            <div class="carousel-item <%= isFirst ? "active" : "" %>">
-                <div class="embed-responsive embed-responsive-16by9 text-center justify-content-center mt-5">
-                    <object class="embed-responsive-item" data="<%= request.getContextPath() + "/" + pdfPath %>" type="application/pdf" width="80%" height="600px">
-                        <p>Tu navegador no admite la visualización de archivos PDF. Puedes descargar el archivo <a href="<%= request.getContextPath() + "/" + pdfPath %>">aquí</a>.</p>
-                    </object>
+                    for (Documento d : docs) {
+                        String pdfPath = d.getDireccion();
+                        if (pdfPath != null) {
+                %>
+                <div class="carousel-item <%= isFirst ? "active" : "" %>">
+                    <div class="embed-responsive embed-responsive-16by9 text-center justify-content-center mt-5">
+                        <object class="embed-responsive-item" data="<%= request.getContextPath() + "/" + pdfPath %>" type="application/pdf" width="80%" height="600px">
+                            <p>Tu navegador no admite la visualización de archivos PDF. Puedes descargar el archivo <a href="<%= request.getContextPath() + "/" + pdfPath %>">aquí</a>.</p>
+                        </object>
+                    </div>
                 </div>
-            </div>
-            <%
-                isFirst = false;
-            } else {
-            %>
-            <div class="carousel-item">
-                <p>No se ha encontrado el archivo.</p>
-            </div>
-            <%
+                <%
+                    isFirst = false;
+                } else {
+                %>
+                <div class="carousel-item">
+                    <p>No se ha encontrado el archivo.</p>
+                </div>
+                <%
+                        }
                     }
-                }
-            %>
+                %>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#documentCarousel" data-bs-slide="prev">
+                <div class="fle">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </div>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#documentCarousel" data-bs-slide="next">
+                <div class="fle">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </div>
+            </button>
         </div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#documentCarousel" data-bs-slide="prev">
-            <div class="fle">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </div>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#documentCarousel" data-bs-slide="next">
-            <div class="fle">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </div>
-        </button>
+
+        <div class="col-lg-4 col-12 mt-lg-5 mt-4 mb-5">
+            <h3>Comentarios</h3>
+            <form id="comentForm" method="post" action="docIncorrecta">
+                <div class="mb-3">
+                    <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones ..."></textarea>
+                </div>
+                <div class="text-end">
+                    <button class="btn btn-danger mt-2 me-3" id="canComent">Enviar comentario</button>
+
+                    <input type="hidden" name="id" value="<%=cta_id%>">
+
+                    <button class="btn btn-success mt-2 me-1" id="docCorrecta" type="button">Correcto</button>
+                </div>
+            </form>
+        </div>
     </div>
-
-
-
-
-    <div class="container mt-5 d-lg col-3 ms-5 cd">
-        <h3>Comentarios</h3>
-        <form id="comentForm" method="post" action="docIncorrecta">
-            <div class="mb-3">
-                <textarea class="form-control areaCom" rows="3" id="comen" name="comentario" placeholder="Escribe las observaciones ..."></textarea>
-            </div>
-
-            <div class="text-end">
-
-                <button class="btn btn-danger mt-2 me-3" id="canComent"><i class="bi bi-file-earmark-excel"></i></button>
-
-                <input type="hidden" name="id" value="<%=cta_id%>">
-
-
-                <button class="btn btn-success mt-2 me-1" id="docCorrecta" type="button"><i class="bi bi-clipboard-check"></i></button>
-
-            </div>
-
-        </form>
-    </div>
-
+</div>
 
 
 

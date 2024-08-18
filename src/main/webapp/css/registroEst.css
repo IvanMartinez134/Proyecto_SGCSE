@@ -25,6 +25,11 @@
     overflow-y: auto;
 }
 
+.select2-dropdown {
+    min-width: 300px;
+    max-width: 500px;
+}
+
 @media (max-width: 800px) {
     .modal_contain{
         padding: 1.5em 1em;
@@ -38,6 +43,11 @@
 @media (max-width: 500px) {
     .bg-white {
         margin-top: 2rem;
+    }
+
+    .select2-dropdown {
+
+        max-width: 400px;
     }
 }
 

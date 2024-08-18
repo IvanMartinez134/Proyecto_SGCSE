@@ -123,6 +123,11 @@ aside:hover {
     margin-left: 8px;
     font-size: 1rem;
     font-weight: 500;
+    color: white;
+}
+
+.a_span:hover{
+    color: #333333;
 }
 
 .aside_i {
@@ -135,6 +140,7 @@ aside:hover {
 .aside_i:hover {
     background-color: #f2f5f34d;
     border-radius: 8px;
+    color: #333333;
 }
 
 
@@ -146,7 +152,7 @@ aside:hover {
 }
 
 hr {
-    border: 2px solid gray;
+    border: 2px solid #333333;
 }
 
 .bg-custom {

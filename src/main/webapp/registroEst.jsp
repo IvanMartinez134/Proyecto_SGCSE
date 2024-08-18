@@ -25,6 +25,9 @@
     <link rel="icon" type="image/png" href="img/buscar.png">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
     <link rel="stylesheet" href="css/registroEst.css">
 
@@ -101,7 +104,7 @@
 
                 <label for="carrera" class="col-sm-3 col-form-label">Carrera:</label>
                 <div class="col-sm-3">
-                    <select id="carrera" name="carrera" class="form-select">
+                    <select id="carrera" name="carrera" class="form-select" >
                         <option value="" disabled selected>Selecciona una carrera</option>
 
                     </select>
@@ -136,9 +139,24 @@
     </form>
 </div>
 
-
-<script type="text/javascript"  defer>
+<script type="text/javascript" defer>
     $(document).ready(function() {
+
+        $('#division').select2({
+            placeholder: "Selecciona una división",
+            allowClear: true,
+            width: 'resolve'
+        });
+
+
+        $('#carrera').select2({
+            placeholder: "Selecciona una carrera",
+            allowClear: true,
+            width: 'resolve',
+            dropdownCssClass: 'custom-dropdown-width'
+        });
+
+
         $('#division').change(function() {
             var division = $(this).val();
             $.ajax({
@@ -147,10 +165,11 @@
                 data: { 'division': division },
                 dataType: 'json',
                 success: function(data) {
-                    $('#carrera').empty();
-                    $('#carrera').append('<option value="">Seleccione una carrera</option>');
+                    $('#carrera').empty().trigger('change');
+                    $('#carrera').append('<option value="" disabled selected>Selecciona una carrera</option>');
                     $.each(data, function(index, carrera) {
-                        $('#carrera').append('<option value="' + carrera.id + '">' + carrera.nombre + '</option>');
+                        var newOption = new Option(carrera.nombre, carrera.id, false, false);
+                        $('#carrera').append(newOption).trigger('change');
                     });
                 },
                 error: function() {
@@ -160,8 +179,6 @@
         });
     });
 </script>
-
-
 
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
