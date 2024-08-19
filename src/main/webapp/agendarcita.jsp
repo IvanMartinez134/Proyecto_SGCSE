@@ -35,6 +35,13 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+  <!-- SimpleBar CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css" />
+
+  <!-- SimpleBar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+
+
   <link rel="stylesheet" href="css/agendarcita.css">
   <style>
     body {
@@ -63,6 +70,10 @@
     }
   </style>
 </head>
+
+
+
+
 <body>
 
 <nav class="navbar navbar-expand-lg  navbar-dark bg-success mb-4">
@@ -130,16 +141,27 @@
     <div class="mb-3">
       <label for="tramite" class="form-label">Trámite:</label>
       <select name="tramite" id="tramite" class="form-select" onchange="actualizarDescripcion()">
-        <option value="1">Constancia</option>
-        <option value="2">Trámite 2</option>
-        <option value="3">Trámite 3</option>
+        <option value="1">Constancia simple</option>
+        <option value="2">Constancia de trámite de titulación</option>
+        <option value="3">Constancia con calificaciones</option>
+        <option value="4">Constancia con número de seguridad social</option>
+        <option value="5">Constancia de método de titulación</option>
+        <option value="6">Certificado Parcial</option>
+        <option value="7">Duplicado de certificado</option>
+        <option value="8">Boletas</option>
+        <option value="9">Reposición de credencial</option>
+        <option value="10">Certificado de Estudios de Ing/Lic</option>
+        <option value="11">Título</option>
 
       </select>
     </div>
+
     <div class="mb-3">
-      <label for="descripcion" class="form-label">Descripción:</label>
-      <input type="text" name="descripcion" id="descripcion" class="form-control" readonly>
+      <label for="descripcion" class="form-label">Descripcion:</label>
+      <textarea id="descripcion" class="form-control" style="height: 100px; overflow-y: scroll;" readonly></textarea>
+
     </div>
+
     <div class="mb-3">
       <p>Seleccione una fecha para recoger tus documentos:</p>
         <input type="date" id="fecha_recoger" name="fecha_recoger" class="form-control" >
@@ -170,7 +192,22 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
 <script>
+  $(document).ready(function() {
+    $('#tramite').select2({
+      width: '100%',
+      dropdownAutoWidth: true,
+      maximumSelectionLength: 3,
+      placeholder: 'Selecciona un trámite'
+    });
+  });
+
+</script>
+
+<script>
+
+
 
 
 
@@ -180,17 +217,48 @@
 
     switch (tramiteSeleccionado) {
       case '1':
-        descripcionInput.value = "Descripción para Constancia";
+        descripcionInput.value = "Contiene tu nombre, matrícula, carrera y el periodo que comprende el cuatrimestre en el que estás activo actualmente. Antes de sacar una cita para tramitar este documento deberás de pagar $100 en caja. Si estás dado de baja temporal, la documentación que puedes solicitar es un historial académico. Si estás dado de baja definitiva, la documentación que puedes solicitar es un historial académico y/o un certificado parcial.";
         break;
       case '2':
-        descripcionInput.value = "Descripción para Inscripcion";
+        descripcionInput.value = "Contiene tu nombre, matrícula y la explicación de que tu expediente se encuentra en revisión para obtener la cédula profesional. Antes de sacar una cita para tramitar este documento deberás de pagar $100 en caja. Si estás dado de baja temporal, la documentación que puedes solicitar es un historial académico. Si estás dado de baja definitiva, la documentación que puedes solicitar es un historial académico y/o un certificado parcial.";
         break;
       case '3':
-        descripcionInput.value = "Descripción para Reinscripcion";
+        descripcionInput.value = "Contiene tu nombre, matrícula, carrera y las asignaturas con calificaciones del nivel que actualmente cursas (TSU o ING/LIC). Antes de sacar una cita para tramitar este documento deberás de pagar $100 en caja. Si estás dado de baja temporal, la documentación que puedes solicitar es un historial académico. Si estás dado de baja definitiva, la documentación que puedes solicitar es un historial académico y/o un certificado parcial.";
         break;
-      default:
-        descripcionInput.value = "";
+      case '4':
+        descripcionInput.value = "Contiene tu nombre, matrícula, carrera, el periodo que comprende el cuatrimestre en el que estás activo actualmente, así como el número de Seguro Social con el que estás dado de alta ante dicha institución. Antes de sacar una cita para tramitar este documento deberás de pagar $200 en caja. Si estás dado de baja temporal, la documentación que puedes solicitar es un historial académico. Si estás dado de baja definitiva, la documentación que puedes solicitar es un historial académico y/o un certificado parcial.";
         break;
+
+      case '5':
+        descripcionInput.value = "Contiene tu nombre, matrícula, carrera y hace mención del método utilizado para la titulación. Antes de sacar una cita para tramitar este documento deberás de pagar $100 en caja. Si estás dado de baja temporal, la documentación que puedes solicitar es un historial académico. Si estás dado de baja definitiva, la documentación que puedes solicitar es un historial académico y/o un certificado parcial.";
+        break;
+
+      case '6':
+        descripcionInput.value = "Contiene fotografía, nombre, matrícula, carrera, periodo y las calificaciones de los cuatrimestres acreditados. Antes de sacar una cita para tramitar este documento deberás de pagar $200 en caja. Si estás dado de baja temporal, la documentación que puedes solicitar es un historial académico. Si estás dado de baja definitiva, la documentación que puedes solicitar es un historial académico y/o un certificado parcial.";
+        break;
+
+      case '7':
+        descripcionInput.value = "Contiene fotografía, nombre, matrícula, carrera, periodo de estudios, calificaciones completas de la carrera cursada, así como las competencias de la misma. Antes de sacar una cita para tramitar este documento deberás de pagar $200 en caja. Si estás dado de baja temporal, la documentación que puedes solicitar es un historial académico. Si estás dado de baja definitiva, la documentación que puedes solicitar es un historial académico y/o un certificado parcial.";
+        break;
+
+      case '8':
+        descripcionInput.value = "Contiene las calificaciones de un cuatrimestre específico así como nombre y matrícula. Antes de sacar una cita para tramitar este documento deberás de pagar $55 en caja. Si estás dado de baja temporal, la documentación que puedes solicitar es un historial académico. Si estás dado de baja definitiva, la documentación que puedes solicitar es un historial académico y/o un certificado parcial.";
+        break;
+
+
+      case '9':
+        descripcionInput.value = "Contiene fotografía, carrera, matrícula, vigencia, firma del alumno y número de seguridad social. Antes de sacar una cita para tramitar este documento deberás de pagar $120 en caja. Si estás dado de baja temporal, la documentación que puedes solicitar es un historial académico. Si estás dado de baja definitiva, la documentación que puedes solicitar es un historial académico y/o un certificado parcial.";
+        break;
+
+
+      case '10':
+        descripcionInput.value = "RECUERDA: El cronómetro está en marcha, si necesitas leer esta informacion con detenimiento es mejor visitar: http://www.utez.edu.mx/images/2024/02/Tramite_certificado.png Un certificado de Estudios de Ing/Lic. Antes de sacar una cita para tramitar este documento deberás de pagar $1800 en caja, se deberá tener una copia de la cedula profesional de Ing/Lic al alcance y dos fotografías infantiles con los siguientes requisitos: Tamaño infantil en blanco y negro. Sin retoque. Fondo blanco. Papel mate. Mujeres: Saco obscuro, blusa o camisa blanca, cabello recogido, cara, frente y orejas descubiertas, aretes pequeños, sin collares y poco maquillaje. Hombres: Saco obscuro, corbata obscura y lisa, camisa blanca, cabello corto o recogido, cara y frente descubierta, sin barba, bigote recortado y sin collares o algún tipo de arete. IMPORTANTE: En caso de no cumplir con las especificaciones mencionadas, no se recibirán las fotografías. Para recoger este documento debe presentar una identificación oficial y el comprobante de pago.";
+        break;
+
+      case '11':
+        descripcionInput.value = "RECUERDA: El cronómetro está en marcha, si necesitas leer esta informacion con detenimiento es mejor visitar: http://www.utez.edu.mx/images/2024/01/Solicitud_Titulos3.png. Antes de sacar una cita para tramitar este documento deberás de:Pagar $200 en caja, Redactar un texto de la siguiente manera: Por medio de este conducto me permito solicitar la impresión del título de nivel Mi nombre es ___________ de la generación _______ de la carrera ________ y con número de matrícula __________. Quedo a sus órdenes en los siguientes teléfonos: Tel Celular _______________ Tel Casa _______________TSU: INE por ambos lados y cédula profesional de TSU. Ing/Lic: INE por ambos lados, cédula profesional de TSU y cédula profesional de Ing/Lic. 2 fotografías tamaño título con los siguientes requisitos: Tamaño título en blanco y negro. Sin retoque. Fondo blanco. Papel mate. Mujeres: Saco obscuro, blusa o camisa blanca, cabello recogido, cara, frente y orejas descubiertas, aretes pequeños, sin collares y poco maquillaje. Hombres: Saco obscuro, corbata obscura y lisa, camisa blanca, cabello corto o recogido, cara y frente descubierta, sin barba, bigote recortado y sin collares o algún tipo de arete. IMPORTANTE: En caso de no cumplir con las especificaciones mencionadas, no se recibirán las fotografías y debes agendar una nueva cita.RECUERDE: El título solo se emite una sola vez. El título solo se emite si ya cuentas con la cédula profesional. El trámite del título es independiente del trámite de Certificación de Estudios. La Universidad no envía documentos por mensajería o paquetería, si el o la egresado lo requiere, deberá gestionar lo necesario. Para recoger este documento debe presentar el comprobante de pago y una identificación oficial.";
+        break;
+
     }
   }
 

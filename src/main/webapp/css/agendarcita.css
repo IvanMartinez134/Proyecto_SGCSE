@@ -126,6 +126,8 @@ form {
     box-shadow: 0 0 22px rgba(0, 0, 0, 0.26);
 }
 
+
+
 label {
     font-weight: bold;
 }
@@ -144,6 +146,7 @@ button[type="submit"]:hover {
     min-width: 300px;
     max-width: 500px;
 }
+
 
 
 @media ( max-width: 568px){
