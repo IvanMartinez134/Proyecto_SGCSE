@@ -38,7 +38,7 @@ public class CitaDao {
 
     public Cita getOneCita(String fecha_hora) {
         Cita c = null;
-        String query = "SELECT * FROM citas WHERE fecha_y_hora = ?";
+        String query = "SELECT * FROM CITAS WHERE fecha_y_hora = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -111,7 +111,7 @@ public class CitaDao {
     }
 
     public boolean asignarCita(int vta_id,int id) {
-        String query = "UPDATE citas SET vta_id = ? WHERE id = ?";
+        String query = "UPDATE CITAS SET vta_id = ? WHERE id = ?";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -127,7 +127,7 @@ public class CitaDao {
     }
 
     public boolean updateCitaStatus(Cita c) {
-        String query = "UPDATE citas SET status = ? WHERE id = ?";
+        String query = "UPDATE CITAS SET status = ? WHERE id = ?";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -318,7 +318,7 @@ public class CitaDao {
     }
 
     public boolean cancelarCita(int id) {
-        String query = "UPDATE citas set fecha_y_hora = null,usr_id = null,tdt_id = null,vta_id = null, status = 7 WHERE id = ?";
+        String query = "UPDATE CITAS set fecha_y_hora = null,usr_id = null,tdt_id = null,vta_id = null, status = 7 WHERE id = ?";
         boolean rowDeleted = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -333,7 +333,7 @@ public class CitaDao {
     }
 
     public boolean eliminarCita(int id) {
-        String query = "delete from citas where id = ?";
+        String query = "delete from CITAS where id = ?";
         boolean rowDeleted = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();

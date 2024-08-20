@@ -16,7 +16,7 @@ public class CarreraDao {
 
     public List<Carrera> getAllCarreras(String division) {
         List<Carrera> carreras = new ArrayList<>();
-        String query = "SELECT id, nombre FROM carreras where division = ?";
+        String query = "SELECT id, nombre FROM CARRERAS where division = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)){
@@ -43,7 +43,7 @@ public class CarreraDao {
 
     public List<Carrera> obtenerCarrerasPorDivision(String division) {
         List<Carrera> carreras = new ArrayList<>();
-        String query = "SELECT id, nombre FROM carreras WHERE division = ?";
+        String query = "SELECT id, nombre FROM CARRERAS WHERE division = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {

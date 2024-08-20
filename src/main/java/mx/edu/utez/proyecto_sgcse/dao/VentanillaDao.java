@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class VentanillaDao {
 
     public boolean agregarVen(User u,int turno) {
-        String query = "INSERT INTO ventanillas (tro_id, usr_id) VALUES (?, ?)";
+        String query = "INSERT INTO VENTANILLAS (tro_id, usr_id) VALUES (?, ?)";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();

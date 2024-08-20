@@ -52,7 +52,7 @@ public class UserDao {
 
     public User getOne(String email) {
         User user = new User();
-        String query = "SELECT * FROM usuarios WHERE email = ?";
+        String query = "SELECT * FROM USUARIOS WHERE email = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -86,7 +86,7 @@ public class UserDao {
 
     public User getOne(int id) {
         User user = new User();
-        String query = "SELECT * FROM usuarios WHERE id = ?";
+        String query = "SELECT * FROM USUARIOS WHERE id = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -121,7 +121,7 @@ public class UserDao {
 
     public User consUser(int id) {
         User u = null;
-        String query = "SELECT id, nombre, apll_1, apll_2, email, num_cuatri, grupo FROM usuarios WHERE id = ?";
+        String query = "SELECT id, nombre, apll_1, apll_2, email, num_cuatri, grupo FROM USUARIOS WHERE id = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -150,7 +150,7 @@ public class UserDao {
 
     public User consVen(int id) {
         User u = null;
-        String query = "select u.id,v.id as vta_id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v inner join usuarios u on u.id = v.usr_id inner join turnos t on t.id = v.tro_id WHERE u.id = ?";
+        String query = "select u.id,v.id as vta_id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from VENTANILLAS v inner join USUARIOS u on u.id = v.usr_id inner join turnos t on t.id = v.tro_id WHERE u.id = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -179,7 +179,7 @@ public class UserDao {
 
     public User getOneVen(int vta_id) {
         User u = null;
-        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v inner join usuarios u on u.id = v.usr_id inner join turnos t on t.id = v.tro_id WHERE v.id = ?";
+        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from VENTANILLAS v inner join USUARIOS u on u.id = v.usr_id inner join TURNOS t on t.id = v.tro_id WHERE v.id = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
@@ -238,10 +238,10 @@ public class UserDao {
 
     public List<User> getAllVen() {
         List<User> vents = new ArrayList<>();
-        String query = "select v.id,v.usr_id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v\n" +
-                "inner join usuarios u\n" +
+        String query = "select v.id,v.usr_id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from VENTANILLAS v\n" +
+                "inner join USUARIOS u\n" +
                 "on u.id = v.usr_id\n" +
-                "inner join turnos t\n" +
+                "inner join TURNOS t\n" +
                 "on t.id = v.tro_id where u.tdu_id = 2 and status = 1";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -268,7 +268,7 @@ public class UserDao {
 
 
     public boolean agregarUser(User u) {
-        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, cra_id, pwd, matri,num_cuatri,grupo,tdu_id) VALUES (?, ?, ?, ?, ?, SHA2(?, 256), ?, ?, ?, 3)";
+        String query = "INSERT INTO USUARIOS (nombre, apll_1, apll_2, email, cra_id, pwd, matri,num_cuatri,grupo,tdu_id) VALUES (?, ?, ?, ?, ?, SHA2(?, 256), ?, ?, ?, 3)";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -297,7 +297,7 @@ public class UserDao {
 
 
     public boolean agregarVen(User u) {
-        String query = "INSERT INTO usuarios (nombre, apll_1, apll_2, email, tel, pwd,tdu_id) VALUES (?, ?, ?, ?,?, SHA2(?, 256), 2)";
+        String query = "INSERT INTO USUARIOS (nombre, apll_1, apll_2, email, tel, pwd,tdu_id) VALUES (?, ?, ?, ?,?, SHA2(?, 256), 2)";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -324,7 +324,7 @@ public class UserDao {
 
 
     public boolean updateUser(User u) {
-        String query = "UPDATE usuarios SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ?, num_cuatri = ?, grupo = ? WHERE id = ?";
+        String query = "UPDATE USUARIOS SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ?, num_cuatri = ?, grupo = ? WHERE id = ?";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -345,7 +345,7 @@ public class UserDao {
     }
 
     public boolean updatePerfil(User u) {
-        String query = "UPDATE usuarios SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ? WHERE id = ?";
+        String query = "UPDATE USUARIOS SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ? WHERE id = ?";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -364,7 +364,7 @@ public class UserDao {
     }
 
     public boolean updateVen(User u) {
-        String query = "UPDATE usuarios SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ?, tel = ? WHERE id = ?";
+        String query = "UPDATE USUARIOS SET nombre = ?, apll_1 = ?, apll_2 = ?, email = ?, tel = ? WHERE id = ?";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -386,7 +386,7 @@ public class UserDao {
 
 
     public boolean updateContra(User u) {
-        String query = "UPDATE usuarios SET pwd = sha2(?,256) WHERE id = ?";
+        String query = "UPDATE USUARIOS SET pwd = sha2(?,256) WHERE id = ?";
         boolean fila = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -403,7 +403,7 @@ public class UserDao {
 
 
     public boolean deleteUser(String email) {
-        String query = "UPDATE usuarios SET status = False WHERE email = ?";
+        String query = "UPDATE USUARIOS SET status = False WHERE email = ?";
         boolean rowDeleted = false;
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -420,7 +420,7 @@ public class UserDao {
 
     public boolean updateCody(String email,User u) {
         boolean flag = false;
-        String query = "update usuarios set cody = ? where email = ?";
+        String query = "update USUARIOS set cody = ? where email = ?";
         try {
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
@@ -439,10 +439,10 @@ public class UserDao {
 
     public List<User> BuscarVen(String texto) {
         List<User> lista = new ArrayList<>();
-        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from ventanillas v\n" +
-                "inner join usuarios u\n" +
+        String query = "select u.id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from VENTANILLAS v\n" +
+                "inner join USUARIOS u\n" +
                 "on u.id = v.usr_id\n" +
-                "inner join turnos t\n" +
+                "inner join TURNOS t\n" +
                 "on t.id = v.tro_id where u.id like '%"+texto+"%' or u.nombre like '%"+texto+"%' or u.email like '%"+texto+"%' or u.tel like '%"+texto+"%'" ;
 
         try (Connection con = DatabaseConnectionManager.getConnection();

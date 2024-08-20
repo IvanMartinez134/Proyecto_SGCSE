@@ -40,7 +40,7 @@ public class DocumentoDao {
 
 
     public Documento obtenerDoc(int cta_id)  {
-        String query = "SELECT * FROM documentos WHERE id = ?";
+        String query = "SELECT * FROM DOCUMENTOS WHERE id = ?";
        Documento doc = null;
         try (Connection con = DatabaseConnectionManager.getConnection();
         PreparedStatement ps = con.prepareStatement(query)){
@@ -61,7 +61,7 @@ public class DocumentoDao {
 
     public List<Documento> getAllDocumentos(int cta_id) {
         List<Documento> dco = new ArrayList<>();
-        String query = "select * from documentos where cta_id = ? and direccion != 'uploads/null' ";
+        String query = "select * from DOCUMENTOS where cta_id = ? and direccion != 'uploads/null' ";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
