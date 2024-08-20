@@ -40,7 +40,7 @@
         <div class="navbar-logo-container">
             <img src="img/utezlogo.png" alt="Logo" class="navbar-logo m-0 p-0">
         </div>
-        <h3 class="text-white navbar-title d-lg me-auto">Consultar Citas</h3>
+        <h3 class="text-white navbar-title d-lg me-auto">Citas pendientes</h3>
         <button class="mr-4 navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu">
             <div></div>
             <div></div>

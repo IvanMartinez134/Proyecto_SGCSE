@@ -100,11 +100,11 @@
 
 
                 </div>
-                <div class="card-footer-custom">
+                <div class="card-footer-custom ms-auto mb-4">
 
                     <a href="verPDF.jsp?cta_id=<%=c.getId()%>">
 
-                        <button class="btn-icon">
+                        <button class="btn btn-success btn-icon ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v10"></path>
