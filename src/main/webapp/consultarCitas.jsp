@@ -126,7 +126,11 @@
 
                 </div>
 
+                <%
+                if(c.getEtsado() == 0){
 
+                }else{
+                %>
                 <div class="card-footer-custom ms-auto mb-4">
 
                     <a href="cancelarCita?cta_id=<%=c.getId()%>" class="btn-delete" >
@@ -136,6 +140,7 @@
                         </button>
                     </a>
                 </div>
+                <% } %>
 
             </div>
         </div>

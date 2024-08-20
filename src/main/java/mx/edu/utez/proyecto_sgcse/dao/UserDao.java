@@ -16,7 +16,7 @@ public class UserDao {
 
     public User getOne(String email, String pwd) {
         User user = null;
-        String query = "SELECT * FROM usuarios WHERE email = ? AND pwd = SHA2(?, 256)";
+        String query = "SELECT * FROM USUARIOS WHERE email = ? AND pwd = SHA2(?, 256)";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {

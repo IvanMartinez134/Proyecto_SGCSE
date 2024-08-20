@@ -33,27 +33,29 @@
     <form action="actualizarPerfil" method="post">
         <input type="hidden" name="id" value="<%= user.getId() %>">
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
+            <label for="nombre" class="form-label">Nombre:</label>
             <input type="text" class="form-control" id="nombre" name="nombre" value="<%= user.getNombre() %>">
+        </div>
+
+        <div class="mb-3">
+            <label for="apll_1" class="form-label">Apellido paterno:</label>
+            <input type="text" class="form-control" id="apll_1" name="apll_1" value="<%= user.getApll_1() %>">
+        </div>
+
+        <div class="mb-3">
+            <label for="apll_2" class="form-label">Apellido materno:</label>
+            <input type="text" class="form-control" id="apll_2" name="apll_2" value="<%= user.getApll_2() %>">
         </div>
 
 
         <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label">Correo electronico:</label>
             <input type="email" class="form-control" id="email" name="email" value="<%= user.getEmail() %>">
 
         </div>
 
 
-        <div class="mb-3">
-            <label for="apll_1" class="form-label">Apellido Paterno</label>
-            <input type="text" class="form-control" id="apll_1" name="apll_1" value="<%= user.getApll_1() %>">
-        </div>
 
-        <div class="mb-3">
-            <label for="apll_2" class="form-label">Apellido Materno</label>
-            <input type="text" class="form-control" id="apll_2" name="apll_2" value="<%= user.getApll_2() %>">
-        </div>
 
 
 

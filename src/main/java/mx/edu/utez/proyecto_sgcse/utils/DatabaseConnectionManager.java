@@ -10,9 +10,9 @@ import java.sql.SQLException;
 public class DatabaseConnectionManager {
     private static final String JDBC_URL = "jdbc:mysql://3.211.226.23:3306/sgcse";
 
-    private static final String USERNAME = "root";
+    private static final String USERNAME = "sgcse";
 
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "Hola1234.";
 
     private static final HikariConfig config = new HikariConfig();
     private static final HikariDataSource dataSource;
