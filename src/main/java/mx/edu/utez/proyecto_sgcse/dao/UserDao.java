@@ -150,7 +150,7 @@ public class UserDao {
 
     public User consVen(int id) {
         User u = null;
-        String query = "select u.id,v.id as vta_id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from VENTANILLAS v inner join USUARIOS u on u.id = v.usr_id inner join turnos t on t.id = v.tro_id WHERE u.id = ?";
+        String query = "select u.id,v.id as vta_id, u.nombre, u.apll_1, u.apll_2, u.email, u.tel, t.tipo from VENTANILLAS v inner join USUARIOS u on u.id = v.usr_id inner join TURNOS t on t.id = v.tro_id WHERE u.id = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {

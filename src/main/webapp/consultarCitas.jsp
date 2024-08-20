@@ -183,7 +183,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
 
-                    window.location.href = 'pageAdmin.jsp';
+                    window.location.href = href ;
                 } else {
 
                     Swal.fire("Cancelado", "Tu cita sigue disponible");

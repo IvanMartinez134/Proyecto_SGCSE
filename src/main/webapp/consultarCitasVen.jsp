@@ -106,7 +106,7 @@
                     <a href="terminarCita?id=<%=c.getId()%>&&vta_id=<%=id%>">
 
                         <button class="btn btn-success">
-                            <i class="bi bi-check2-square"></i>
+                            Cita concluida
                         </button>
                     </a>
 

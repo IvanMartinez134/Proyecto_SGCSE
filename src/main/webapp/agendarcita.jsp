@@ -141,6 +141,7 @@
     <div class="mb-3">
       <label for="tramite" class="form-label">Trámite:</label>
       <select name="tramite" id="tramite" class="form-select" onchange="actualizarDescripcion()">
+        <option value="default" selected>Elige un tramite...</option>
         <option value="1">Constancia simple</option>
         <option value="2">Constancia de trámite de titulación</option>
         <option value="3">Constancia con calificaciones</option>

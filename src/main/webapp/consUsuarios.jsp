@@ -8,6 +8,10 @@
 <%@ page import="java.util.List" %>
 <%@ page import="mx.edu.utez.proyecto_sgcse.model.User" %>
 <%@ page import="mx.edu.utez.proyecto_sgcse.dao.UserDao" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,7 +49,7 @@
 
 
         <h3 class="text-white navbar-title  d-lg me-auto">
-            Gestion Estudiantes
+            Gestión Estudiantes
         </h3>
 
 
@@ -101,11 +105,11 @@
         <tr class="table-active">
             <th class="centered">ID</th>
             <th class="centered">Nombre</th>
-            <th class="centered">Apellido</th>
+            <th class="centered">Apellidos</th>
             <th class="centered">Email</th>
             <th class="centered">Matricula</th>
             <th class="centered">Carrera</th>
-            <th class="centered">Division</th>
+            <th class="centered">División</th>
             <th class="centered">Editar</th>
             <th class="centered">Eliminar</th>
         </tr>

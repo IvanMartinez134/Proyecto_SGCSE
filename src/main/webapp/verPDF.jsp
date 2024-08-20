@@ -144,7 +144,7 @@
 
                     <input type="hidden" name="id" value="<%=cta_id%>">
 
-                    <button class="btn btn-success mt-2 me-1" id="docCorrecta" type="button">Correcto</button>
+                    <button class="btn btn-success mt-2 me-1" id="docCorrecta" type="button">Documentación correcta</button>
                 </div>
             </form>
         </div>

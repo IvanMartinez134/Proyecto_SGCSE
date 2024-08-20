@@ -14,7 +14,7 @@
     int usr_id = Integer.parseInt(request.getParameter("id"));
     Cita c = citaDao.getOneCita(usr_id);
 
-    if (c != null) {
+    if (c.getStatus() == 4) {
 %>
 
 <!DOCTYPE html>
